@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="public/css/app.css"> <!-- global css kit -->
+    <link rel="stylesheet" href="public/css/btn-kit.css"> <!-- btn kit for the website -->
+    <link rel="stylesheet" href="public/css/navbar.css"> <!-- navbar css for the website -->
+    <link rel="stylesheet" href="public/css/footer.css">
+
+    <link rel="stylesheet" href="public/css/register.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>CyCruise - Your best cruise</title>
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-logo">
+        <a href="/">
+            <img src="public/img/cycruise-logo.png" alt="CyCruise" class="logo">
+        </a>
+    </div>
+
+    <div class="nav-menu">
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">ACCUEIL</a></li>
+            <li><a href="cruise-list.html" class="nav-link">DESTINATIONS</a></li>
+            <li><a href="fleet-list.html" class="nav-link">FLOTTE</a></li>
+            <li><a href="/contact" class="nav-link">CONTACT</a></li>
+            <li>
+                <a href="login.html" class="icon-link" aria-hidden="true">
+                    <img src="public/img/icons/user-icon.svg" alt="User Icon" class="nav-icon nav-icon-active">
+                </a>
+            </li>
+            <li>
+                <a href="/cart" class="icon-link" aria-hidden="true">
+                    <img src="public/img/icons/cart-icon.svg" alt="Cart Icon" class="nav-icon">
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <section class="register-card">
+        <h1>Inscriptions</h1>
+        <form>
+            <div class="input-group">
+                <label for="lastname">Nom</label>
+                <input type="text" name="email" id="lastname" required>
+            </div>
+            <div class="input-group">
+                <label for="name">Prénom</label>
+                <input type="text" name="email" id="name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class="input-group">
+                <label for="password-confirm">Confirmations mot de passe</label>
+                <input type="password" name="password" id="password-confirm" required>
+            </div>
+            <div class="input-group">
+                <a href="profile.html" type="submit" class="btn btn-primary">Crée mon compte</a>
+            </div>
+        </form>
+        <div class="register-footer">
+            <p>Vous avez un compte ? <a href="login.html">Connectez-vous !</a></p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="logo-section">
+            <img src="public/img/squidlogo.png" alt="Logo Rivrs" class="logo">
+            <div>
+                <p><strong>CyCruise © 2025</strong></p>
+                <p>CyCruise site développé par <a href="https://github.com/Squid-Development">SquidDevelopment</a>.</p>
+                <!--  <p>CyCruise marque déposée</p> -->
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="social-section">
+                <p><strong>Nos réseaux</strong></p>
+                <div class="social-links">
+                    <a href="https://github.com/topeestla" class="fab fa-github"></a>
+                    <a href="https://www.linkedin.com/in/antonin-peralta/" class="fab fa-linkedin"></a>
+                    <a href="https://www.instagram.com/antonin_prlt/" class="fab fa-instagram"></a>
+                </div>
+            </div>
+            <div class="legal-section">
+                <p><strong>Mentions légales</strong></p>
+                <a href="#">Conditions d'utilisation</a>
+                <a href="#">Politique de confidentialité</a>
+                <a href="#">Mentions légales</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
