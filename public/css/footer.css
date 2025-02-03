@@ -3,7 +3,7 @@ footer {
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     padding: 2rem;
-    color: white;
+    color: var(--color-full-white);
 }
 
 footer strong {
@@ -25,7 +25,7 @@ footer strong {
 }
 
 .logo-section a {
-    color: white;
+    color: var(--color-full-white);
     text-decoration: underline;
 }
 
@@ -51,7 +51,7 @@ footer strong {
 }
 
 .social-links a {
-    color: white;
+    color: var(--color-full-white);
     text-decoration: none;
     font-size: 1.5rem;
 }
@@ -61,7 +61,7 @@ footer strong {
 }
 
 .legal-section a {
-    color: white;
+    color: var(--color-full-white);
     text-decoration: none;
     margin-top: 0.5rem;
 }

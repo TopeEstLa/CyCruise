@@ -47,7 +47,7 @@
     padding-left: 30px;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    color: #6b7280;
+    color: var(--color-gray);
     font-size: 1.25rem;
 }
 
@@ -89,7 +89,7 @@
 }
 
 .cruise-detail-reservation-column p {
-    color: #6b7280;
+    color: var(--color-gray);
     font-size: 1rem;
 }
 
@@ -109,7 +109,7 @@
 .cruise-detail-button.add-to-cart {
     margin-top: 1rem;
     background-color: var(--color-dark-blue);
-    color: white;
+    color: var(--color-full-white);
     font-size: 1rem;
     font-weight: 500;
     padding: 0.75rem 1.5rem;

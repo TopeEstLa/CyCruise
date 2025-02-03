@@ -32,6 +32,9 @@
 :root {
     --color-light-blue: #00b7e0;
     --color-dark-blue: #137fb6;
+    --color-title-blue: #111827;
+    --color-gray: #6b7280;
+    --color-full-white: #FFFFFF;
 }
 
 * {
@@ -54,5 +57,5 @@ svg {
 }
 
 .highlight-secondary {
-    color: white;
+    color: var(--color-full-white);
 }

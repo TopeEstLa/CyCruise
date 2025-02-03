@@ -2,7 +2,7 @@
     display: inline-flex;
     align-items: center;
     background-color: var(--color-light-blue);
-    color: white;
+    color: var(--color-full-white);
     font-size: 1.25rem;
     font-weight: 500;
     padding: 1.25rem 2.5rem;
@@ -24,7 +24,7 @@
 .btn-secondary {
     display: inline-flex;
     align-items: center;
-    background-color: white;
+    background-color: var(--color-full-white);
     color: var(--color-light-blue);
     font-size: 1rem;
     font-weight: 500;

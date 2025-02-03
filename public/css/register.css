@@ -8,7 +8,7 @@
 .register-card h1 {
     margin-top: 0;
     font-size: 3.75rem;
-    color: #111827;
+    color: var(--color-title-blue);
     line-height: 1.2;
     margin-bottom: 4rem;
 }
@@ -22,7 +22,7 @@
     display: block;
     margin-bottom: 5px;
     font-size: 1.25rem;
-    color: #6b7280;
+    color: var(--color-gray);
 }
 
 .input-group {
@@ -37,7 +37,7 @@
 }
 
 .register-footer a {
-    color: #3b82f6;
+    color: var(--color-dark-blue);
     text-decoration: none;
 }
 
@@ -47,10 +47,10 @@
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
+    color: var(--color-gray);
+    background-color: var(--color-full-white);
+    border: 1px solid var(--color-gray);
     background-image: none;
-    border: 1px solid #ccc;
     border-radius: 4px;
 }
 
@@ -60,10 +60,10 @@
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
+    color: var(--color-gray);
+    background-color: var(--color-full-white);
+    border: 1px solid var(--color-gray);
     background-image: none;
-    border: 1px solid #ccc;
     border-radius: 4px;
 }
 
@@ -73,10 +73,10 @@
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
+    color: var(--color-gray);
+    background-color: var(--color-full-white);
     background-image: none;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-gray);
     border-radius: 4px;
 }
 
@@ -86,10 +86,10 @@
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #3a3838;
-    background-color: #fff;
+    color: var(--color-gray);
+    background-color: var(--color-full-white);
     background-image: none;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-gray);
     border-radius: 4px;
 }
 
@@ -99,9 +99,9 @@
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #3a3838;
-    background-color: #fff;
+    color: var(--color-gray);
+    background-color: var(--color-full-white);
     background-image: none;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-gray);
     border-radius: 4px;
 }
