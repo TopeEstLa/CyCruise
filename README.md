@@ -15,3 +15,7 @@ due to the evaluation of the project divided into parts, we have one branch per 
 - `part2` : the second part of the project: php.
 - `part3` : the third part of the project: js.
 - `part4` : the fourth part of the project: async js. (+/- = to master)
+
+## List of documents 📚
+
+- [DA](document/DA.pdf) : Document explaining the artistic direction of the project.
