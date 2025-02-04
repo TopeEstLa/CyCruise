@@ -57,7 +57,7 @@ footer strong {
 }
 
 .social-links a:hover {
-    color: #FACC15;
+    color: var(--color-title-blue);
 }
 
 .legal-section a {
