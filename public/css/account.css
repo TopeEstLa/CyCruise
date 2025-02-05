@@ -58,7 +58,7 @@
 .status-section {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--color-full-white);
 }
 
 .status-section h2 {
@@ -111,7 +111,7 @@
 
 .cruise-item {
     padding: 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--color-full-white);
     transition: transform 0.3s ease-in-out;
 }
 
