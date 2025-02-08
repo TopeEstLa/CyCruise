@@ -9,6 +9,7 @@
     border-radius: 1.5rem;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.2s;
+    border: none;
 }
 
 .btn-primary:hover {
@@ -32,6 +33,7 @@
     border-radius: 1rem;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.2s;
+    border: none;
 }
 
 .btn-secondary-icon {
