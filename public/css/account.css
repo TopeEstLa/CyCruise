@@ -125,6 +125,10 @@
     font-size: 1.3rem;
 }
 
+.cruise-item a {
+    text-decoration: none;
+}
+
 .cruise-date {
     color: var(--color-gray);
     font-size: 14px;
