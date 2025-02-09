@@ -40,3 +40,13 @@
     width: 1.5rem;
     margin-right: 0.2rem;
 }
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
