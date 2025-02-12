@@ -149,11 +149,16 @@
 }
 
 .reservation-status.pending {
-    background-color: #ffd700;
+    background-color: var(--color-confirm-pending);
     color: #000;
 }
 
 .reservation-status.confirmed {
-    background-color: #5cb85c;
+    background-color: var(--color-confirm-ok);
+    color: white;
+}
+
+.reservation-status.cancelled {
+    background-color: var(--color-confirm-fail);
     color: white;
 }

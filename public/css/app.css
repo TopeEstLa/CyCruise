@@ -35,6 +35,10 @@
     --color-title-blue: #111827;
     --color-gray: #6b7280;
     --color-full-white: #f6f6f6;
+
+    --color-confirm-ok: #5cb85c;
+    --color-confirm-pending: #ffaa00;
+    --color-confirm-fail: #d9534f;
 }
 
 * {

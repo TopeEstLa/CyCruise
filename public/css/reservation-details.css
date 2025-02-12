@@ -33,13 +33,18 @@
 }
 
 .reservation-status.confirmed {
-    background-color: #5cb85c;
+    background-color: var(--color-confirm-ok);
     color: white;
 }
 
 .reservation-status.pending {
-    background-color: #ffd700;
-    color: black;
+    background-color: var(--color-confirm-pending);
+    color: white;
+}
+
+.reservation-status.failed {
+    background-color: var(--color-confirm-fail);
+    color: white;
 }
 
 .reservation-grid {
@@ -155,7 +160,18 @@
 
 .payment-status {
     margin-top: 20px;
-    color: #5cb85c;
+}
+
+.payment-status .pending {
+    color: var(--color-confirm-pending);
+}
+
+.payment-status .failed {
+    color: var(--color-confirm-fail);
+}
+
+.payment-status .ok {
+    color: var(--color-confirm-ok);
 }
 
 .payment-status i {
