@@ -93,6 +93,11 @@
     font-size: 1rem;
 }
 
+.cruise-detail-reservation-column ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
 .cruise-detail-button {
     margin-top: 1rem;
     color: var(--color-dark-blue);
@@ -123,5 +128,28 @@
 
 .cruise-detail-button.add-to-cart:hover {
     background-color: var(--color-light-blue);
+    transform: scale(1.05);
+}
+
+.cruise-detail-reservation input[type="radio"] {
+    display: none;
+}
+
+.cruise-detail-button {
+    display: inline-block;
+    color: var(--color-dark-blue);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    border: 2px solid transparent;
+    background-color: var(--color-full-white);
+}
+
+.cruise-detail-reservation input[type="radio"]:checked + label.cruise-detail-button { /* depression goes brrrrrrrrr */
+    background-color: var(--color-light-blue);
+    color: var(--color-full-white);
     transform: scale(1.05);
 }

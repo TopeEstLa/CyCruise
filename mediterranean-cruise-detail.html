@@ -63,84 +63,103 @@
     </section>
     <section class="cruise-detail-reservation">
         <h2>Réservation</h2>
-        <div class="cruise-detail-reservation-options">
+        <form class="cruise-detail-reservation-options" action="reservation-details.html" method="POST">
             <div class="cruise-detail-reservation-column">
                 <h3>Dates de départ</h3>
-                <div>
-                    <div>
-                        <button class="cruise-detail-button">01/01/2025</button>
-                    </div>
-                    <div>
-                        <button class="cruise-detail-button">01/01/2025</button>
-                    </div>
-                    <div>
-                        <button class="cruise-detail-button">01/01/2025</button>
-                    </div>
-                    <div>
-                        <button class="cruise-detail-button">01/01/2025</button>
-                    </div>
-                </div>
+                <ul>
+                    <li>
+                        <input type="radio" id="date1" name="departure_date" value="2025-01-01" required>
+                        <label class="cruise-detail-button" for="date1">01/01/2025</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="date2" name="departure_date" value="2025-01-15">
+                        <label class="cruise-detail-button" for="date2">01/01/2025</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="date3" name="departure_date" value="2025-02-01">
+                        <label class="cruise-detail-button" for="date3">01/01/2025</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="date4" name="departure_date" value="2025-02-15">
+                        <label class="cruise-detail-button" for="date4">01/01/2025</label>
+                    </li>
+                </ul>
             </div>
+
             <div class="cruise-detail-reservation-column">
                 <h3>Cabine</h3>
-                <div>
-                    <div>
-                        <button class="cruise-detail-button">Cabine intérieure</button>
-                    </div>
-                    <div>
-                        <button class="cruise-detail-button">Cabine Vue Mer</button>
-                    </div>
-                    <div>
-                        <button class="cruise-detail-button">Cabine Balcon</button>
-                    </div>
-                    <div>
-                        <button class="cruise-detail-button">Suite</button>
-                    </div>
-                    <div>
-                        <button class="cruise-detail-button">Suite Deluxe</button>
-                    </div>
-                </div>
+                <ul>
+                    <li>
+                        <input type="radio" id="cabin1" name="cabin_type" value="interior" required>
+                        <label class="cruise-detail-button" for="cabin1">Cabine intérieure</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="cabin2" name="cabin_type" value="ocean_view">
+                        <label class="cruise-detail-button" for="cabin2">Cabine Vue Mer</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="cabin3" name="cabin_type" value="balcony">
+                        <label class="cruise-detail-button" for="cabin3">Cabine Balcon</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="cabin4" name="cabin_type" value="suite">
+                        <label class="cruise-detail-button" for="cabin4">Suite</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="cabin5" name="cabin_type" value="deluxe_suite">
+                        <label class="cruise-detail-button" for="cabin5">Suite Deluxe</label>
+                    </li>
+                </ul>
             </div>
+
             <div class="cruise-detail-reservation-column">
                 <h3>Repas</h3>
-                <div>
-                    <div>
-                        <button class="cruise-detail-button">Midi</button>
-                    </div>
-                    <div>
-                        <button class="cruise-detail-button">Midi, Soir</button>
-                    </div>
-                    <div>
-                        <button class="cruise-detail-button">Matin, Midi, Soir</button>
-                    </div>
-                </div>
+                <ul>
+                    <li>
+                        <input type="radio" id="meal1" name="meal_plan" value="lunch" required>
+                        <label class="cruise-detail-button" for="meal1">Midi</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="meal2" name="meal_plan" value="lunch_dinner">
+                        <label class="cruise-detail-button" for="meal2">Midi, Soir</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="meal3" name="meal_plan" value="full_board">
+                        <label class="cruise-detail-button" for="meal3">Matin, Midi, Soir</label>
+                    </li>
+                </ul>
             </div>
+
             <div class="cruise-detail-reservation-column">
                 <h3>Excursions</h3>
-                <div>
-                    <div>
-                        <button class="cruise-detail-button">Toute</button>
-                    </div>
-                    <div>
-                        <button class="cruise-detail-button">Seulement en corses</button>
-                    </div>
-                    <div>
-                        <button class="cruise-detail-button">La plus part</button>
-                    </div>
-                </div>
+                <ul>
+                    <li>
+                        <input type="radio" id="excursion1" name="excursion_plan" value="all" required>
+                        <label class="cruise-detail-button" for="excursion1">Toute</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="excursion2" name="excursion_plan" value="corsica_only">
+                        <label class="cruise-detail-button" for="excursion2">Seulement en corses</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="excursion3" name="excursion_plan" value="most">
+                        <label class="cruise-detail-button" for="excursion3">La plus part</label>
+                    </li>
+                </ul>
             </div>
+
             <div class="cruise-detail-reservation-column">
-                <h4>Prix: 5000000.0€ </h4>
+                <h4>Prix: 5000000.0€</h4>
                 <p>
-                    * Croisière de 7 jours (Méditerranée) <br>
-                    * Départ le 01/01/2025 <br>
-                    * Cabine intérieure <br>
-                    * Repas: Matin, Midi, Soir <br>
+                    * Croisière de 7 jours (Méditerranée)<br>
+                    * Départ le 01/01/2025<br>
+                    * Cabine intérieure<br>
+                    * Repas: Matin, Midi, Soir<br>
                     * Expedition: Toute
                 </p>
-                <a class="cruise-detail-button add-to-cart" href="reservation-details.html">Réservé</a>
+                <button type="submit" class="cruise-detail-button add-to-cart">Réservé</button>
             </div>
-        </div>
+        </form>
     </section>
 </main>
 
