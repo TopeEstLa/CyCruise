@@ -2,14 +2,14 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="public/css/app.css"> <!-- global css kit -->
-    <link rel="stylesheet" href="public/css/btn-kit.css"> <!-- btn kit for the website -->
-    <link rel="stylesheet" href="public/css/navbar.css"> <!-- navbar css for the website -->
-    <link rel="stylesheet" href="public/css/footer.css">
+    <link href="public/css/app.css" rel="stylesheet"> <!-- global css kit -->
+    <link href="public/css/btn-kit.css" rel="stylesheet"> <!-- btn kit for the website -->
+    <link href="public/css/navbar.css" rel="stylesheet"> <!-- navbar css for the website -->
+    <link href="public/css/footer.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="public/css/home.css"> <!-- css for the home page -->
+    <link href="public/css/home.css" rel="stylesheet"> <!-- css for the home page -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <title>CyCruise - Your best cruise</title>
 </head>
 
@@ -17,19 +17,19 @@
 <nav class="navbar">
     <div class="navbar-logo">
         <a href="index.html">
-            <img src="public/img/cycruise-logo.png" alt="CyCruise" class="logo">
+            <img alt="CyCruise" class="logo" src="public/img/cycruise-logo.png">
         </a>
     </div>
 
     <div class="nav-menu">
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link active">ACCUEIL</a></li>
-            <li><a href="cruise-list.html" class="nav-link">DESTINATIONS</a></li>
-            <li><a href="fleet-list.html" class="nav-link">FLOTTE</a></li>
-            <li><a href="contact.html" class="nav-link">CONTACT</a></li>
-            <li><a href="login.html" class="fa fa-user nav-icon" aria-hidden="true"></a></li>
-            <li><a href="index.html" class="fa fa-sign-in nav-icon" aria-hidden="true"></a></li>
-            <li><a href="index.html" class="fa fa-cogs nav-icon"></a></li>
+            <li><a class="nav-link active" href="index.html">ACCUEIL</a></li>
+            <li><a class="nav-link" href="cruise-list.html">DESTINATIONS</a></li>
+            <li><a class="nav-link" href="fleet-list.html">FLOTTE</a></li>
+            <li><a class="nav-link" href="contact.html">CONTACT</a></li>
+            <li><a aria-hidden="true" class="fa fa-user nav-icon" href="login.html"></a></li>
+            <li><a aria-hidden="true" class="fa fa-sign-in nav-icon" href="index.html"></a></li>
+            <li><a class="fa fa-cogs nav-icon" href="index.html"></a></li>
         </ul>
     </div>
 </nav>
@@ -43,20 +43,20 @@
             <p class="hero-subtitle">
                 CyCruise vous propose des croisières de luxe à travers le monde entier.
             </p>
-            <a href="cruise-list.html" class="btn-primary">
+            <a class="btn-primary" href="cruise-list.html">
                 <i class="fa fa-plane btn-icon"></i>
                 VOYAGER MAINTENANT
             </a>
         </div>
         <div class="hero-image">
-            <img src="public/img/cruise-image.png" alt="Cruise Image" class="cruise-image">
+            <img alt="Cruise Image" class="cruise-image" src="public/img/cruise-image.png">
         </div>
     </section>
 
     <section class="featured-section">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#00b7e0" fill-opacity="1"
-                  d="M0,256L60,245.3C120,235,240,213,360,213.3C480,213,600,235,720,250.7C840,267,960,277,1080,282.7C1200,288,1320,288,1380,288L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,256L60,245.3C120,235,240,213,360,213.3C480,213,600,235,720,250.7C840,267,960,277,1080,282.7C1200,288,1320,288,1380,288L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" fill="#00b7e0"
+                  fill-opacity="1"></path>
         </svg>
         <div class="featured-grid-parent">
             <div class="featured-container">
@@ -125,9 +125,9 @@
                 </div>
             </div>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#00b7e0" fill-opacity="1"
-                  d="M0,192L48,176C96,160,192,128,288,96C384,64,480,32,576,32C672,32,768,64,864,85.3C960,107,1056,117,1152,106.7C1248,96,1344,64,1392,48L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+        <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,192L48,176C96,160,192,128,288,96C384,64,480,32,576,32C672,32,768,64,864,85.3C960,107,1056,117,1152,106.7C1248,96,1344,64,1392,48L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z" fill="#00b7e0"
+                  fill-opacity="1"></path>
         </svg>
     </section>
 </main>
@@ -135,7 +135,7 @@
 <footer>
     <div class="footer-container">
         <div class="logo-section">
-            <img src="public/img/squidlogo.png" alt="Logo Squid" class="logo">
+            <img alt="Logo Squid" class="logo" src="public/img/squidlogo.png">
             <div>
                 <p><strong>CyCruise © 2025</strong></p>
                 <p>CyCruise site développé par <a href="https://github.com/Squid-Development">SquidDevelopment</a>.</p>
@@ -145,9 +145,9 @@
             <div class="social-section">
                 <p><strong>Nos réseaux</strong></p>
                 <div class="social-links">
-                    <a href="https://github.com/topeestla" class="fab fa-github"></a>
-                    <a href="https://www.linkedin.com/in/antonin-peralta/" class="fab fa-linkedin"></a>
-                    <a href="https://www.instagram.com/antonin_prlt/" class="fab fa-instagram"></a>
+                    <a class="fab fa-github" href="https://github.com/topeestla"></a>
+                    <a class="fab fa-linkedin" href="https://www.linkedin.com/in/antonin-peralta/"></a>
+                    <a class="fab fa-instagram" href="https://www.instagram.com/antonin_prlt/"></a>
                 </div>
             </div>
             <div class="legal-section">

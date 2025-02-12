@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="public/css/app.css">
-    <link rel="stylesheet" href="public/css/btn-kit.css">
-    <link rel="stylesheet" href="public/css/navbar.css">
-    <link rel="stylesheet" href="public/css/footer.css">
-    <link rel="stylesheet" href="public/css/account.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="public/css/app.css" rel="stylesheet">
+    <link href="public/css/btn-kit.css" rel="stylesheet">
+    <link href="public/css/navbar.css" rel="stylesheet">
+    <link href="public/css/footer.css" rel="stylesheet">
+    <link href="public/css/account.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <title>CyCruise - Your best cruise</title>
 
     <style>
@@ -18,19 +18,19 @@
 <nav class="navbar">
     <div class="navbar-logo">
         <a href="index.html">
-            <img src="public/img/cycruise-logo.png" alt="CyCruise" class="logo">
+            <img alt="CyCruise" class="logo" src="public/img/cycruise-logo.png">
         </a>
     </div>
 
     <div class="nav-menu">
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link">ACCUEIL</a></li>
-            <li><a href="cruise-list.html" class="nav-link">DESTINATIONS</a></li>
-            <li><a href="fleet-list.html" class="nav-link">FLOTTE</a></li>
-            <li><a href="contact.html" class="nav-link">CONTACT</a></li>
-            <li><a href="login.html" class="fa fa-user nav-icon" aria-hidden="true"></a></li>
-            <li><a href="index.html" class="fa fa-sign-in nav-icon" aria-hidden="true"></a></li>
-            <li><a href="index.html" class="fa fa-cogs nav-icon"></a></li>
+            <li><a class="nav-link" href="index.html">ACCUEIL</a></li>
+            <li><a class="nav-link" href="cruise-list.html">DESTINATIONS</a></li>
+            <li><a class="nav-link" href="fleet-list.html">FLOTTE</a></li>
+            <li><a class="nav-link" href="contact.html">CONTACT</a></li>
+            <li><a aria-hidden="true" class="fa fa-user nav-icon" href="login.html"></a></li>
+            <li><a aria-hidden="true" class="fa fa-sign-in nav-icon" href="index.html"></a></li>
+            <li><a class="fa fa-cogs nav-icon" href="index.html"></a></li>
         </ul>
     </div>
 </nav>
@@ -43,15 +43,15 @@
                     <h2>Mon Compte</h2>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" value="contact@antoninp.dev" disabled>
+                        <input disabled id="email" type="email" value="contact@antoninp.dev">
                     </div>
                     <div class="form-group">
                         <label for="firstname">Prénom</label>
-                        <input type="text" id="firstname" value="Antonin" disabled>
+                        <input disabled id="firstname" type="text" value="Antonin">
                     </div>
                     <div class="form-group">
                         <label for="lastname">Nom</label>
-                        <input type="text" id="lastname" value="Peralta" disabled>
+                        <input disabled id="lastname" type="text" value="Peralta">
                     </div>
                     <button class="btn-primary" onclick="">Modifier mes informations</button>
                 </div>
@@ -74,25 +74,25 @@
                     <h3>Tour des Caraïbes</h3>
                     <span class="cruise-date">25 Mars 2025</span>
                     <p>Croisière de 5 jours dans les Caraïbes</p>
-                    <a href="reservation-details.html" class="reservation-status pending">En attente de payment</a>
+                    <a class="reservation-status pending" href="reservation-details.html">En attente de payment</a>
                 </li>
                 <li class="cruise-item">
                     <h3>Tour des Caraïbes</h3>
                     <span class="cruise-date">10 Aout 2025</span>
                     <p>Croisière de 14 jours dans les Caraïbes</p>
-                    <a href="reservation-details.html" class="reservation-status cancelled">Annulé</a>
+                    <a class="reservation-status cancelled" href="reservation-details.html">Annulé</a>
                 </li>
                 <li class="cruise-item">
                     <h3>Tour des Caraïbes</h3>
                     <span class="cruise-date">10 Aout 2025</span>
                     <p>Croisière de 14 jours dans les Caraïbes</p>
-                    <a href="reservation-details.html" class="reservation-status confirmed">Confirmée</a>
+                    <a class="reservation-status confirmed" href="reservation-details.html">Confirmée</a>
                 </li>
                 <li class="cruise-item">
                     <h3>Tour des Caraïbes</h3>
                     <span class="cruise-date">10 Aout 2025</span>
                     <p>Croisière de 14 jours dans les Caraïbes</p>
-                    <a href="reservation-details.html" class="reservation-status confirmed">Confirmée</a>
+                    <a class="reservation-status confirmed" href="reservation-details.html">Confirmée</a>
                 </li>
 
             </ul>
@@ -145,7 +145,7 @@
 <footer>
     <div class="footer-container">
         <div class="logo-section">
-            <img src="public/img/squidlogo.png" alt="Logo Squid" class="logo">
+            <img alt="Logo Squid" class="logo" src="public/img/squidlogo.png">
             <div>
                 <p><strong>CyCruise © 2025</strong></p>
                 <p>CyCruise site développé par <a href="https://github.com/Squid-Development">SquidDevelopment</a>.</p>
@@ -155,9 +155,9 @@
             <div class="social-section">
                 <p><strong>Nos réseaux</strong></p>
                 <div class="social-links">
-                    <a href="https://github.com/topeestla" class="fab fa-github"></a>
-                    <a href="https://www.linkedin.com/in/antonin-peralta/" class="fab fa-linkedin"></a>
-                    <a href="https://www.instagram.com/antonin_prlt/" class="fab fa-instagram"></a>
+                    <a class="fab fa-github" href="https://github.com/topeestla"></a>
+                    <a class="fab fa-linkedin" href="https://www.linkedin.com/in/antonin-peralta/"></a>
+                    <a class="fab fa-instagram" href="https://www.instagram.com/antonin_prlt/"></a>
                 </div>
             </div>
             <div class="legal-section">
