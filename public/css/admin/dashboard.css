@@ -1,0 +1,74 @@
+html {
+    background-color: var(--color-full-white);
+}
+
+.admin-main { /* don't had margin-top here */
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    color: var(--color-gray);
+    margin-bottom: 1rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    color: var(--color-dark-blue);
+    font-weight: bold;
+}
+
+.content-table {
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-top: 4rem;
+}
+
+.content-table h2 {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    color: var(--color-dark-blue);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: var(--color-dark-blue);
+}
+
+td a {
+    color: var(--color-dark-blue);
+    text-decoration: none;
+}
+
+th {
+    text-transform: uppercase;
+    color: var(--color-gray);
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}

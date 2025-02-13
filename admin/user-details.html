@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link href="../public/css/app.css" rel="stylesheet"> <!-- global css kit -->
+    <link href="../public/css/btn-kit.css" rel="stylesheet"> <!-- btn kit for the website -->
+    <link href="../public/css/admin/navbar.css" rel="stylesheet">
+    <link href="../public/css/admin/dashboard.css" rel="stylesheet">
+
+    <link href="../public/css/admin/user-details.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <title>CyCruise - Admin dashboard</title>
+</head>
+<body>
+
+
+<header class="admin-header">
+    <div class="header-title">
+        <i class="fa fa-ship"></i>
+        <h1>CyCruise Admin</h1>
+    </div>
+    <div class="header-actions">
+        <a><i class="fa fa-bell"></i></a>
+        <a href="../account.html"><i class="fa fa-user"></i></a>
+    </div>
+
+
+    <nav class="admin-sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a class="menu-item" href="dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Tableau de bord
+                </a>
+            </li>
+            <li>
+                <a class="menu-item" href="dashboard.html">
+                    <i class="fas fa-ship"></i>
+                    Croisières
+                </a>
+            </li>
+            <li>
+                <a class="menu-item active" href="user-list.html">
+                    <i class="fas fa-users"></i>
+                    Clients
+                </a>
+            </li>
+            <li>
+                <a class="menu-item" href="dashboard.html">
+                    <i class="fas fa-calendar-alt"></i>
+                    Réservations
+                </a>
+            </li>
+            <li>
+                <a class="menu-item" href="dashboard.html">
+                    <i class="fas fa-cog"></i>
+                    Paramètres
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="admin-main">
+    <div class="user-header">
+        <h1>Gestion de l'utilisateur</h1>
+        <span class="user-status status-active">Actif</span>
+    </div>
+
+    <div class="user-grid">
+        <div class="user-info-card">
+            <div class="card-header">
+                <h2>Informations personnelles</h2>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="name">Prénom</label>
+                    <input type="text" id="name" value="Alexandre"/>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Nom</label>
+                    <input type="text" id="lastname" value="Halhoute"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="alexandre.halhoute@cy-tech.fr"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mots de passe</label>
+                    <input type="password" id="password" value="******************"/>
+                </div>
+                <div class="form-group">
+                    <label for="register-date">Date d'inscription</label>
+                    <input type="text" id="register-date" value="13/02/2025" disabled/>
+                </div>
+            </form>
+        </div>
+
+        <div class="user-status-card">
+            <div class="card-header">
+                <h2>Statut et permissions</h2>
+            </div>
+            <div class="status-options">
+                <label class="status-option current">
+                    <input type="radio" name="status" checked/>
+                    <div>
+                        <h3>Utilisateur standard</h3>
+                        <p>Client standard aucune offres exclusives ou remises</p>
+                    </div>
+                </label>
+                <label class="status-option">
+                    <input type="radio" name="status"/>
+                    <div>
+                        <h3>VIP</h3>
+                        <p>Accès aux offres exclusives et remises</p>
+                    </div>
+                </label>
+                <label class="status-option">
+                    <input type="radio" name="status"/>
+                    <div>
+                        <h3>Premium</h3>
+                        <p>Accès aux offres exclusives + et remises + </p>
+                    </div>
+                </label>
+                <label class="status-option">
+                    <input type="radio" name="status"/>
+                    <div>
+                        <h3>Administrateur</h3>
+                        <p>Admin</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary">Sauvegarder les modifications</button>
+                <button class="btn btn-danger">Bannir l'utilisateur</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

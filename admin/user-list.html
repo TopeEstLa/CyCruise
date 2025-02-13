@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link href="../public/css/app.css" rel="stylesheet"> <!-- global css kit -->
+    <link href="../public/css/btn-kit.css" rel="stylesheet"> <!-- btn kit for the website -->
+    <link href="../public/css/admin/navbar.css" rel="stylesheet">
+    <link href="../public/css/admin/dashboard.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <title>CyCruise - Admin dashboard</title>
+</head>
+<body>
+
+
+<header class="admin-header">
+    <div class="header-title">
+        <i class="fa fa-ship"></i>
+        <h1>CyCruise Admin</h1>
+    </div>
+    <div class="header-actions">
+        <a><i class="fa fa-bell"></i></a>
+        <a href="../account.html"><i class="fa fa-user"></i></a>
+    </div>
+
+
+    <nav class="admin-sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a class="menu-item" href="dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Tableau de bord
+                </a>
+            </li>
+            <li>
+                <a class="menu-item" href="dashboard.html">
+                    <i class="fas fa-ship"></i>
+                    Croisières
+                </a>
+            </li>
+            <li>
+                <a class="menu-item active" href="user-list.html">
+                    <i class="fas fa-users"></i>
+                    Clients
+                </a>
+            </li>
+            <li>
+                <a class="menu-item" href="dashboard.html">
+                    <i class="fas fa-calendar-alt"></i>
+                    Réservations
+                </a>
+            </li>
+            <li>
+                <a class="menu-item" href="dashboard.html">
+                    <i class="fas fa-cog"></i>
+                    Paramètres
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main class="admin-main">
+    <div class="content-table">
+        <h2>Liste des utilisateurs</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>#01</td>
+                <td>Halhoute</td>
+                <td>Alexandre</td>
+                <td><a href="mailto:alexandre.haloute@cy-tech.fr">alexandre.halhoute@cy-tech.fr <i
+                        class="fa fa-external-link"></i></a></td>
+                <td>ADMIN</td>
+                <td>
+                    <a href="user-details.html" class="btn-edit">Modifier</a>
+                    <button class="btn-delete">Supprimer</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#02</td>
+                <td>Peralta</td>
+                <td>Antonin</td>
+                <td><a href="mailto:contact@antoninp.dev">contact@antoninp.dev <i class="fa fa-external-link"></i></a>
+                </td>
+                <td>ADMIN</td>
+                <td>
+                    <a href="user-details.html" class="btn-edit">Modifier</a>
+                    <button class="btn-delete">Supprimer</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#01</td>
+                <td>Halhoute</td>
+                <td>Alexandre</td>
+                <td><a href="mailto:alexandre.haloute@cy-tech.fr">alexandre.halhoute@cy-tech.fr <i
+                        class="fa fa-external-link"></i></a></td>
+                <td>VIP</td>
+                <td>
+                    <a href="user-details.html" class="btn-edit">Modifier</a>
+                    <button class="btn-delete">Supprimer</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#01</td>
+                <td>Halhoute</td>
+                <td>Alexandre</td>
+                <td><a href="mailto:alexandre.haloute@cy-tech.fr">alexandre.halhoute@cy-tech.fr <i
+                        class="fa fa-external-link"></i></a></td>
+                <td>PREMIUM</td>
+                <td>
+                    <a href="user-details.html" class="btn-edit">Modifier</a>
+                    <button class="btn-delete">Supprimer</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#01</td>
+                <td>Halhoute</td>
+                <td>Alexandre</td>
+                <td><a href="mailto:alexandre.haloute@cy-tech.fr">alexandre.halhoute@cy-tech.fr <i
+                        class="fa fa-external-link"></i></a></td>
+                <td>BAN</td>
+                <td>
+                    <a href="user-details.html" class="btn-edit">Modifier</a>
+                    <button class="btn-delete">Supprimer</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#01</td>
+                <td>Halhoute</td>
+                <td>Alexandre</td>
+                <td><a href="mailto:alexandre.haloute@cy-tech.fr">alexandre.halhoute@cy-tech.fr <i
+                        class="fa fa-external-link"></i></a></td>
+                <td>ADMIN</td>
+                <td>
+                    <a href="user-details.html" class="btn-edit">Modifier</a>
+                    <button class="btn-delete">Supprimer</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#01</td>
+                <td>Halhoute</td>
+                <td>Alexandre</td>
+                <td><a href="mailto:alexandre.haloute@cy-tech.fr">alexandre.halhoute@cy-tech.fr <i
+                        class="fa fa-external-link"></i></a></td>
+                <td>ADMIN</td>
+                <td>
+                    <a href="user-details.html" class="btn-edit">Modifier</a>
+                    <button class="btn-delete">Supprimer</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#01</td>
+                <td>Halhoute</td>
+                <td>Alexandre</td>
+                <td><a href="mailto:alexandre.haloute@cy-tech.fr">alexandre.halhoute@cy-tech.fr <i
+                        class="fa fa-external-link"></i></a></td>
+                <td>ADMIN</td>
+                <td>
+                    <a href="user-details.html" class="btn-edit">Modifier</a>
+                    <button class="btn-delete">Supprimer</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+</body>
+</html>

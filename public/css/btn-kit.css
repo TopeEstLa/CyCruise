@@ -51,3 +51,22 @@
     background-color: #c82333;
 }
 
+.btn-edit {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: var(--color-light-blue);
+    color: white;
+}
+
+.btn-delete {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #dc3545;
+    color: white;
+}
