@@ -1,5 +1,5 @@
 html {
-    background-color: var(--color-full-white);
+     background-color: var(--color-full-white);
 }
 
 .admin-main { /* don't had margin-top here */
