@@ -72,6 +72,24 @@
     animation: fadeIn 1s ease-out;
 }
 
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.scroll-indicator i {
+    font-size: 1.5rem;
+}
+
 .content-section {
     padding: 5rem 0;
     max-width: 1280px;
@@ -92,7 +110,6 @@
 .content-image {
     flex: 1;
     border-radius: 1rem;
-    overflow: hidden;
 }
 
 .content-image img {
@@ -109,25 +126,6 @@
 .content-text {
     flex: 1;
 }
-
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: bounce 2s infinite;
-}
-
-.scroll-indicator span {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-}
-
-.scroll-indicator i {
-    font-size: 1.5rem;
-}
-
 .content-text h2 {
     color: var(--color-light-blue);
     margin-bottom: 1rem;
