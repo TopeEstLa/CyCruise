@@ -2,7 +2,7 @@
 
 Pre-Ing-2 S2 IT project <br>
 Subject ClickJourney [subject.pdf](subject/Projet_Click_journeY_v1.0_Présentation.pdf) <br>
-Project report [report.pdf](RapportProjetInformatique.pdf) <br>
+Project report [report.pdf](document/RapportProjetInformatiqueV3.pdf) <br>
 Project document [document](document/) <br>
 Project URL [CyCruise](https://cycruise.antoninp.dev/) <br>
 
@@ -16,6 +16,7 @@ due to the evaluation of the project divided into parts, we have one branch per 
 - `part3` : the third part of the project: js.
 - `part4` : the fourth part of the project: async js. (+/- = to master)
 
-## List of documents 📚
+## List of documents 📚  t
 
 - [DA](document/DA.pdf) : Document explaining the artistic direction of the project.
+- [RapportProjetInformatiqueV3](document/RapportProjetInformatiqueV3.pdf) : Project report.
