@@ -27,13 +27,13 @@
     <nav class="admin-sidebar">
         <ul class="sidebar-menu">
             <li>
-                <a class="menu-item active" href="dashboard.html">
+                <a class="menu-item" href="dashboard.html">
                     <i class="fas fa-tachometer-alt"></i>
                     Tableau de bord
                 </a>
             </li>
             <li>
-                <a class="menu-item" href="cruise-list.html">
+                <a class="menu-item active" href="cruise-list.html">
                     <i class="fas fa-ship"></i>
                     Croisières
                 </a>
@@ -61,58 +61,39 @@
 </header>
 
 <main class="admin-main">
-    <div class="dashboard-grid">
-        <div class="stat-card">
-            <h3>Réservations totales</h3>
-            <div class="stat-number">1,234</div>
-        </div>
-        <div class="stat-card">
-            <h3>Chiffre d'affaires</h3>
-            <div class="stat-number">150,750.50€</div>
-        </div>
-        <div class="stat-card">
-            <h3>Clients actifs</h3>
-            <div class="stat-number">856</div>
-        </div>
-        <div class="stat-card">
-            <h3>Croisières en vente</h3>
-            <div class="stat-number">12</div>
-        </div>
-    </div>
-
     <div class="content-table">
-        <h2>Dernières réservations</h2>
+        <h2>Liste des croisières en vente</h2>
         <table>
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Client</th>
-                <th>Croisière</th>
-                <th>Date</th>
-                <th>Statut</th>
+                <th>Nom</th>
+                <th>Bateau</th>
+                <th>Jours de départ</th>
+                <th>Jours d'arrivé</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>#01</td>
-                <td><a class="" href="user-details.html">Alexandre halhoute <i class="fa fa-external-link"></i></a></td>
-                <td>CARAÏBES</td>
-                <td>01/01/2025</td>
-                <td>Confirmé</td>
+                <td>MÉDITERRANÉE</td>
+                <td>Cy Armonia</td>
+                <td>Lundi 17 Février 2025</td>
+                <td>Lundi 24 Février 2025</td>
                 <td>
-                    <button class="btn-edit">Modifier</button>
+                    <a href="user-details.html" class="btn-edit">Modifier</a>
                     <button class="btn-delete">Supprimer</button>
                 </td>
             </tr>
             <tr>
                 <td>#02</td>
-                <td><a class="" href="user-details.html">Antonin peralta <i class="fa fa-external-link"></i></a></td>
-                <td>ANTILLES</td>
-                <td>15/01/2025</td>
-                <td>En attente</td>
+                <td>Antilles</td>
+                <td>Cy Bellissima</td>
+                <td>Lundi 17 Février 2025</td>
+                <td>Lundi 24 Février 2025</td>
                 <td>
-                    <button class="btn-edit">Modifier</button>
+                    <a href="user-details.html" class="btn-edit">Modifier</a>
                     <button class="btn-delete">Supprimer</button>
                 </td>
             </tr>
