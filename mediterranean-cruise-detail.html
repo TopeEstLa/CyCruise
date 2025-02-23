@@ -47,41 +47,49 @@
         <div>
             <h2>Detail de la croisière</h2>
             <p>Îles, baies et récifs coralliens. Les Caraïbes sont une sensation qui vous entraîne au rythme séduisant
-                des <span class="highlight">vibrations tropicales.</span> Imprégnez-vous d'une ambiance où l'horloge semble s'arrêter de tourner !
-                C'est le moment de vous offrir cette <span class="highlight">croisière aux Caraïbes</span> dont vous rêvez depuis si longtemps.
-                Promenez-vous sur de <span class="highlight">longues plages de sable blanc</span>, allongez-vous à l'ombre bienfaisante de magnifiques
+                des <span class="highlight">vibrations tropicales.</span> Imprégnez-vous d'une ambiance où l'horloge
+                semble s'arrêter de tourner !
+                C'est le moment de vous offrir cette <span class="highlight">croisière aux Caraïbes</span> dont vous
+                rêvez depuis si longtemps.
+                Promenez-vous sur de <span class="highlight">longues plages de sable blanc</span>, allongez-vous à
+                l'ombre bienfaisante de magnifiques
                 palmiers et plongez dans une mer turquoise parsemée de récifs coralliens. Nos croisières dans les
                 Caraïbes offrent la découverte la plus complète d'archipels idylliques.
                 CyCruise possède même une île privée dans les Caraïbes ! Ocean Cay Cy Marine Reserve, située dans
                 les magnifiques Bahamas occidentales. Ce paradis tropical a été spécialement conçu pour offrir à nos
                 hôtes le rêve le plus exclusif des Caraïbes !
-                Explorez les <span class="highlight">Bahamas</span> ou découvrez l'enchantement de la <span class="highlight">Jamaïque</span> et de la <span class="highlight">République dominicaine</span>. Dérivez
-                au son du clapotis des vagues à <span class="highlight">Porto Rico</span>, en <span class="highlight">Guadeloupe</span> ou en <span class="highlight">Martinique</span>. Choisissez une croisière
-                dans le sud des Caraïbes et explorez <span class="highlight">Sainte-Lucie</span> ou la <span class="highlight">Barbade</span>, voire plus au sud, à <span class="highlight">Trinité-et-Tobago</span>.
+                Explorez les <span class="highlight">Bahamas</span> ou découvrez l'enchantement de la <span
+                        class="highlight">Jamaïque</span> et de la <span class="highlight">République dominicaine</span>.
+                Dérivez
+                au son du clapotis des vagues à <span class="highlight">Porto Rico</span>, en <span class="highlight">Guadeloupe</span>
+                ou en <span class="highlight">Martinique</span>. Choisissez une croisière
+                dans le sud des Caraïbes et explorez <span class="highlight">Sainte-Lucie</span> ou la <span
+                        class="highlight">Barbade</span>, voire plus au sud, à <span
+                        class="highlight">Trinité-et-Tobago</span>.
                 Profitez des merveilles tropicales des <span class="highlight">Caraïbes occidentales</span>.
             </p>
         </div>
     </section>
     <section class="cruise-detail-reservation">
         <h2>Réservation</h2>
-        <form class="cruise-detail-reservation-options" action="reservation-details.html" method="POST">
+        <form action="reservation-details.html" class="cruise-detail-reservation-options" method="POST">
             <div class="cruise-detail-reservation-column">
                 <h3>Dates de départ</h3>
                 <ul>
                     <li>
-                        <input type="radio" id="date1" name="departure_date" value="2025-01-01" required>
+                        <input id="date1" name="departure_date" required type="radio" value="2025-01-01">
                         <label class="cruise-detail-button" for="date1">01/01/2025</label>
                     </li>
                     <li>
-                        <input type="radio" id="date2" name="departure_date" value="2025-01-15">
+                        <input id="date2" name="departure_date" type="radio" value="2025-01-15">
                         <label class="cruise-detail-button" for="date2">01/01/2025</label>
                     </li>
                     <li>
-                        <input type="radio" id="date3" name="departure_date" value="2025-02-01">
+                        <input id="date3" name="departure_date" type="radio" value="2025-02-01">
                         <label class="cruise-detail-button" for="date3">01/01/2025</label>
                     </li>
                     <li>
-                        <input type="radio" id="date4" name="departure_date" value="2025-02-15">
+                        <input id="date4" name="departure_date" type="radio" value="2025-02-15">
                         <label class="cruise-detail-button" for="date4">01/01/2025</label>
                     </li>
                 </ul>
@@ -91,23 +99,23 @@
                 <h3>Cabine</h3>
                 <ul>
                     <li>
-                        <input type="radio" id="cabin1" name="cabin_type" value="interior" required>
+                        <input id="cabin1" name="cabin_type" required type="radio" value="interior">
                         <label class="cruise-detail-button" for="cabin1">Cabine intérieure</label>
                     </li>
                     <li>
-                        <input type="radio" id="cabin2" name="cabin_type" value="ocean_view">
+                        <input id="cabin2" name="cabin_type" type="radio" value="ocean_view">
                         <label class="cruise-detail-button" for="cabin2">Cabine Vue Mer</label>
                     </li>
                     <li>
-                        <input type="radio" id="cabin3" name="cabin_type" value="balcony">
+                        <input id="cabin3" name="cabin_type" type="radio" value="balcony">
                         <label class="cruise-detail-button" for="cabin3">Cabine Balcon</label>
                     </li>
                     <li>
-                        <input type="radio" id="cabin4" name="cabin_type" value="suite">
+                        <input id="cabin4" name="cabin_type" type="radio" value="suite">
                         <label class="cruise-detail-button" for="cabin4">Suite</label>
                     </li>
                     <li>
-                        <input type="radio" id="cabin5" name="cabin_type" value="deluxe_suite">
+                        <input id="cabin5" name="cabin_type" type="radio" value="deluxe_suite">
                         <label class="cruise-detail-button" for="cabin5">Suite Deluxe</label>
                     </li>
                 </ul>
@@ -117,15 +125,15 @@
                 <h3>Repas</h3>
                 <ul>
                     <li>
-                        <input type="radio" id="meal1" name="meal_plan" value="lunch" required>
+                        <input id="meal1" name="meal_plan" required type="radio" value="lunch">
                         <label class="cruise-detail-button" for="meal1">Midi</label>
                     </li>
                     <li>
-                        <input type="radio" id="meal2" name="meal_plan" value="lunch_dinner">
+                        <input id="meal2" name="meal_plan" type="radio" value="lunch_dinner">
                         <label class="cruise-detail-button" for="meal2">Midi, Soir</label>
                     </li>
                     <li>
-                        <input type="radio" id="meal3" name="meal_plan" value="full_board">
+                        <input id="meal3" name="meal_plan" type="radio" value="full_board">
                         <label class="cruise-detail-button" for="meal3">Matin, Midi, Soir</label>
                     </li>
                 </ul>
@@ -135,15 +143,15 @@
                 <h3>Excursions</h3>
                 <ul>
                     <li>
-                        <input type="radio" id="excursion1" name="excursion_plan" value="all" required>
+                        <input id="excursion1" name="excursion_plan" required type="radio" value="all">
                         <label class="cruise-detail-button" for="excursion1">Toute</label>
                     </li>
                     <li>
-                        <input type="radio" id="excursion2" name="excursion_plan" value="corsica_only">
+                        <input id="excursion2" name="excursion_plan" type="radio" value="corsica_only">
                         <label class="cruise-detail-button" for="excursion2">Seulement en corses</label>
                     </li>
                     <li>
-                        <input type="radio" id="excursion3" name="excursion_plan" value="most">
+                        <input id="excursion3" name="excursion_plan" type="radio" value="most">
                         <label class="cruise-detail-button" for="excursion3">La plus part</label>
                     </li>
                 </ul>
@@ -158,7 +166,7 @@
                     * Repas: Matin, Midi, Soir<br>
                     * Expedition: Toute
                 </p>
-                <button type="submit" class="cruise-detail-button add-to-cart">Réservé</button>
+                <button class="cruise-detail-button add-to-cart" type="submit">Réservé</button>
             </div>
         </form>
     </section>
