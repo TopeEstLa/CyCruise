@@ -1,68 +1,100 @@
+<?php
+
+require_once "../src/Services/AuthService.php";
+require_once "../src/Repository/UserRepository.php";
+
+session_start();
+
+$authService = new AuthService();
+if (!$authService->isLoggedIn()) {
+    header("Location: login.php");
+    exit;
+}
+
+$user = UserRepository::getInstance()->findById($_SESSION['user_id']);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_POST['firstname']) || !isset($_POST['lastname']) || !isset($_POST['email']) || !isset($_POST['birth'])) {
+        header("Location: account.php");
+        exit;
+    }
+
+    $user->setFirstname($_POST['firstname']);
+    $user->setLastname($_POST['lastname']);
+    $user->setEmail($_POST['email']);
+    $user->setBirth($_POST['birth']);
+
+    UserRepository::getInstance()->update($user);
+}
+
+?>
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <link href="public/assets/css/app.css" rel="stylesheet">
-    <link href="public/assets/css/btn-kit.css" rel="stylesheet">
-    <link href="public/assets/css/navbar.css" rel="stylesheet">
-    <link href="public/assets/css/footer.css" rel="stylesheet">
-    <link href="public/assets/css/account.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/btn-kit.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+
+    <link rel="stylesheet" href="assets/css/account.css">
+
+
     <title>CyCruise - Your best cruise</title>
 </head>
 <body>
-<nav class="navbar">
-    <div class="navbar-logo">
-        <a href="index.html">
-            <img alt="CyCruise" class="logo" src="public/assets/img/cycruise-logo.png">
-        </a>
-    </div>
-
-    <div class="nav-menu">
-        <ul class="nav-links">
-            <li><a class="nav-link" href="index.html">ACCUEIL</a></li>
-            <li><a class="nav-link" href="cruise-list.html">DESTINATIONS</a></li>
-            <li><a class="nav-link" href="fleet-list.html">FLOTTE</a></li>
-            <li><a class="nav-link" href="about.html">À PROPOS</a></li>
-            <li><a class="nav-link" href="contact.html">CONTACT</a></li>
-            <li><a aria-hidden="true" class="fa fa-user nav-icon" href="login.html"></a></li>
-            <li><a aria-hidden="true" class="fa fa-sign-in nav-icon" href="index.html"></a></li>
-            <li><a class="fa fa-cogs nav-icon" href="admin/dashboard.html"></a></li>
-        </ul>
-    </div>
-</nav>
+<?php include "../component/navbar.php"; ?>
 
 <main>
     <div class="account-container">
         <div class="account-section">
             <div class="account-info">
-                <div>
+                <form method="POST">
                     <h2>Mon Compte</h2>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input disabled id="email" type="email" value="contact@antoninp.dev">
+                        <input id="email" name="email" type="email"
+                               value="<?php echo htmlspecialchars($user->getEmail()) ?>">
                     </div>
                     <div class="form-group">
-                        <label for="name">Prénom</label>
-                        <input disabled id="name" type="text" value="Antonin">
+                        <label for="firstname">Prénom</label>
+                        <input id="firstname" name="firstname" type="text"
+                               value="<?php echo htmlspecialchars($user->getFirstname()) ?>">
                     </div>
                     <div class="form-group">
                         <label for="lastname">Nom</label>
-                        <input disabled id="lastname" type="text" value="Peralta">
+                        <input id="lastname" name="lastname" type="text"
+                               value="<?php echo htmlspecialchars($user->getLastname()) ?>">
                     </div>
                     <div class="form-group">
-                        <label for="born">Date de naissance</label>
-                        <input disabled id="born" type="date" value="2005-08-10">
+                        <label for="birth">Date de naissance</label>
+                        <input id="birth" name="birth" type="date" value="<?php echo htmlspecialchars($user->getBirth()) ?>">
                     </div>
-                    <button class="btn-primary" onclick="">Modifier mes informations</button>
-                </div>
+                    <button class="btn-primary" type="submit">Sauvegarder mes informations</button>
+                </form>
 
                 <div class="status-section">
                     <h2>Badge de Compte</h2>
-                    <span class="status-badge standard">Client STANDARD</span>
-                    <span class="status-badge vip">Client VIP</span>
-                    <span class="status-badge premium">Client PREMIUM</span>
-                    <span class="status-badge ban">BAN</span>
+                    <?php switch ($user->getRole()) { ?>
+<?php case UserRole::DEFAULT: ?>
+                            <span class="status-badge standard">Client STANDARD</span>
+                            <?php break; ?>
+                        <?php case UserRole::VIP: ?>
+                            <span class="status-badge vip">Client VIP</span>
+                            <?php break; ?>
+                        <?php case UserRole::PREMIUM: ?>
+                            <span class="status-badge premium">Client PREMIUM</span>
+                            <?php break; ?>
+                        <?php case UserRole::BAN: ?>
+                            <span class="status-badge ban">BAN</span>
+                            <?php break; ?>
+                        <?php case UserRole::ADMIN: ?>
+                            <span class="status-badge vip">ADMIN</span>
+                            <?php break; ?>
+                        <?php } ?>
 
                 </div>
             </div>
@@ -143,33 +175,6 @@
     </div>
 </main>
 
-<footer>
-    <div class="footer-container">
-        <div class="logo-section">
-            <img alt="Logo Squid" class="logo" src="public/assets/img/squidlogo.png">
-            <div>
-                <p><strong>CyCruise © 2025</strong></p>
-                <p>CyCruise site développé par <a href="https://github.com/Squid-Development">SquidDevelopment</a>.</p>
-            </div>
-        </div>
-        <div class="right-section">
-            <div class="social-section">
-                <p><strong>Nos réseaux</strong></p>
-                <div class="social-links">
-                    <a class="fab fa-github" href="https://github.com/topeestla"></a>
-                    <a class="fab fa-linkedin" href="https://www.linkedin.com/in/antonin-peralta/"></a>
-                    <a class="fab fa-instagram" href="https://www.instagram.com/antonin_prlt/"></a>
-                </div>
-            </div>
-            <div class="legal-section">
-                <p><strong>Mentions légales</strong></p>
-                <a href="#">Conditions d'utilisation</a>
-                <a href="#">Politique de confidentialité</a>
-                <a href="#">Mentions légales</a>
-            </div>
-        </div>
-    </div>
-</footer>
 
+<?php include "../component/footer.php"; ?>
 </body>
-</html>

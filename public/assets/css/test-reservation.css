@@ -1,0 +1,185 @@
+.reservation-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.cruise-header {
+    display: flex;
+    margin-bottom: 2rem;
+    gap: 2rem;
+    align-items: center;
+}
+
+.cruise-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.cruise-info h1 {
+    color: var(--color-title-blue);
+    margin-bottom: 0.5rem;
+}
+
+.metadata-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.metadata-item i {
+    color: var(--color-light-blue);
+    font-size: 1.2rem;
+}
+
+.metadata-item span {
+    color: var(--color-title-blue);
+    font-weight: 500;
+}
+
+
+
+.cruise-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-light-blue);
+    margin-top: 1rem;
+}
+
+.reservation-form {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-section h2 {
+    color: var(--color-title-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-light-blue);
+}
+
+.option-group {
+    margin-bottom: 1.5rem;
+}
+
+.option-group h3 {
+    color: var(--color-dark-blue);
+    margin-bottom: 0.5rem;
+}
+
+.option-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.option-item {
+    background-color: var(--color-full-white);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
+}
+
+.option-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.option-item.selected {
+    border-color: var(--color-light-blue);
+    background-color: rgba(0, 183, 224, 0.1);
+}
+
+.option-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.option-price {
+    color: var(--color-light-blue);
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--color-title-blue);
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.summary-section {
+    background-color: var(--color-full-white);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.summary-title {
+    font-size: 1.5rem;
+    color: var(--color-title-blue);
+    margin-bottom: 1rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.summary-passenger {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: var(--color-light-blue);
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    color: var(--color-light-blue);
+}
+
+.error-message {
+    color: var(--color-confirm-fail);
+    background-color: rgba(217, 83, 79, 0.1);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}

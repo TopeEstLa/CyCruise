@@ -1,0 +1,323 @@
+.cruise-detail-header {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.cruise-detail-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cruise-detail-header h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-title-blue);
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.cruise-overview {
+    display: flex;
+    padding: 3rem;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.cruise-image {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 75%;
+}
+
+.cruise-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.cruise-image img:hover {
+    transform: scale(1.02);
+}
+
+.cruise-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cruise-info h2 {
+    color: var(--color-dark-blue);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.cruise-info h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-light-blue);
+}
+
+.cruise-description {
+    color: var(--color-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.cruise-metadata {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.metadata-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.metadata-item i {
+    color: var(--color-light-blue);
+    font-size: 1.2rem;
+}
+
+.metadata-item span {
+    color: var(--color-title-blue);
+    font-weight: 500;
+}
+
+.cruise-stages {
+    background-color: var(--color-full-white);
+    padding: 3rem;
+}
+
+.cruise-stages h2 {
+    color: var(--color-dark-blue);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.cruise-stages h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-light-blue);
+}
+
+.stages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stage-card {
+    display: flex;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.stage-info {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+.stage-info h3 {
+    color: var(--color-dark-blue);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.stage-dates {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    color: var(--color-gray);
+}
+
+.stage-dates i {
+    color: var(--color-light-blue);
+}
+
+.stage-info p {
+    color: var(--color-gray);
+    line-height: 1.5;
+}
+
+.stage-map {
+    flex: 1;
+    min-height: 250px;
+}
+
+.cruise-boat {
+    padding: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cruise-boat h2 {
+    color: var(--color-dark-blue);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.cruise-boat h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-light-blue);
+}
+
+.boat-details {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.boat-image {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.boat-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.boat-image img:hover {
+    transform: scale(1.02);
+}
+
+.boat-info {
+    flex: 1;
+}
+
+.boat-info h3 {
+    color: var(--color-dark-blue);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.boat-info p {
+    color: var(--color-gray);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.boat-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.spec-item i {
+    color: var(--color-light-blue);
+    font-size: 1.2rem;
+}
+
+.spec-item span {
+    color: var(--color-title-blue);
+    font-weight: 500;
+}
+
+.cta-section {
+    background-color: var(--color-full-white);
+    padding: 3rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-section h2 {
+    color: var(--color-dark-blue);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    color: var(--color-light-blue);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .cruise-overview,
+    .boat-details {
+        flex-direction: column;
+    }
+
+    .cruise-image {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .stage-card {
+        flex-direction: column;
+    }
+
+    .cruise-metadata {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .cruise-detail-header h1 {
+        font-size: 2rem;
+    }
+
+    .cruise-overview,
+    .cruise-stages,
+    .cruise-boat {
+        padding: 2rem 1rem;
+    }
+}

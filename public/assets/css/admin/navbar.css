@@ -2,7 +2,7 @@
     --sidebar-width: 250px;
 }
 
-.admin-header {
+header {
     background-color: var(--color-dark-blue);
     color: white;
     padding: 0.5rem 1rem;

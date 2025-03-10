@@ -1,0 +1,39 @@
+version: "3.7"
+
+volumes:
+  mariadb_data:
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: cycruise_mariadb
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./docker/maria-init-script:/docker-entrypoint-initdb.d
+    environment:
+      MARIADB_ROOT_PASSWORD: mariadbbettervoterootp@ssword
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: adminmypassmariadb
+    ports:
+      - "3306:3306"
+  watchtower:
+    image: containrrr/watchtower
+    container_name: cycruise_watchtower
+    command: --label-enable
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=50
+  cycruise:
+    image: topeestla/cycruise:latest
+    container_name: cycruise_php
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - 4000:80
+    environment:
+      DB_NAME: cycruise
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      DB_USER: admin
+      DB_PASS: adminmypassmariadb
