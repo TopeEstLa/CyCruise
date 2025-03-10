@@ -105,7 +105,7 @@ $totalPrice = $passengerPrice * $passengerCount;
                 <i class="fas fa-book"></i>
                 <span><?php echo htmlspecialchars($cruise->getShortDescriptions()); ?></span>
             </div>
-            <p class="cruise-price">À partir de €<?php echo number_format($cruise->getPrice(), 2); ?></p>
+            <p class="cruise-price">À partir de <?php echo number_format($cruise->getPrice(), 2); ?> €</p>
         </div>
     </div>
 
@@ -158,17 +158,17 @@ $totalPrice = $passengerPrice * $passengerCount;
             <?php foreach ($selectedOptions as $type => $option): ?>
                 <div class="summary-item">
                     <span><?php echo htmlspecialchars(ucfirst($type) . ': ' . $option->getName()); ?></span>
-                    <span>€<?php echo number_format($option->getPrice(), 2); ?></span>
+                    <span><?php echo number_format($option->getPrice(), 2); ?> €</span>
                 </div>
             <?php endforeach; ?>
 
             <div class="summary-passenger">
                 <span>Par passager </span>
-                <span>€<?php echo number_format($passengerPrice, 2); ?></span>
+                <span><?php echo number_format($passengerPrice, 2); ?> €</span>
             </div>
             <div class="summary-total">
-                <span>Total (<?php echo $passengerCount ?> passagers)</span>
-                <span>€<?php echo number_format($totalPrice, 2); ?></span>
+                <span>Total</span>
+                <span><?php echo number_format($totalPrice, 2); ?> €</span>
             </div>
         </div>
 

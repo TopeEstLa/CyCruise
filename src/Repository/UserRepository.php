@@ -26,8 +26,7 @@ class UserRepository
                                                             `lastname` VARCHAR(255) NOT NULL,
                                                             `birth` DATE NOT NULL,
                                                             `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                                                            `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
-                                                            ")
+                                                            `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);")
                 ->execute();
 
             $this->insertForce("test.admin@localhost", password_hash("password", PASSWORD_BCRYPT), UserRole::ADMIN->toString(), "admin", "admin", "2000-01-01");
