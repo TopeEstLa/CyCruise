@@ -3,6 +3,8 @@
 require_once "../src/Repository/CruiseRepository.php";
 require_once "../src/Services/AuthService.php";
 
+session_start();
+
 if (!isset($_GET['id'])) {
     header("Location: cruise-list.php");
     exit();
