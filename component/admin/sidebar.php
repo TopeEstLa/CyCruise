@@ -2,6 +2,10 @@
 require_once "../../src/Services/AuthService.php";
 require_once "../../src/Repository/UserRepository.php";
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $authService = new AuthService();
 if (!$authService->isLoggedIn()) {
     header("Location: ../login.php");
