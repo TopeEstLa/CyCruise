@@ -2,6 +2,8 @@
 
 require_once "../src/Repository/CruiseRepository.php";
 
+session_start();
+
 $cruiseList = CruiseRepository::getInstance()->findAll();
 
 ?>

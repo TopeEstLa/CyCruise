@@ -2,10 +2,6 @@
 
 require_once "../src/Services/AuthService.php";
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 $authService = new AuthService();
 
 $current_page = basename($_SERVER['REQUEST_URI'], ".php");
