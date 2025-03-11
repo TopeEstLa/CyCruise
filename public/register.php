@@ -103,3 +103,4 @@ if (isset($_POST['register'])) {
 
 <?php include "../component/footer.php"; ?>
 </body>
+</html>

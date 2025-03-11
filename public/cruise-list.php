@@ -91,3 +91,4 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
 
 <?php include "../component/footer.php"; ?>
 </body>
+</html>

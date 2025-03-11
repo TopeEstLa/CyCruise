@@ -87,3 +87,4 @@ $exploraBoats = $boatRepository->selectAllByType(BoatType::EXPLORA);
 <?php include "../component/footer.php"; ?>
 </body>
 
+</html>

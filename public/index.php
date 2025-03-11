@@ -27,3 +27,4 @@ $authService = new AuthService();
 <?php include "../component/navbar.php"; ?>
 <?php include "../component/footer.php"; ?>
 </body>
+</html>
