@@ -24,7 +24,7 @@ $current_page = basename($_SERVER['REQUEST_URI'], ".php");
                 <li><a class="nav-link <?= $current_page == 'cruise-list' ? 'active' : '' ?>" href="cruise-list.php">DESTINATIONS</a></li>
                 <li><a class="nav-link <?= $current_page == 'fleet' ? 'active' : '' ?>" href="fleet.php">FLOTTE</a></li>
                 <li><a class="nav-link <?= $current_page == 'about' ? 'active' : '' ?>" href="about.php">À PROPOS</a></li>
-                <li><a class="nav-link <?= $current_page == 'contact' ? 'active' : '' ?>" href="contact.html">CONTACT</a></li>
+                <li><a class="nav-link <?= $current_page == 'contact' ? 'active' : '' ?>" href="contact.php">CONTACT</a></li>
                 <?php if ($authService->isLoggedIn()): ?>
                     <li><a aria-hidden="true" class="fa fa-user nav-icon" href="account.php"></a></li>
                     <li><a aria-hidden="true" class="fa fa-sign-in nav-icon" href="logout.php"></a></li>
