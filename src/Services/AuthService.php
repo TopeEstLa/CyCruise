@@ -35,6 +35,13 @@ class AuthService
         return false;
     }
 
+    public function getUser(): ?User
+    {
+        if (!$this->isLoggedIn()) return null;
+
+        return UserRepository::getInstance()->findById($_SESSION['user_id']);
+    }
+
     public function hasAccount(string $email): bool
     {
         return UserRepository::getInstance()->findByEmail($email) !== null;

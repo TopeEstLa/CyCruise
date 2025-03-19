@@ -17,7 +17,7 @@ class ContactRepository
         try {
             $this->database->getConnection()
                 ->prepare("CREATE TABLE IF NOT EXISTS `contact_request`(
-                            `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                            `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                             `firstname` VARCHAR(255) NOT NULL,
                             `lastname` VARCHAR(255) NOT NULL,
                             `email` VARCHAR(255) NOT NULL,

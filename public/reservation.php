@@ -29,8 +29,8 @@ $basePrice = $cruise->getPrice();
 
 $selectedOptions = [];
 $passengerCount = 1;
-$passengerPrice = $basePrice;
-$totalPrice = $passengerPrice;
+$totalPrice = $basePrice;
+$passengerPrice = 0;
 $passengerData = [];
 
 
@@ -42,7 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             foreach ($options as $option) {
                 if ($option->getId() == $selectedOptionId) {
                     $selectedOptions[$type] = $option;
-                    $passengerPrice += $option->getPrice();
+                    if ($option->isPerPassenger()) {
+                        $passengerPrice += $option->getPrice();
+                    } else {
+                        $totalPrice += $option->getPrice();
+                    }
                     break;
                 }
             }
@@ -58,21 +62,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'last_name' => $_POST['last_name_' . $i],
         ];
     }
-
-    $totalPrice = $passengerPrice * $passengerCount;
 } else {
     foreach ($optionsByType as $type => $options) {
         foreach ($options as $option) {
             if ($option->isDefault()) {
                 $selectedOptions[$type] = $option;
-                $passengerPrice += $option->getPrice();
+                if ($option->isPerPassenger()) {
+                    $passengerPrice += $option->getPrice();
+                } else {
+                    $totalPrice += $option->getPrice();
+                }
                 break;
             }
         }
     }
 }
 
-$totalPrice = $passengerPrice * $passengerCount;
+$totalPrice += ($passengerPrice * $passengerCount);
 ?>
 
 <!DOCTYPE html>
@@ -89,37 +95,6 @@ $totalPrice = $passengerPrice * $passengerCount;
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <title>CyCruise - Your best cruise</title>
-
-
-    <!--
-    <script>
-        function updatePassengerFields() {
-            const passengerCount = document.getElementById('passengers').value;
-            const passengerFieldsContainer = document.getElementById('passenger-fields');
-            passengerFieldsContainer.innerHTML = '';
-
-            for (let i = 0; i < passengerCount; i++) {
-                const fieldset = document.createElement('fieldset');
-                fieldset.innerHTML = `
-                    <legend>Passager ${i}</legend>
-                    <div class="form-group">
-                        <label for="first_name_${i}">Prénom</label>
-                        <input type="text" id="first_name_${i}" name="first_name_${i}" value="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="last_name_${i}">Nom</label>
-                        <input type="text" id="last_name_${i}" name="last_name_${i}" required>
-                    </div>
-                `;
-                passengerFieldsContainer.appendChild(fieldset);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('passengers').addEventListener('input', updatePassengerFields);
-        });
-    </script> -->
-
 </head>
 
 <body>
@@ -193,7 +168,7 @@ $totalPrice = $passengerPrice * $passengerCount;
                            $i < $passengerCount;
                            $i++): ?>
                     <fieldset>
-                        <legend>Passager <?php echo $i+1; ?></legend>
+                        <legend>Passager <?php echo $i + 1; ?></legend>
                         <div class="form-group">
                             <label for="first_name_<?php echo $i; ?>">Prénom</label>
                             <input type="text" id="first_name_<?php echo $i; ?>" name="first_name_<?php echo $i; ?>"
@@ -236,6 +211,8 @@ $totalPrice = $passengerPrice * $passengerCount;
             </div>
         </div>
 
+        <input type="hidden" name="cruise_id" value="<?php echo $cruise->getId(); ?>">
+
         <div class="submit-container">
             <a href="cruise-detail.php?id=<?php echo $cruise->getId(); ?>" class="btn-primary">
                 <i class="fas fa-arrow-left btn-secondary-icon"></i> Retour
@@ -243,7 +220,7 @@ $totalPrice = $passengerPrice * $passengerCount;
             <button type="submit" class="btn-primary">
                 <i class="fas fa-sync btn-icon"></i> Mettre à jour
             </button>
-            <button type="submit" formaction="confirmations.php" class="btn-primary">
+            <button type="submit" formaction="create-invoice.php" class="btn-primary">
                 <i class="fas fa-check btn-icon"></i> Confirmer la réservation
             </button>
         </div>

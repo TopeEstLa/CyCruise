@@ -17,12 +17,13 @@ class CruiseOptionRepository
         try {
             $this->database->getConnection()
                 ->prepare("CREATE TABLE IF NOT EXISTS `cruise_option`(
-                            `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                            `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                             `cruise_id` BIGINT NOT NULL,
                             `type` VARCHAR(255) NOT NULL,
                             `name` VARCHAR(255) NOT NULL,
                             `price` FLOAT(53) NOT NULL,
                             `is_default` BOOLEAN NOT NULL,
+                            `per_passenger` BOOLEAN NOT NULL DEFAULT FALSE,
                             CONSTRAINT `cruise_option_cruise_id_foreign` 
                             FOREIGN KEY (`cruise_id`) REFERENCES `cruise`(`id`) 
                             ON DELETE CASCADE ON UPDATE CASCADE);")
@@ -44,29 +45,29 @@ class CruiseOptionRepository
 
     public function insertDefaultValue(): void
     {
-        $this->insertForce(1, 1, "REPAS", "Tout inclus", 150.50, false);
-        $this->insertForce(2, 1, "REPAS", "Petit-déjeuner ", 50.50, false);
-        $this->insertForce(3, 1, "REPAS", "Déjeuner", 75.50, false);
-        $this->insertForce(4, 1, "REPAS", "Dîner", 100.50, false);
-        $this->insertForce(5, 1, "REPAS", "Déjeuner & Dîner (inclut)", 0.00, true);
+        $this->insertForce(1, 1, "REPAS", "Tout inclus", 150.50, false, true);
+        $this->insertForce(2, 1, "REPAS", "Petit-déjeuner ", 50.50, false, true);
+        $this->insertForce(3, 1, "REPAS", "Déjeuner", 75.50, false, true);
+        $this->insertForce(4, 1, "REPAS", "Dîner", 100.50, false, true);
+        $this->insertForce(5, 1, "REPAS", "Déjeuner & Dîner (inclut)", 0.00, true, true);
 
-        $this->insertForce(6, 1, "EXCURSION", "Visite guidés", 50.50, false);
-        $this->insertForce(7, 1, "EXCURSION", "Visité guidés et activité sur place", 200.50, false);
-        $this->insertForce(8, 1, "EXCURSION", "Tout (Visites guidées, activités, restaurant spécialisé)", 500.50, false);
-        $this->insertForce(9, 1, "EXCURSION", "Aucune visite (inclut)", 0.00, true);
+        $this->insertForce(6, 1, "EXCURSION", "Visite guidés", 50.50, false, true);
+        $this->insertForce(7, 1, "EXCURSION", "Visité guidés et activité sur place", 200.50, false, true);
+        $this->insertForce(8, 1, "EXCURSION", "Tout (Visites guidées, activités, restaurant spécialisé)", 500.50, false, true);
+        $this->insertForce(9, 1, "EXCURSION", "Aucune visite (inclut)", 0.00, true, true);
 
-        $this->insertForce(10, 1, "CABINE", "Suite", 500.00, false);
-        $this->insertForce(11, 1, "CABINE", "Suite Balcon", 900.00, false);
-        $this->insertForce(12, 1, "CABINE", "Suite avec vue sur l'océan", 1000.00, false);
-        $this->insertForce(13, 1, "CABINE", "Intérieure (inclut)", 0.00, true);
+        $this->insertForce(10, 1, "CABINE", "Suite", 500.00, false, false);
+        $this->insertForce(11, 1, "CABINE", "Suite Balcon", 900.00, false, false);
+        $this->insertForce(12, 1, "CABINE", "Suite avec vue sur l'océan", 1000.00, false, false);
+        $this->insertForce(13, 1, "CABINE", "Intérieure (inclut)", 0.00, true, false);
     }
 
 
-    public function insertForce(int $id, int $cruise_id, string $type, string $name, float $price, bool $default): bool
+    public function insertForce(int $id, int $cruise_id, string $type, string $name, float $price, bool $default, bool $perPassenger): bool
     {
         try {
-            $stmt = $this->database->getConnection()->prepare("INSERT IGNORE INTO cruise_option (id, cruise_id, type, name, price, is_default) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("iisssi", $id, $cruise_id, $type, $name, $price, $default);
+            $stmt = $this->database->getConnection()->prepare("INSERT IGNORE INTO cruise_option (id, cruise_id, type, name, price, is_default, per_passenger) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("iisssii", $id, $cruise_id, $type, $name, $price, $default, $perPassenger);
             return $stmt->execute();
         } catch (Exception $e) {
             die("Error while inserting cruise option: " . $e->getMessage());
@@ -86,7 +87,7 @@ class CruiseOptionRepository
             if ($stmt->execute()) {
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
-                    $cruiseOption[] = new CruiseOption($row['id'], $row['type'], $row['name'], $row['price'], $row['is_default']);
+                    $cruiseOption[] = new CruiseOption($row['id'], $row['type'], $row['name'], $row['price'], $row['is_default'], $row['per_passenger']);
                 }
             }
         } catch (Exception $e) {
@@ -96,6 +97,24 @@ class CruiseOptionRepository
         return $cruiseOption;
     }
 
+    public function findById(int $id): ?CruiseOption
+    {
+        try {
+            $stmt = $this->database->getConnection()->prepare("SELECT * FROM cruise_option WHERE id = ?");
+            $stmt->bind_param("i", $id);
+
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                if ($row = $result->fetch_assoc()) {
+                    return new CruiseOption($row['id'], $row['type'], $row['name'], $row['price'], $row['is_default'], $row['per_passenger']);
+                }
+            }
+        } catch (Exception $e) {
+
+        }
+
+        return null;
+    }
 
 
 }

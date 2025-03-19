@@ -1,0 +1,29 @@
+version: "3.7"
+
+volumes:
+  mariadb_data:
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: cycruise_mariadb
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./docker/maria-init-script:/docker-entrypoint-initdb.d
+    environment:
+      MARIADB_ROOT_PASSWORD: mariadbbettervoterootp@ssword
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: adminmypassmariadb
+    ports:
+      - "3838:3306"
+  cycruise:
+    image: cycruise:latest
+    container_name: cycruise_php
+    ports:
+      - 4000:80
+    environment:
+      DB_NAME: cycruise
+      DB_HOST: mariadb
+      DB_PORT: 3838
+      DB_USER: admin
+      DB_PASS: adminmypassmariadb

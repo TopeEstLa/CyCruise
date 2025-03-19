@@ -11,15 +11,17 @@ class CruiseOption
     private float $price;
 
     private bool $default;
+    private bool $perPassenger;
 
 
-    public function __construct(int $id, string $type, string $name, float $price, bool $default)
+    public function __construct(int $id, string $type, string $name, float $price, bool $default, bool $perPassenger)
     {
         $this->id = $id;
         $this->type = $type;
         $this->name = $name;
         $this->price = $price;
         $this->default = $default;
+        $this->perPassenger = $perPassenger;
     }
 
     public function getId(): int
@@ -46,5 +48,12 @@ class CruiseOption
     {
         return $this->default;
     }
+
+    public function isPerPassenger(): bool
+    {
+        return $this->perPassenger;
+    }
+
+
 
 }

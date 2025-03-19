@@ -1,6 +1,7 @@
 <?php
 
 require_once "../src/Services/AuthService.php";
+require_once "../src/Utils/getapikey.php";
 
 session_start();
 
