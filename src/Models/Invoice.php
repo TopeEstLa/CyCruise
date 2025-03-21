@@ -3,7 +3,7 @@
 class Invoice
 {
 
-    private int $id;
+    private string $id;
 
     private User $user;
     private Cruise $cruise;
@@ -18,9 +18,12 @@ class Invoice
 
     private InvoiceState $state;
 
+    private string $createdAt;
+    private string $updatedAt;
 
-    public function __construct(int $id, User $user, Cruise $cruise, array $options, int $passengerCount, array $passengerData,
-                                float $totalPrice, InvoiceState $state)
+
+    public function __construct(string   $id, User $user, Cruise $cruise, array $options, int $passengerCount, array $passengerData,
+                                float $totalPrice, InvoiceState $state, string $createdAt, string $updatedAt)
     {
         $this->id = $id;
         $this->user = $user;
@@ -30,9 +33,12 @@ class Invoice
         $this->passengerData = $passengerData;
         $this->totalPrice = $totalPrice;
         $this->state = $state;
+
+        $this->createdAt = $createdAt;
+        $this->updatedAt = $updatedAt;
     }
 
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
@@ -99,5 +105,13 @@ class Invoice
         $this->state = $state;
     }
 
+    public function getUpdatedAt(): string
+    {
+        return $this->updatedAt;
+    }
 
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
 }

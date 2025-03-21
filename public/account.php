@@ -2,6 +2,7 @@
 
 require_once "../src/Services/AuthService.php";
 require_once "../src/Repository/UserRepository.php";
+require_once "../src/Repository/InvoiceRepository.php";
 
 session_start();
 
@@ -26,6 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     UserRepository::getInstance()->update($user);
 }
+
+$currentInvoices = InvoiceRepository::getInstance()->findAllCurrentByUserIdOrderByCreatedAt($user->getId());
+$oldInvoices = InvoiceRepository::getInstance()->findAllOldByUserAndStateIdOrderByCreatedAt($user->getId(), InvoiceState::CONFIRMED);
 
 ?>
 
@@ -71,7 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="form-group">
                         <label for="birth">Date de naissance</label>
-                        <input id="birth" name="birth" type="date" value="<?php echo htmlspecialchars($user->getBirth()) ?>">
+                        <input id="birth" name="birth" type="date"
+                               value="<?php echo htmlspecialchars($user->getBirth()) ?>">
                     </div>
                     <button class="btn-primary" type="submit">Sauvegarder mes informations</button>
                 </form>
@@ -103,73 +108,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="account-section">
             <h2>Mes réservations</h2>
             <ul class="cruise-list">
-                <li class="cruise-item">
-                    <h3>Tour des Caraïbes</h3>
-                    <span class="cruise-date">25 Mars 2025</span>
-                    <p>Croisière de 5 jours dans les Caraïbes</p>
-                    <a class="reservation-status pending" href="reservation-details.html">En attente de payment</a>
-                </li>
-                <li class="cruise-item">
-                    <h3>Tour des Caraïbes</h3>
-                    <span class="cruise-date">10 Aout 2025</span>
-                    <p>Croisière de 14 jours dans les Caraïbes</p>
-                    <a class="reservation-status cancelled" href="reservation-details.html">Annulé</a>
-                </li>
-                <li class="cruise-item">
-                    <h3>Tour des Caraïbes</h3>
-                    <span class="cruise-date">10 Aout 2025</span>
-                    <p>Croisière de 14 jours dans les Caraïbes</p>
-                    <a class="reservation-status confirmed" href="reservation-details.html">Confirmée</a>
-                </li>
-                <li class="cruise-item">
-                    <h3>Tour des Caraïbes</h3>
-                    <span class="cruise-date">10 Aout 2025</span>
-                    <p>Croisière de 14 jours dans les Caraïbes</p>
-                    <a class="reservation-status confirmed" href="reservation-details.html">Confirmée</a>
-                </li>
-
+                <?php foreach ($currentInvoices as $invoice): ?>
+                    <li class="cruise-item">
+                        <h3><?php echo htmlspecialchars($invoice->getCruise()->getName()) ?></h3>
+                        <span class="cruise-date"><?php echo date("d F Y", strtotime($invoice->getCruise()->getStartDate())) ?></span>
+                        <p><?php echo htmlspecialchars($invoice->getCruise()->getShortDescriptions()) ?></p>
+                        <?php switch ($invoice->getState()) {
+                            case InvoiceState::CONFIRMED: ?>
+                                <a class="reservation-status confirmed"
+                                   href="invoice.php?id=<?php echo htmlspecialchars($invoice->getId()) ?>">Confirmée</a>
+                                <?php break; ?>
+                            <?php case InvoiceState::PENDING: ?>
+                                <a class="reservation-status pending"
+                                   href="invoice.php?id=<?php echo htmlspecialchars($invoice->getId()) ?>">En attente de
+                                    payment</a>
+                                <?php break; ?>
+                            <?php case InvoiceState::CANCELED: ?>
+                                <a class="reservation-status cancelled"
+                                   href="invoice.php?id=<?php echo htmlspecialchars($invoice->getId()) ?>">Annulé</a>
+                                <?php break; ?>
+                                <?php break; ?>
+                            <?php } ?>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
 
         <div class="account-section">
             <h2>Mes dernières croisières</h2>
             <ul class="cruise-list">
-                <li class="cruise-item">
-                    <h3>Croisière Paradis Caraïbes</h3>
-                    <span class="cruise-date">15 Décembre 2024</span>
-                    <p>Croisière de 7 jours à la Jamaïque, aux îles Caïmans et au Mexique</p>
-                </li>
-                <li class="cruise-item">
-                    <h3>Aventure Méditerranéenne</h3>
-                    <span class="cruise-date">5 Août 2024</span>
-                    <p>Croisière de 10 jours en Grèce, Italie et Espagne</p>
-                </li>
-                <li class="cruise-item">
-                    <h3>Découverte de l'Alaska</h3>
-                    <span class="cruise-date">20 Juin 2024</span>
-                    <p>Croisière de 5 jours à travers l'Inside Passage</p>
-                </li>
-                <li class="cruise-item">
-                    <h3>Découverte de l'Alaska</h3>
-                    <span class="cruise-date">20 Juin 2024</span>
-                    <p>Croisière de 5 jours à travers l'Inside Passage</p>
-                </li>
-                <li class="cruise-item">
-                    <h3>Découverte de l'Alaska</h3>
-                    <span class="cruise-date">20 Juin 2024</span>
-                    <p>Croisière de 5 jours à travers l'Inside Passage</p>
-                </li>
-                <li class="cruise-item">
-                    <h3>Découverte de l'Alaska</h3>
-                    <span class="cruise-date">20 Juin 2024</span>
-                    <p>Croisière de 5 jours à travers l'Inside Passage</p>
-                </li>
-                <li class="cruise-item">
-                    <h3>Découverte de l'Alaska</h3>
-                    <span class="cruise-date">20 Juin 2024</span>
-                    <p>Croisière de 5 jours à travers l'Inside Passage</p>
-                </li>
-
+                <?php foreach ($oldInvoices as $invoice): ?>
+                    <li class="cruise-item">
+                        <h3><?php echo htmlspecialchars($invoice->getCruise()->getName()) ?></h3>
+                        <span class="cruise-date"><?php echo date("d F Y", strtotime($invoice->getCruise()->getStartDate())) ?></span>
+                        <p><?php echo htmlspecialchars($invoice->getCruise()->getShortDescriptions()) ?></p>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </div>

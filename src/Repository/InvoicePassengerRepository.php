@@ -14,7 +14,7 @@ class InvoicePassengerRepository
             $this->database->getConnection()
                 ->prepare("CREATE TABLE IF NOT EXISTS `invoices_passenger`(
                             `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                            `invoice_id` BIGINT NOT NULL,
+                            `invoice_id` CHAR(36) NOT NULL,
                             `first_name` VARCHAR(255) NOT NULL,
                             `last_name` VARCHAR(255) NOT NULL,
                             CONSTRAINT `invoice_passenger_invoice_id_foreign` 
@@ -35,12 +35,12 @@ class InvoicePassengerRepository
         return self::$instance;
     }
 
-    public function insert(int $invoice_id, string $first_name, string $last_name): bool
+    public function insert(string $invoice_id, string $first_name, string $last_name): bool
     {
         try {
             $stmt = $this->database->getConnection()->prepare("INSERT INTO `invoices_passenger`(`invoice_id`, `first_name`, `last_name`) VALUES (?, ?, ?)");
 
-            $stmt->bind_param("iss", $invoice_id, $first_name, $last_name);
+            $stmt->bind_param("sss", $invoice_id, $first_name, $last_name);
             return $stmt->execute();
         } catch (Exception $e) {
             return false;
@@ -48,12 +48,12 @@ class InvoicePassengerRepository
     }
 
 
-    public function findByInvoiceId(int $id): array
+    public function findByInvoiceId(string $id): array
     {
         $passengers = [];
         try {
             $stmt = $this->database->getConnection()->prepare("SELECT * FROM `invoices_passenger` WHERE `invoice_id` = ?");
-            $stmt->bind_param("i", $id);
+            $stmt->bind_param("s", $id);
 
             if ($stmt->execute()) {
                 $result = $stmt->get_result();

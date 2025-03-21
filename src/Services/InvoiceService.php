@@ -7,6 +7,7 @@ require_once __DIR__ . '/../Repository/InvoiceRepository.php';
 require_once __DIR__ . '/../Repository/InvoiceOptionRepository.php';
 require_once __DIR__ . '/../Repository/InvoicePassengerRepository.php';
 require_once __DIR__ . '/../Enums/InvoiceState.php';
+require_once __DIR__ . '/../Utils/getapikey.php';
 
 class InvoiceService
 {
@@ -17,6 +18,8 @@ class InvoiceService
 
     public function __construct()
     {
+        $GLOBALS["SELLER"] = "MI-1_J";
+        $GLOBALS["CALLBACK_URL"] = "http://localhost:9090/payment-callback.php";
         $this->invoiceRepository = InvoiceRepository::getInstance();
         $this->invoicePassengerRepository = InvoicePassengerRepository::getInstance();
         $this->invoiceOptionRepository = InvoiceOptionRepository::getInstance();
@@ -28,15 +31,14 @@ class InvoiceService
         $totalPrice = $this->calculatePrice($cruise, $passengerCount, $options);
         $id = $this->invoiceRepository->insert($user->getId(), $cruise->getId(), $totalPrice, InvoiceState::PENDING);
 
-        if ($id === -1) {
+        if ($id === null) {
             return null;
         }
 
-        $invoice = new Invoice($id, $user, $cruise, $options, $passengerCount, $passengerData, $totalPrice, InvoiceState::PENDING);
+        $invoice = new Invoice($id, $user, $cruise, $options, $passengerCount, $passengerData, $totalPrice, InvoiceState::PENDING, date("Y-m-d H:i:s"), date("Y-m-d H:i:s"));
 
         for ($i = 0; $i < $passengerCount; $i++) {
             $passenger = $passengerData[$i];
-            print_r($passenger);
             if (!$this->invoicePassengerRepository->insert($id, $passenger['firstname'], $passenger['lastname'])) {
                 return null;
             }
@@ -50,6 +52,26 @@ class InvoiceService
         }
 
         return $invoice;
+    }
+
+    public function getInvoice(string $id, User $user): ?Invoice
+    {
+        $invoice = $this->invoiceRepository->findById($id);
+
+        if ($invoice === null) {
+            return null;
+        }
+
+        if ($invoice->getUser()->getId() !== $user->getId()) {
+            return null;
+        }
+
+        return $invoice;
+    }
+
+    public function updateInvoice(Invoice $invoice): bool
+    {
+        return $this->invoiceRepository->update($invoice->getId(), $invoice->getTotalPrice(), $invoice->getState());
     }
 
     public function calculatePrice(Cruise $cruise, int $passengerCount, array $options): float
@@ -72,14 +94,14 @@ class InvoiceService
     {
         $apiKey = $this->generateBankAPIKey();
 
-        $salt = $apiKey . "#" . $invoice->getId() . "#" . $invoice->getTotalPrice() . "#" . "MI-1_A" . "#" . "localhost:9000";
-
+        $salt = $apiKey . "#" . $invoice->getId() . "#" . $invoice->getTotalPrice() . "#" . $GLOBALS["SELLER"] . "#" . $GLOBALS["CALLBACK_URL"] . "#";
         return md5($salt);
     }
 
+
     public function generateBankAPIKey(): string
     {
-        return substr(md5("MI-1_A"), 1, 15);
+        return substr(md5($GLOBALS["SELLER"]), 1, 15);
     }
 
 

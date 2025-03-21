@@ -49,8 +49,6 @@ for ($i = 0; $i < $passengerCount; $i++) {
     ];
 }
 
-print_r($passengerData);
-
 $optionsByType = $cruise->mapOptionsByType();
 
 $selectedOptions = [];
@@ -69,8 +67,6 @@ for ($i = 0; $i < count($optionsByType); $i++) {
         header("Location: cruise-list.php");
     }
 }
-
-print_r($selectedOptions);
 
 
 $invoice = $invoiceService->createInvoice($authService->getUser(), $cruise, $selectedOptions, $passengerCount, $passengerData);
