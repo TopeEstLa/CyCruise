@@ -98,6 +98,15 @@ class InvoiceService
         return md5($salt);
     }
 
+    public function validatePaymentSalt(Invoice $invoice, string $state, string $salt): bool
+    {
+        $apiKey = $this->generateBankAPIKey();
+
+        $selfSalt = $apiKey . "#" . $invoice->getId() . "#" . $invoice->getTotalPrice() . "#" . $GLOBALS["SELLER"] . "#" . $state . "#";
+
+        return md5($selfSalt) === $salt;
+    }
+
 
     public function generateBankAPIKey(): string
     {

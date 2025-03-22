@@ -42,7 +42,7 @@ session_start();
     <section class="content-section">
         <div class="content-row">
             <div class="content-image">
-                <img alt="Luxury Cruise Experience" src="assets/img/cruise-data/caribbean-miami.png">
+                <img alt="Luxury Cruise Experience" src="assets/img/cruise-data/caraibes.png">
             </div>
             <div class="content-text">
                 <h2>Notre Histoire</h2>

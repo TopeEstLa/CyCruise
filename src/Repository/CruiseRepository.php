@@ -38,13 +38,17 @@ class CruiseRepository
                                 ON DELETE CASCADE ON UPDATE CASCADE);")
                 ->execute();
 
-            $this->insertDefaultValue();
         } catch (Exception $e) {
             die("Database connection failed: " . $e->getMessage());
         }
 
         $this->cruiseStageRepository = CruiseStageRepository::getInstance();
         $this->cruiseOptionRepository = CruiseOptionRepository::getInstance();
+
+
+        if (!$this->insertDefaultValue()) {
+            die("Error while inserting default values");
+        }
     }
 
     public static function getInstance(): CruiseRepository
@@ -55,12 +59,9 @@ class CruiseRepository
         return self::$instance;
     }
 
-    public function insertDefaultValue()
+    public function insertDefaultValue(): bool
     {
-        $this->insertForce(1, "MÉDITERRANÉE", "Découvrez la Méditerranée à bord de notre bateau de croisière", "Croisière en Méditerranée",
-            "assets/img/cruise-data/mediterranean.png",
-            "2025-06-01", "2025-06-15", 14,
-            BoatRepository::getInstance()->selectById(1), 1500.50);
+        return $this->database->executeSqlFile("../cruises_sql.sql");
     }
 
     public function insertForce(int    $id, string $name, string $descriptions, string $short_descriptions, string $img,
@@ -153,7 +154,8 @@ class CruiseRepository
                     $data['price']
                 );
             }
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+        }
 
         return $cruiseList;
     }

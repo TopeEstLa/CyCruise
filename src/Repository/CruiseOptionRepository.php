@@ -28,8 +28,6 @@ class CruiseOptionRepository
                             FOREIGN KEY (`cruise_id`) REFERENCES `cruise`(`id`) 
                             ON DELETE CASCADE ON UPDATE CASCADE);")
                 ->execute();
-
-            $this->insertDefaultValue();
         } catch (Exception $e) {
             die("Database connection failed: " . $e->getMessage());
         }
@@ -41,25 +39,6 @@ class CruiseOptionRepository
             self::$instance = new CruiseOptionRepository();
         }
         return self::$instance;
-    }
-
-    public function insertDefaultValue(): void
-    {
-        $this->insertForce(1, 1, "REPAS", "Tout inclus", 150.50, false, true);
-        $this->insertForce(2, 1, "REPAS", "Petit-déjeuner ", 50.50, false, true);
-        $this->insertForce(3, 1, "REPAS", "Déjeuner", 75.50, false, true);
-        $this->insertForce(4, 1, "REPAS", "Dîner", 100.50, false, true);
-        $this->insertForce(5, 1, "REPAS", "Déjeuner & Dîner (inclut)", 0.00, true, true);
-
-        $this->insertForce(6, 1, "EXCURSION", "Visite guidés", 50.50, false, true);
-        $this->insertForce(7, 1, "EXCURSION", "Visité guidés et activité sur place", 200.50, false, true);
-        $this->insertForce(8, 1, "EXCURSION", "Tout (Visites guidées, activités, restaurant spécialisé)", 500.50, false, true);
-        $this->insertForce(9, 1, "EXCURSION", "Aucune visite (inclut)", 0.00, true, true);
-
-        $this->insertForce(10, 1, "CABINE", "Suite", 500.00, false, false);
-        $this->insertForce(11, 1, "CABINE", "Suite Balcon", 900.00, false, false);
-        $this->insertForce(12, 1, "CABINE", "Suite avec vue sur l'océan", 1000.00, false, false);
-        $this->insertForce(13, 1, "CABINE", "Intérieure (inclut)", 0.00, true, false);
     }
 
 

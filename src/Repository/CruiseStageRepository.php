@@ -27,23 +27,11 @@ class CruiseStageRepository
                             FOREIGN KEY (`cruise_id`) REFERENCES `cruise`(`id`) 
                             ON DELETE CASCADE ON UPDATE CASCADE);")
                 ->execute();
-
-            $this->insertDefaultValue();
         } catch (Exception $e) {
             die("Database connection failed: " . $e->getMessage());
         }
     }
 
-    public function insertDefaultValue(): void
-    {
-        $this->insertForce(1, 1, "Barcelone", "Visite de Barcelone", "2025-06-01", "2025-06-02", 41.3851, 2.1734);
-        $this->insertForce(2, 1, "Marseille", "Visite de Marseille", "2025-06-03", "2025-06-04", 43.2965, 5.3698);
-        $this->insertForce(3, 1, "Gênes", "Visite de Gênes", "2025-06-05", "2025-06-06", 44.4056, 8.9463);
-        $this->insertForce(4, 1, "Rome", "Visite de Rome", "2025-06-07", "2025-06-08", 41.9028, 12.4964);
-        $this->insertForce(5, 1, "Naples", "Visite de Naples", "2025-06-09", "2025-06-10", 40.8518, 14.2681);
-        $this->insertForce(6, 1, "Palermo", "Visite de Palermo", "2025-06-11", "2025-06-12", 38.1157, 13.3615);
-        $this->insertForce(7, 1, "Tunis", "Visite de Tunis", "2025-06-13", "2025-06-14", 36.8065, 10.1815);
-    }
 
     public static function getInstance(): CruiseStageRepository
     {
@@ -58,6 +46,7 @@ class CruiseStageRepository
         try {
             $stmt = $this->database->getConnection()->prepare("INSERT IGNORE INTO cruise_stage (id, cruise_id, name, description, start_date, end_date, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("iissssdd", $id, $cruise_id, $name, $description, $start_date, $end_date, $latitude, $longitude);
+
             return $stmt->execute();
         } catch (Exception $e) {
             echo $e->getMessage();

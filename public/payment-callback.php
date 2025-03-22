@@ -23,8 +23,14 @@ if (!isset($_GET['transaction'])) {
     exit();
 }
 
+if (!isset($_GET["control"])) {
+    header("Location: index.php");
+    exit();
+}
+
 $status = $_GET['status'];
 $transaction = $_GET['transaction'];
+$salt = $_GET['control'];
 
 $user = $authService->getUser();
 
@@ -40,16 +46,18 @@ if ($invoice == null) {
     exit();
 }
 
-$state = $status;
+if (!$invoiceService->validatePaymentSalt($invoice, $status, $salt)) {
+    header("Location: index.php");
+    exit();
+}
 
-if ($status === "success") {
+if ($status === "accepted") {
     $invoice->setState(InvoiceState::CONFIRMED);
     if (!$invoiceService->updateInvoice($invoice)) {
-        $state = "failed";
+        $status = "failed";
     }
-} else {
-    $state = "failed";
 }
+
 ?>
 
 
@@ -75,14 +83,15 @@ if ($status === "success") {
 <main>
     <div class="payment-container">
         <div class="payment-card">
-            <?php if ($state === "success"): ?>
+            <?php if ($status === "accepted"): ?>
                 <div class="payment-status success">
                     <div class="status-icon">
                         <i class="fas fa-check-circle"></i>
                     </div>
                     <h1>Paiement Réussi!</h1>
                     <p>Votre réservation a été confirmée et le paiement a été traité avec succès.</p>
-                    <p class="reservation-id"><span>Référence: REF-<?php echo htmlspecialchars($transaction) ?></span></p>
+                    <p class="reservation-id"><span>Référence: REF-<?php echo htmlspecialchars($transaction) ?></span>
+                    </p>
                     <div class="payment-details">
                         <div class="detail-item">
                             <span class="detail-label">Date de paiement</span>
@@ -104,13 +113,15 @@ if ($status === "success") {
                         <i class="fas fa-times-circle"></i>
                     </div>
                     <h1>Paiement Échoué</h1>
-                    <p>Nous n'avons pas pu traiter votre paiement. Veuillez réessayer ou contacter notre service client.</p>
-                    <p class="reservation-id"><span>Référence: REF-<?php echo htmlspecialchars($transaction) ?></span></p>
+                    <p>Nous n'avons pas pu traiter votre paiement. Veuillez réessayer ou contacter notre service
+                        client.</p>
+                    <p class="reservation-id"><span>Référence: REF-<?php echo htmlspecialchars($transaction) ?></span>
+                    </p>
                 </div>
             <?php endif; ?>
 
             <div class="payment-actions">
-                <?php if ($status === "success"): ?>
+                <?php if ($status === "accepted"): ?>
                     <a href="invoice.php?id=<?php echo htmlspecialchars($transaction) ?>" class="btn-primary">
                         <i class="fas fa-receipt"></i> Voir les détails de la réservation
                     </a>
