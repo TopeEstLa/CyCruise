@@ -11,6 +11,13 @@ if (!$authService->isLoggedIn()) {
     exit();
 }
 
+$user = $authService->getUser();
+
+if ($user === null) {
+    header("Location: cruise-list.php");
+    exit();
+}
+
 if (!isset($_GET['id'])) {
     header("Location: cruise-list.php");
     exit();
@@ -172,13 +179,13 @@ $totalPrice += ($passengerPrice * $passengerCount);
                         <div class="form-group">
                             <label for="first_name_<?php echo $i; ?>">Prénom</label>
                             <input type="text" id="first_name_<?php echo $i; ?>" name="first_name_<?php echo $i; ?>"
-                                   value="<?php echo isset($passengerData[$i]) ? htmlspecialchars($passengerData[$i]['first_name']) : ""; ?>"
+                                   value="<?php echo isset($passengerData[$i]) ? htmlspecialchars($passengerData[$i]['first_name']) : (($i == 0) ? $user->getFirstname() : '') ?>"
                                    required>
                         </div>
                         <div class="form-group">
                             <label for="last_name_<?php echo $i; ?>">Nom</label>
                             <input type="text" id="last_name_<?php echo $i; ?>" name="last_name_<?php echo $i; ?>"
-                                   value="<?php echo isset($passengerData[$i]) ? htmlspecialchars($passengerData[$i]['last_name']) : ""; ?>"
+                                   value="<?php echo isset($passengerData[$i]) ? htmlspecialchars($passengerData[$i]['last_name']) : (($i == 0) ? $user->getLastname() : '') ?>"
                                    required>
                         </div>
                     </fieldset>
