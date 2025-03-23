@@ -30,12 +30,14 @@ class Database
     public function executeSqlFile(string $filePath): bool
     {
         if (!file_exists($filePath)) {
-            die("SQL file not found: " . $filePath);
+            return false;
+            //die("SQL file not found: " . $filePath);
         }
 
         $sql = file_get_contents($filePath);
         if ($sql === false) {
-            die("Failed to read SQL file: " . $filePath);
+            return false;
+            //die("Failed to read SQL file: " . $filePath);
         }
 
         $queries = explode(";", $sql);
@@ -44,7 +46,8 @@ class Database
             $trimmedQuery = trim($query);
             if (!empty($trimmedQuery)) {
                 if (!$this->conn->query($trimmedQuery)) {
-                    die("Error executing query: " . $this->conn->error);
+                    return false;
+                    //die("Error executing query: " . $this->conn->error);
                 }
             }
         }

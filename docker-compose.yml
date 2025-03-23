@@ -1,5 +1,3 @@
-version: "3.7"
-
 volumes:
   mariadb_data:
 
@@ -27,11 +25,13 @@ services:
   cycruise:
     image: topeestla/cycruise:latest
     container_name: cycruise_php
+    pull_policy: always
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
     ports:
       - 4000:80
     environment:
+      APP_URL: https://cycruise.antoninp.dev
       DB_NAME: cycruise
       DB_HOST: mariadb
       DB_PORT: 3306

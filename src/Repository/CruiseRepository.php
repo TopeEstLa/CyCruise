@@ -61,22 +61,15 @@ class CruiseRepository
 
     public function insertDefaultValue(): bool
     {
-        return $this->database->executeSqlFile("../cruises_sql.sql");
+        if (!$this->database->executeSqlFile("../cruises_sql.sql")) {
+            if (!$this->database->executeSqlFile("../../cruises_sql.sql")) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
-    public function insertForce(int    $id, string $name, string $descriptions, string $short_descriptions, string $img,
-                                string $start_date, string $end_date, int $duration,
-                                Boat   $boat, float $price): bool
-    {
-        try {
-            $stmt = $this->database->getConnection()->prepare("INSERT IGNORE INTO cruise (id, name, description, short_descriptions, img, start_date, end_date, duration, boat_id, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $boat_id = $boat->getId();
-            $stmt->bind_param("issssssiid", $id, $name, $descriptions, $short_descriptions, $img, $start_date, $end_date, $duration, $boat_id, $price);
-            return $stmt->execute();
-        } catch (Exception $e) {
-            return false;
-        }
-    }
 
     public function insert(string $name, string $descriptions, string $short_descriptions, string $img,
                            string $start_date, string $end_date, int $duration,

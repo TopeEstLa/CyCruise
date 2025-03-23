@@ -19,7 +19,9 @@ class InvoiceService
     public function __construct()
     {
         $GLOBALS["SELLER"] = "MI-1_J";
-        $GLOBALS["CALLBACK_URL"] = "http://localhost:9090/payment-callback.php";
+        $GLOBALS["CALLBACK_URL"] = getenv("APP_URL") . "/payment-callback.php";
+
+        //$GLOBALS["CALLBACK_URL"] = "http://localhost:9090/payment-callback.php";
         $this->invoiceRepository = InvoiceRepository::getInstance();
         $this->invoicePassengerRepository = InvoicePassengerRepository::getInstance();
         $this->invoiceOptionRepository = InvoiceOptionRepository::getInstance();
