@@ -15,7 +15,7 @@ services:
     ports:
       - "3838:3306"
   cycruise:
-    image: cycruise:latest
+    image: cycruise-app
     container_name: cycruise_php
     ports:
       - 4000:80
