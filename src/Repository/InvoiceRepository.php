@@ -19,6 +19,9 @@ class InvoiceRepository
 
     public function __construct()
     {
+        UserRepository::getInstance();
+        CruiseRepository::getInstance();
+        BoatRepository::getInstance();
         try {
             $this->database = Database::getInstance();
 
@@ -204,7 +207,8 @@ class InvoiceRepository
                         $data['updated_at']);
                 }
             }
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+        }
 
         return $array;
     }
@@ -245,7 +249,8 @@ class InvoiceRepository
                         $data['updated_at']);
                 }
             }
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+        }
 
         return $array;
     }
