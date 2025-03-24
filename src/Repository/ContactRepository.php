@@ -54,7 +54,7 @@ class ContactRepository
         return false;
     }
 
-    public function selectById(int $id): ?ContactRequest
+    public function findById(int $id): ?ContactRequest
     {
         try {
             $stmt = $this->database->getConnection()
@@ -85,7 +85,7 @@ class ContactRepository
         return null;
     }
 
-    public function selectAll(): array
+    public function findAll(): array
     {
         $contactRequests = [];
 
