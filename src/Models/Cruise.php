@@ -40,8 +40,6 @@ class Cruise
         $this->price = $price;
     }
 
-    //i want to have
-    //String(type) -> Array(Options)
     public function mapOptionsByType(): array
     {
         $optionsByType = [];

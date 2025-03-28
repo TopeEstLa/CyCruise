@@ -173,7 +173,40 @@ class InvoiceRepository
         return null;
     }
 
-    public function findAllCurrentByUserIdOrderByCreatedAt(int $userId)
+    public function findAll(): array
+    {
+        $array = [];
+
+        try {
+            $stmt = $this->database->getConnection()->prepare("SELECT * FROM `invoices`");
+
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                while ($data = $result->fetch_assoc()) {
+                    $passengers = $this->invoicePassengerRepository->findByInvoiceId($data['id']);
+                    $passengerCount = count($passengers);
+
+                    $options = $this->invoiceOptionRepository->findByInvoiceId($data['id']);
+                    $array[] = new Invoice(
+                        $data['id'],
+                        UserRepository::getInstance()->findById($data['user_id']),
+                        CruiseRepository::getInstance()->findById($data['cruise_id']),
+                        $options,
+                        $passengerCount,
+                        $passengers,
+                        $data['total_prices'],
+                        InvoiceState::from($data['state']),
+                        $data['created_at'],
+                        $data['updated_at']);
+                }
+            }
+        } catch (Exception $e) {
+        }
+
+        return $array;
+    }
+
+    public function findAllCurrentByUserIdOrderByCreatedAt(int $userId): array
     {
         $array = [];
 
@@ -213,7 +246,7 @@ class InvoiceRepository
         return $array;
     }
 
-    public function findAllOldByUserAndStateIdOrderByCreatedAt(int $userId, InvoiceState $state)
+    public function findAllOldByUserAndStateIdOrderByCreatedAt(int $userId, InvoiceState $state): array
     {
         $array = [];
 

@@ -50,7 +50,7 @@ $current_page = basename($_SERVER['REQUEST_URI'], ".php");
                 </a>
             </li>
             <li>
-                <a class="menu-item" href="dashboard.html">
+                <a class="menu-item <?= $current_page == 'list-invoice' ? 'active' : '' ?>" href="list-invoice.php">
                     <i class="fas fa-calendar-alt"></i>
                     Réservations
                 </a>

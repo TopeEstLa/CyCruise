@@ -43,20 +43,19 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($cruiseList as $user): ?>
+            <?php foreach ($cruiseList as $cruise): ?>
                 <tr>
-                    <td>#<?php echo $user->getId() ?></td>
-                    <td><?php echo $user->getName() ?></td>
-                    <td><?php echo $user->getStartDate() ?></td>
-                    <td><?php echo $user->getEndDate() ?></a></td>
-                    <td><?php echo $user->getBoat()->getName() ?></td>
+                    <td>#<?php echo $cruise->getId() ?></td>
+                    <td><?php echo $cruise->getName() ?></td>
+                    <td><?php echo $cruise->getStartDate() ?></td>
+                    <td><?php echo $cruise->getEndDate() ?></a></td>
+                    <td><?php echo $cruise->getBoat()->getName() ?></td>
                     <td>
-                        <form method="POST" action="details-user.php" style="display:inline;">
-                            <input type="hidden" name="user_id" value="<?php echo $user->getId() ?>">
+                        <a href="details-cruise.php?id=<?php echo $cruise->getId() ?>" style="display:inline;">
                             <button type="submit" class="btn-edit">Modifier</button>
-                        </form>
+                        </a>
                         <form method="POST" action="delete-cruise.php" style="display:inline;">
-                            <input type="hidden" name="id" value="<?php echo $user->getId() ?>">
+                            <input type="hidden" name="id" value="<?php echo $cruise->getId() ?>">
                             <button type="submit" class="btn-delete">Supprimer</button>
                         </form>
                     </td>

@@ -7,17 +7,17 @@ session_start();
 
 $authService = new AuthService();
 
-if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+if ($_SERVER['REQUEST_METHOD'] != 'GET') {
     header("Location: list-user.php");
     exit;
 }
 
-if (!isset($_POST['user_id'])) {
+if (!isset($_GET['user_id'])) {
     header("Location: list-user.php");
     exit;
 }
 
-$selectUser = UserRepository::getInstance()->findById($_POST['user_id']);
+$selectUser = UserRepository::getInstance()->findById($_GET['user_id']);
 if ($selectUser == null) {
     header("Location: list-user.php");
     exit;

@@ -21,7 +21,7 @@ $boats = $boatRepository->selectAll();
     <link href="../assets/css/admin/create-cruise.css" rel="stylesheet">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-    <title>CyCruise - Create Cruise</title>
+    <title>CyCruise - Admin dashboard</title>
 
 </head>
 <body>
