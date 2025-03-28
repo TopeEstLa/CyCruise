@@ -1,12 +1,47 @@
 <?php
 
+require_once "../src/Services/AuthService.php";
+require_once "../src/Repository/BoatRepository.php";
 require_once "../src/Repository/CruiseRepository.php";
+
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    header("Location: index.php");
+    exit;
+}
 
 session_start();
 
-$boatList = BoatRepository::getInstance()->selectAll();
-$cruiseList = CruiseRepository::getInstance()->findAll();
+$authService = new AuthService();
 
+if ($authService->isLoggedIn()) {
+    header("Location: index.php");
+    exit;
+}
+
+if (!isset($_POST["search-cruise"])) {
+    header("Location: index.php");
+    exit;
+}
+
+if (!isset($_POST["boat-select"])) {
+    header("Location: index.php");
+    exit;
+}
+
+if (!isset($_POST["start-date"])) {
+    header("Location: index.php");
+    exit;
+}
+
+$searchCruise = $_POST["search-cruise"];
+$boatSelect = $_POST["boat-select"];
+$startDate = $_POST["start-date"];
+
+if ($boatSelect != "*") {
+    $cruiseList = CruiseRepository::getInstance()->findAllByNameContainAndBoatIdAndStartDate($startDate, $boatSelect, $searchCruise);
+} else {
+    $cruiseList = CruiseRepository::getInstance()->findAllByNameContainAndStartDate($startDate, $searchCruise);
+}
 
 ?>
 
@@ -36,39 +71,13 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
                 beauté de la <span class="highlight">Méditerranée</span> (<span class="highlight">orientale</span> et
                 <span class="highlight">occidentale</span>) <br> ou partez en croisière aux <span class="highlight">îles Canaries et Madère</span>.
                 Explorez l<span class="highlight">'Amérique du Sud</span>, la magie des <span
-                        class="highlight">Émirats</span> et d'<span class="highlight">Amérique du Nord</span>, <br>le
+                    class="highlight">Émirats</span> et d'<span class="highlight">Amérique du Nord</span>, <br>le
                 mystère des <span class="highlight">pays nordiques</span>,
                 l'exotisme des <span class="highlight">Caraïbes</span>, nos croisières d'<span
-                        class="highlight">Asie</span> et d'<span class="highlight">Afrique du Sud</span> et
+                    class="highlight">Asie</span> et d'<span class="highlight">Afrique du Sud</span> et
                 l’exclusivité de notre île privée
                 <span class="highlight">Ocean Cay Cy Marine Reserve</span>.</p>
-            <h3>Trouvez votre destinations</h3>
         </div>
-
-        <form class="select-container" method="POST" action="search.php">
-            <div class="input-group">
-                <input id="search-cruise" name="search-cruise" required placeholder="Rechercher une destinations ..."
-                       type="text">
-            </div>
-            <div class="input-group">
-                <label for="boat-select">Bateau</label>
-                <select id="boat-select" name="boat-select">
-                    <option value="*">Tout</option>
-                    <?php foreach ($boatList as $boat): ?>
-                        <option value="<?php echo $boat->getId() ?>"><?php echo $boat->getName() ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="input-group">
-                <label for="start-date">Date de départ</label>
-                <input id="start-date" name="start-date" required type="date">
-            </div>
-            <div class="input-submit">
-                <button type="submit" class="btn-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-        </form>
     </header>
 
     <section class="cruise-shop-list">

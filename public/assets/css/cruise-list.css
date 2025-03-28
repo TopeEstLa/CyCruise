@@ -33,7 +33,9 @@
     text-align: center;
 }
 
-#search-boat {
+
+
+#search-cruise {
     padding: 0.5rem;
     border: 1px solid var(--color-gray);
     border-radius: 5px;
@@ -48,10 +50,16 @@
     margin-right: 1rem;
 }
 
-#continent-select {
+#start-date {
     padding: 0.5rem;
     border: 1px solid var(--color-gray);
     border-radius: 5px;
+}
+
+.btn-search {
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-left: 1rem;
 }
 
 

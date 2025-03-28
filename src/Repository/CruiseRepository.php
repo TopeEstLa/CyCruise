@@ -153,5 +153,68 @@ class CruiseRepository
         return $cruiseList;
     }
 
+    public function findAllByNameContainAndBoatIdAndStartDate(string $name, int $boatId, string $startDate): array
+    {
+        $cruiseList = [];
+
+        try {
+            $stmt = $this->database->getConnection()->prepare("SELECT * FROM cruise WHERE boat_id = ? AND start_date >= ?");
+            $name = "%$name%";
+            $stmt->bind_param("is", $boatId, $startDate);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($data = $result->fetch_assoc()) {
+                $cruiseList[] = new Cruise(
+                    $data['id'],
+                    $data['name'],
+                    $data['description'],
+                    $data['short_descriptions'],
+                    $data['img'],
+                    $data['start_date'],
+                    $data['end_date'],
+                    $data['duration'],
+                    $this->boatRepository->selectById($data['boat_id']),
+                    $this->cruiseStageRepository->selectAllByCruiseId($data['id']),
+                    $this->cruiseOptionRepository->selectAllByCruiseId($data['id']),
+                    $data['price']
+                );
+            }
+        } catch (Exception $e) {
+        }
+
+        return $cruiseList;
+    }
+
+    public function findAllByNameContainAndStartDate(string $name, string $startDate): array
+    {
+        $cruiseList = [];
+
+        try {
+            $stmt = $this->database->getConnection()->prepare("SELECT * FROM cruise WHERE start_date >= ?");
+            $name = "%$name%";
+            $stmt->bind_param("s", $startDate);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($data = $result->fetch_assoc()) {
+                $cruiseList[] = new Cruise(
+                    $data['id'],
+                    $data['name'],
+                    $data['description'],
+                    $data['short_descriptions'],
+                    $data['img'],
+                    $data['start_date'],
+                    $data['end_date'],
+                    $data['duration'],
+                    $this->boatRepository->selectById($data['boat_id']),
+                    $this->cruiseStageRepository->selectAllByCruiseId($data['id']),
+                    $this->cruiseOptionRepository->selectAllByCruiseId($data['id']),
+                    $data['price']
+                );
+            }
+        } catch (Exception $e) {
+        }
+
+        return $cruiseList;
+    }
 
 }
