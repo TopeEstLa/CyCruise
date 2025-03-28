@@ -47,8 +47,8 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
 
         <form class="select-container" method="POST" action="search.php">
             <div class="input-group">
-                <input id="search-cruise" name="search-cruise" required placeholder="Rechercher une destinations ..."
-                       type="text">
+            <!--    <input id="search-cruise" name="search-cruise" required placeholder="Rechercher une destinations ..."
+                       type="text"> -->
             </div>
             <div class="input-group">
                 <label for="boat-select">Bateau</label>

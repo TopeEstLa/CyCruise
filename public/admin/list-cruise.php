@@ -30,7 +30,7 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
 
 <main>
     <div class="content-table">
-        <h2>Liste des croisières</h2>
+        <h2>Liste des croisières <a href="create-cruise.php" class="btn-edit">Créer</a></h2>
         <table>
             <thead>
             <tr>

@@ -31,7 +31,7 @@ if ($cruise === null) {
     <link href="assets/css/btn-kit.css" rel="stylesheet">
     <link href="assets/css/navbar.css" rel="stylesheet">
     <link href="assets/css/footer.css" rel="stylesheet">
-    <link href="assets/css/test-cruise-details.css" rel="stylesheet">
+    <link href="assets/css/cruise-details.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <title>CyCruise - Your best cruise</title>
 </head>

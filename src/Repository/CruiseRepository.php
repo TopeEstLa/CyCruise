@@ -73,13 +73,18 @@ class CruiseRepository
 
     public function insert(string $name, string $descriptions, string $short_descriptions, string $img,
                            string $start_date, string $end_date, int $duration,
-                           Boat   $boat, float $price): bool
+                           Boat   $boat, float $price): int
     {
         try {
             $stmt = $this->database->getConnection()->prepare("INSERT INTO cruise (name, description, short_descriptions, img, start_date, end_date, duration, boat_id, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $boat_id = $boat->getId();
             $stmt->bind_param("ssssssiid", $name, $descriptions, $short_descriptions, $img, $start_date, $end_date, $duration, $boat_id, $price);
-            return $stmt->execute();
+
+            if ($stmt->execute()) {
+                return $this->database->getConnection()->insert_id;
+            } else {
+                return -1;
+            }
         } catch (Exception $e) {
             return false;
         }

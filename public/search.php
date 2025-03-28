@@ -18,10 +18,11 @@ if ($authService->isLoggedIn()) {
     exit;
 }
 
+/**
 if (!isset($_POST["search-cruise"])) {
     header("Location: index.php");
     exit;
-}
+} */
 
 if (!isset($_POST["boat-select"])) {
     header("Location: index.php");
@@ -33,7 +34,8 @@ if (!isset($_POST["start-date"])) {
     exit;
 }
 
-$searchCruise = $_POST["search-cruise"];
+//$searchCruise = $_POST["search-cruise"];
+$searchCruise = "";
 $boatSelect = $_POST["boat-select"];
 $startDate = $_POST["start-date"];
 

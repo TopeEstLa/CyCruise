@@ -41,11 +41,11 @@ class CruiseStageRepository
         return self::$instance;
     }
 
-    public function insertForce(int $id, int $cruise_id, string $name, string $description, string $start_date, string $end_date, float $latitude, float $longitude): bool
+    public function insert(int $cruise_id, string $name, string $description, string $start_date, string $end_date, float $latitude, float $longitude): bool
     {
         try {
-            $stmt = $this->database->getConnection()->prepare("INSERT IGNORE INTO cruise_stage (id, cruise_id, name, description, start_date, end_date, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("iissssdd", $id, $cruise_id, $name, $description, $start_date, $end_date, $latitude, $longitude);
+            $stmt = $this->database->getConnection()->prepare("INSERT INTO cruise_stage (cruise_id, name, description, start_date, end_date, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("issssdd", $cruise_id, $name, $description, $start_date, $end_date, $latitude, $longitude);
 
             return $stmt->execute();
         } catch (Exception $e) {

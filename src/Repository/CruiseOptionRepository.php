@@ -42,11 +42,11 @@ class CruiseOptionRepository
     }
 
 
-    public function insertForce(int $id, int $cruise_id, string $type, string $name, float $price, bool $default, bool $perPassenger): bool
+    public function insert(int $cruise_id, string $type, string $name, float $price, bool $default, bool $perPassenger): bool
     {
         try {
-            $stmt = $this->database->getConnection()->prepare("INSERT IGNORE INTO cruise_option (id, cruise_id, type, name, price, is_default, per_passenger) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("iisssii", $id, $cruise_id, $type, $name, $price, $default, $perPassenger);
+            $stmt = $this->database->getConnection()->prepare("INSERT INTO cruise_option (cruise_id, type, name, price, is_default, per_passenger) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("isssii", $cruise_id, $type, $name, $price, $default, $perPassenger);
             return $stmt->execute();
         } catch (Exception $e) {
             die("Error while inserting cruise option: " . $e->getMessage());

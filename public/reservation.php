@@ -98,7 +98,7 @@ $totalPrice += ($passengerPrice * $passengerCount);
     <link href="assets/css/navbar.css" rel="stylesheet">
     <link href="assets/css/footer.css" rel="stylesheet">
 
-    <link href="assets/css/test-reservation.css" rel="stylesheet">
+    <link href="assets/css/reservation.css" rel="stylesheet">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <title>CyCruise - Your best cruise</title>

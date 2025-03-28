@@ -15,9 +15,6 @@ if (!$authService->isAdmin()) {
 
 $current_page = basename($_SERVER['REQUEST_URI'], ".php");
 
-$basePath = str_repeat('../', substr_count($_SERVER['REQUEST_URI'], '/') - 2);
-print $basePath
-
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">

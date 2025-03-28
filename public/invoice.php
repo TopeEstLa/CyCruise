@@ -39,7 +39,7 @@ if ($invoice === null) {
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/footer.css">
 
-    <link rel="stylesheet" href="assets/css/reservation-details.css">
+    <link rel="stylesheet" href="assets/css/invoice-details.css">
 
     <title>CyCruise - Your best cruise</title>
 </head>
