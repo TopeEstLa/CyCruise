@@ -17,7 +17,6 @@ if (!$authService->isAdmin()) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    echo "invalid request";
     header("Location: ../index.php");
     exit;
 }

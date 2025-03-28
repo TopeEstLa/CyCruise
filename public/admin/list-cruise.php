@@ -55,8 +55,8 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
                             <input type="hidden" name="user_id" value="<?php echo $user->getId() ?>">
                             <button type="submit" class="btn-edit">Modifier</button>
                         </form>
-                        <form method="POST" action="delete-user.php" style="display:inline;">
-                            <input type="hidden" name="user_id" value="<?php echo $user->getId() ?>">
+                        <form method="POST" action="delete-cruise.php" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $user->getId() ?>">
                             <button type="submit" class="btn-delete">Supprimer</button>
                         </form>
                     </td>
