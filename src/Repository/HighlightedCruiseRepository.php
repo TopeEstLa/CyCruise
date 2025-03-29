@@ -1,4 +1,6 @@
 <?php
+require_once "CruiseRepository.php";
+
 
 class HighlightedCruiseRepository
 {
@@ -24,6 +26,9 @@ class HighlightedCruiseRepository
                             ON DELETE CASCADE ON UPDATE CASCADE);")
                 ->execute();
 
+            $this->insertForce(1, 1);
+            $this->insertForce(2, 2);
+            $this->insertForce(3, 3);
         } catch (Exception $e) {
             die("Database connection failed: " . $e->getMessage());
         }
@@ -35,6 +40,60 @@ class HighlightedCruiseRepository
             self::$instance = new HighlightedCruiseRepository();
         }
         return self::$instance;
+    }
+
+    public function insertForce(int $id, int $cruiseId): bool
+    {
+        try {
+            $stmt = $this->database->getConnection()
+                ->prepare("INSERT IGNORE INTO highlighted_cruise (id, cruise_id) VALUES (?, ?)");
+
+            $stmt->bind_param("ii", $id, $cruiseId);
+
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function insert(int $cruiseId): bool
+    {
+        try {
+            $stmt = $this->database->getConnection()
+                ->prepare("INSERT INTO highlighted_cruise (cruise_id) VALUES (?)");
+
+            $stmt->bind_param("i", $cruiseId);
+
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function delete(int $id): bool
+    {
+        try {
+            $stmt = $this->database->getConnection()
+                ->prepare("DELETE FROM highlighted_cruise WHERE id = ?");
+
+            $stmt->bind_param("i", $id);
+
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     public function findAll(): array
@@ -61,8 +120,8 @@ class HighlightedCruiseRepository
             }
 
 
-
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+        }
 
         return $cruises;
     }

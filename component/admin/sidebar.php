@@ -44,6 +44,12 @@ $current_page = basename($_SERVER['REQUEST_URI'], ".php");
                 </a>
             </li>
             <li>
+                <a class="menu-item <?= $current_page == 'list-highlighted' ? 'active' : '' ?>" href="list-highlighted.php">
+                    <i class="fas fa-line-chart"></i>
+                    Croisière mise en avant
+                </a>
+            </li>
+            <li>
                 <a class="menu-item <?= $current_page == 'list-user' ? 'active' : '' ?>" href="list-user.php">
                     <i class="fas fa-users"></i>
                     Clients

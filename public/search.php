@@ -13,11 +13,6 @@ session_start();
 
 $authService = new AuthService();
 
-if ($authService->isLoggedIn()) {
-    header("Location: index.php");
-    exit;
-}
-
 /**
 if (!isset($_POST["search-cruise"])) {
     header("Location: index.php");

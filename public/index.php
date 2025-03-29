@@ -1,11 +1,13 @@
 <?php
 
 require_once "../src/Services/AuthService.php";
-require_once "../src/Utils/getapikey.php";
+require_once "../src/Repository/HighlightedCruiseRepository.php";
 
 session_start();
 
 $authService = new AuthService();
+
+$cruiseList = HighlightedCruiseRepository::getInstance()->findAll();
 
 ?>
 
@@ -64,56 +66,21 @@ $authService = new AuthService();
                 </div>
                 <div>
                     <div class="featured-grid-container">
+                        <?php foreach ($cruiseList as $cruise) : ?>
                         <div class="cruise-card">
                             <img alt="Cruise 1" class="cruise-card-image"
-                                 src="public/img/cruise-data/mediterranean.png">
-                            <div class="cruise-card-content">
-                                <h3>MÉDITERRANÉE</h3>
-                                <p>Choisissez CyCruise pour un voyage extraordinaire en Méditerranée ! Que vous
-                                    préfériez
-                                    explorer la Méditerranée occidentale ou orientale, préparez-vous à découvrir
-                                    certains
-                                    des
-                                    plus beaux sites classés au patrimoine mondial de l'UNESCO.</p>
-                                <a class="cruise-card-read-more btn-secondary" href="mediterranean-cruise-detail.html">
-                                    <i class="fa fa-compass btn-secondary-icon"></i>
-                                    Explorer
-                                </a>
-                            </div>
-                        </div>
+                                 src="<?= $cruise->getImg() ?>">
 
-                        <div class="cruise-card">
-                            <img alt="Cruise 2" class="cruise-card-image"
-                                 src="public/img/cruise-data/caribbean-miami.png">
                             <div class="cruise-card-content">
-                                <h3>CARAÏBES</h3>
-                                <p>CyCruise vous emmène au paradis tropical des Caraïbes ! Des plages de rêve, où le
-                                    sable
-                                    blanc
-                                    et la mer turquoise vous attendent pour nager, faire de la plongée et vous détendre
-                                    tout
-                                    en
-                                    profitant de la beauté des lieux.</p>
-                                <a class="cruise-card-read-more btn-secondary" href="mediterranean-cruise-detail.html">
+                                <h3><?php echo htmlspecialchars($cruise->getName()) ?></h3>
+                                <p><?php echo htmlspecialchars($cruise->getShortDescriptions()) ?></p>
+                                <a class="cruise-card-read-more btn-secondary" href="cruise-detail.php?id=<?php echo $cruise->getId() ?>">
                                     <i class="fa fa-compass btn-secondary-icon"></i>
                                     Explorer
                                 </a>
                             </div>
                         </div>
-
-                        <div class="cruise-card">
-                            <img alt="Cruise 3" class="cruise-card-image" src="public/img/cruise-data/antilles.png">
-                            <div class="cruise-card-content">
-                                <h3>ANTILLES</h3>
-                                <p>Mettez les voiles avec CyCruise et plongez dans les rythmes dynamiques des Antilles !
-                                    Explorez des îles où les traditions colorées et les mélodies créoles prennent
-                                    vie.</p>
-                                <a class="cruise-card-read-more btn-secondary" href="mediterranean-cruise-detail.html">
-                                    <i class="fa fa-compass btn-secondary-icon"></i>
-                                    Explorer
-                                </a>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
