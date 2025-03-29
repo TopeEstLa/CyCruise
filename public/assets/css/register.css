@@ -41,6 +41,11 @@
     text-decoration: none;
 }
 
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
 #firstname {
     width: 100%;
     height: 34px;

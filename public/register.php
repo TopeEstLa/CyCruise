@@ -58,14 +58,14 @@ if (isset($_POST['register'])) {
 <body>
 <?php include "../component/navbar.php"; ?>
 
-
-<?php if (isset($error)) {
-    echo "<p style='color:red;'>$error</p>";
-} ?>
-
 <main>
     <section class="register-card">
         <h1>Inscriptions</h1>
+        <?php if (isset($error)): ?>
+            <div class="error-message">
+                <?php echo $error; ?>
+            </div>
+        <?php endif; ?>
         <form method="POST" action="">
             <div class="input-group">
                 <label for="firstname">Prénom</label>
