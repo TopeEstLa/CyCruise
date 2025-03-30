@@ -48,6 +48,18 @@ due to the evaluation of the project divided into parts, we have one branch per 
 
 for more information see the [DT](document/DT.pdf) document.
 
+## Default account
+
+| Email                  | Password | Role |
+|------------------------|----------|------|
+| test.admin@localhost   | password | admin |
+| test1.admin@localhost  | password | admin |
+| test.user@localhost    | password | user |
+| test.vip@localhost     | password | vip |
+| test.premium@localhost | password | premium |
+
+
+
 ## List of documents 📚
 
 - [DA](document/DA.pdf) : Document explaining the artistic direction of the project.
