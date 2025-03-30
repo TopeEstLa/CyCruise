@@ -46,7 +46,10 @@ due to the evaluation of the project divided into parts, we have one branch per 
 5. Run the php server with the command `php -S localhost:4000 -t public/` in the root of the project.
 6. Open your browser and go to [http://localhost:4000](http://localhost:4000) to see the project.
 
+for more information see the [DT](document/DT.pdf) document.
+
 ## List of documents 📚
 
 - [DA](document/DA.pdf) : Document explaining the artistic direction of the project.
+- [DT](document/DT.pdf) : Document explaining the technical direction of the project.
 - [RapportProjetInformatiqueV3](document/RapportProjetInformatiqueV3.pdf) : Project report.
