@@ -34,7 +34,7 @@ due to the evaluation of the project divided into parts, we have one branch per 
 
 > [!IMPORTANT]
 > The [docker-compose.yml](docker-compose.yml) is used for the production
-> version ([cycruise.antoninp.dev](cycruise.antoninp.dev)) and use the image from the docker hub. <br>
+> version ([cycruise.antoninp.dev](https://cycruise.antoninp.dev)) and use the image from the docker hub. <br>
 
 ### Without docker
 
