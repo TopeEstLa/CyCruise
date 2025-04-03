@@ -26,6 +26,14 @@ if (isset($_POST['register'])) {
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
 
+            if (!preg_match("/^[a-zA-Z]+$/", $firstname)) {
+                $error = "Invalid first name!";
+            } elseif (!preg_match("/^[a-zA-Z]+$/", $lastname)) {
+                $error = "Invalid last name!";
+            } elseif (empty($email) || empty($password) || empty($firstname) || empty($lastname)) {
+                $error = "All fields are required!";
+            }
+
             $birth = $_POST['birth'];
 
             if ($authService->register($email, $password, $firstname, $lastname, $birth)) {

@@ -43,18 +43,21 @@ $userList = UserRepository::getInstance()->findAll();
             <tbody>
             <?php foreach ($userList as $user): ?>
                 <tr>
-                    <td>#<?php echo $user->getId() ?></td>
-                    <td><?php echo $user->getLastname() ?></td>
-                    <td><?php echo $user->getFirstname() ?></td>
-                    <td><a href="mailto:<?php echo $user->getEmail() ?>"><?php echo $user->getEmail() ?> <i
-                                    class="fa fa-external-link"></i></a></td>
-                    <td><?php echo $user->getRole()->toString() ?></td>
+                    <td>#<?php echo htmlspecialchars($user->getId()) ?></td>
+                    <td><?php echo htmlspecialchars($user->getLastname()) ?></td>
+                    <td><?php echo htmlspecialchars($user->getFirstname()) ?></td>
                     <td>
-                        <a href="details-user.php?user_id=<?php echo $user->getId() ?>" style="display:inline;">
+                        <a href="mailto:<?php echo htmlspecialchars($user->getEmail()) ?>"><?php echo htmlspecialchars($user->getEmail()) ?>
+                            <i
+                                    class="fa fa-external-link"></i></a></td>
+                    <td><?php echo htmlspecialchars($user->getRole()->toString()) ?></td>
+                    <td>
+                        <a href="details-user.php?user_id=<?php echo htmlspecialchars($user->getId()) ?>"
+                           style="display:inline;">
                             <button type="submit" class="btn-edit">Modifier</button>
                         </a>
                         <form method="POST" action="delete-user.php" style="display:inline;">
-                            <input type="hidden" name="user_id" value="<?php echo $user->getId() ?>">
+                            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user->getId()) ?>">
                             <button type="submit" class="btn-delete">Supprimer</button>
                         </form>
                     </td>

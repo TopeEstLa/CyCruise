@@ -46,9 +46,10 @@ $exploraBoats = $boatRepository->selectAllByType(BoatType::EXPLORA);
         <div class="grid-container">
             <?php foreach ($defaultBoats as $defaultBoat) { ?>
                 <div class="grid-item">
-                    <a class="image-container" >
-                        <img alt="<?= $defaultBoat->getName() ?>" src="<?= $defaultBoat->getImg() ?>">
-                        <h2><?= $defaultBoat->getName() ?></h2>
+                    <a class="image-container">
+                        <img alt="<?= htmlspecialchars($defaultBoat->getName()) ?>"
+                             src="<?= htmlspecialchars($defaultBoat->getImg()) ?>">
+                        <h2><?= htmlspecialchars($defaultBoat->getName()) ?></h2>
                     </a>
                 </div>
             <?php } ?>
@@ -65,8 +66,8 @@ $exploraBoats = $boatRepository->selectAllByType(BoatType::EXPLORA);
             des <span class="highlight">suites élégantes avec vue
             sur
             l'océan</span> aux services personnalisés, en passant par <span
-                class="highlight">une gastronomie unique</span>, des <span
-                class="highlight">divertissements variés</span> et
+                    class="highlight">une gastronomie unique</span>, des <span
+                    class="highlight">divertissements variés</span> et
             des <span class="highlight">activités de bien-être</span>.
         </p>
     </section>
@@ -75,8 +76,8 @@ $exploraBoats = $boatRepository->selectAllByType(BoatType::EXPLORA);
         <div class="grid-container">
             <?php foreach ($exploraBoats as $exploraBoat) { ?>
                 <div class="grid-item">
-                    <a class="image-container" >
-                        <img alt="<?= $exploraBoat->getName() ?>" src="<?= $exploraBoat->getImg() ?>">
+                    <a class="image-container">
+                        <img alt="<?= htmlspecialchars($exploraBoat->getName()) ?>" src="<?= htmlspecialchars($exploraBoat->getImg()) ?>">
                     </a>
                 </div>
             <?php } ?>

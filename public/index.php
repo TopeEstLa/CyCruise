@@ -69,7 +69,7 @@ $cruiseList = HighlightedCruiseRepository::getInstance()->findAll();
                         <?php foreach ($cruiseList as $cruise) : ?>
                         <div class="cruise-card">
                             <img alt="Cruise 1" class="cruise-card-image"
-                                 src="<?= $cruise->getImg() ?>">
+                                 src="<?= htmlspecialchars($cruise->getImg()) ?>">
 
                             <div class="cruise-card-content">
                                 <h3><?php echo htmlspecialchars($cruise->getName()) ?></h3>

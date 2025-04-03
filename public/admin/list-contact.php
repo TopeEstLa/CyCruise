@@ -53,17 +53,17 @@ $contactList = ContactRepository::getInstance()->findAll();
             <tbody>
             <?php foreach ($contactList as $contactRequest): ?>
                 <tr>
-                    <td>#<?php echo $contactRequest->getId() ?></td>
-                    <td><?php echo $contactRequest->getLastname() ?></td>
-                    <td><?php echo $contactRequest->getFirstname() ?></td>
-                    <td><?php echo $contactRequest->getSubject() ?></td>
+                    <td>#<?php echo htmlspecialchars($contactRequest->getId()) ?></td>
+                    <td><?php echo htmlspecialchars($contactRequest->getLastname()) ?></td>
+                    <td><?php echo htmlspecialchars($contactRequest->getFirstname()) ?></td>
+                    <td><?php echo htmlspecialchars($contactRequest->getSubject()) ?></td>
                     <td>
                         <form method="POST" action="details-user.php" style="display:inline;">
-                            <input type="hidden" name="contact_id" value="<?php echo $contactRequest->getId() ?>">
+                            <input type="hidden" name="contact_id" value="<?php echo htmlspecialchars($contactRequest->getId()) ?>">
                             <button type="submit" class="btn-edit">Modifier</button>
                         </form>
                         <form method="POST" action="delete-user.php" style="display:inline;">
-                            <input type="hidden" name="contact_id" value="<?php echo $contactRequest->getId() ?>">
+                            <input type="hidden" name="contact_id" value="<?php echo htmlspecialchars($contactRequest->getId()) ?>">
                             <button type="submit" class="btn-delete">Supprimer</button>
                         </form>
                     </td>

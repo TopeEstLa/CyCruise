@@ -38,16 +38,16 @@ $cruiseList = HighlightedCruiseRepository::getInstance()->findAll();
             <tbody>
             <?php foreach ($cruiseList as $highlightedCruise): ?>
                 <tr>
-                    <td>#<?php echo $highlightedCruise->getId() ?></td>
-                    <td><?php echo $highlightedCruise->getName() ?></td>
-                    <td><?php echo $highlightedCruise->getBoat()->getName() ?></td>
+                    <td>#<?php echo htmlspecialchars($highlightedCruise->getId()) ?></td>
+                    <td><?php echo htmlspecialchars($highlightedCruise->getName()) ?></td>
+                    <td><?php echo htmlspecialchars($highlightedCruise->getBoat()->getName()) ?></td>
                     <td>
-                        <a href="details-highlighted.php?id=<?php echo $highlightedCruise->getId() ?>"
+                        <a href="details-highlighted.php?id=<?php echo htmlspecialchars($highlightedCruise->getId()) ?>"
                            style="display:inline;">
                             <button type="submit" class="btn-edit">Modifier</button>
                         </a>
                         <form method="POST" action="delete-highlighted.php" style="display:inline;">
-                            <input type="hidden" name="id" value="<?php echo $highlightedCruise->getId() ?>">
+                            <input type="hidden" name="id" value="<?php echo htmlspecialchars($highlightedCruise->getId()) ?>">
                             <button type="submit" class="btn-delete">Supprimer</button>
                         </form>
                     </td>

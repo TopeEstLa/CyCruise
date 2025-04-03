@@ -46,18 +46,19 @@ $invoices = InvoiceRepository::getInstance()->findAll();
                 <tr>
                     <td>#<?php echo $invoice->getId() ?></td>
                     <td>
-                        <a href="details-user.php?user_id=<?php echo $invoice->getUser()->getId() ?>"><?php echo $invoice->getUser()->getFirstname() ?>
-                            <?php echo $invoice->getUser()->getLastname() ?>
+                        <a href="details-user.php?user_id=<?php echo htmlspecialchars($invoice->getUser()->getId()) ?>"><?php echo htmlspecialchars($invoice->getUser()->getFirstname()) ?>
+                            <?php echo htmlspecialchars($invoice->getUser()->getLastname()) ?>
                             <i class="fa fa-external-link"></i></a></td>
-                    <td><?php echo $invoice->getCruise()->getName() ?></td>
-                    <td><?php echo $invoice->getCreatedAt() ?></td>
+                    <td><?php echo htmlspecialchars($invoice->getCruise()->getName()) ?></td>
+                    <td><?php echo date("d F Y", strtotime($invoice->getCreatedAt())) ?></td>
                     <td><?php echo $invoice->getState()->toString() ?></td>
                     <td>
-                        <a href="details-invoice.php?id=<?php echo $invoice->getId() ?>" style="display:inline;">
+                        <a href="details-invoice.php?id=<?php echo htmlspecialchars($invoice->getId()) ?>"
+                           style="display:inline;">
                             <button type="submit" class="btn-edit">Modifier</button>
                         </a>
                         <form method="POST" action="delete-invoice.php" style="display:inline;">
-                            <input type="hidden" name="id" value="<?php echo $invoice->getId() ?>">
+                            <input type="hidden" name="id" value="<?php echo htmlspecialchars($invoice->getId()) ?>">
                             <button type="submit" class="btn-delete">Supprimer</button>
                         </form>
                     </td>

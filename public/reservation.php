@@ -179,13 +179,13 @@ $totalPrice += ($passengerPrice * $passengerCount);
                         <div class="form-group">
                             <label for="first_name_<?php echo $i; ?>">Prénom</label>
                             <input type="text" id="first_name_<?php echo $i; ?>" name="first_name_<?php echo $i; ?>"
-                                   value="<?php echo isset($passengerData[$i]) ? htmlspecialchars($passengerData[$i]['first_name']) : (($i == 0) ? $user->getFirstname() : '') ?>"
+                                   value="<?php echo isset($passengerData[$i]) ? htmlspecialchars($passengerData[$i]['first_name']) : (($i == 0) ? htmlspecialchars($user->getFirstname()) : '') ?>"
                                    required>
                         </div>
                         <div class="form-group">
                             <label for="last_name_<?php echo $i; ?>">Nom</label>
                             <input type="text" id="last_name_<?php echo $i; ?>" name="last_name_<?php echo $i; ?>"
-                                   value="<?php echo isset($passengerData[$i]) ? htmlspecialchars($passengerData[$i]['last_name']) : (($i == 0) ? $user->getLastname() : '') ?>"
+                                   value="<?php echo isset($passengerData[$i]) ? htmlspecialchars($passengerData[$i]['last_name']) : (($i == 0) ? htmlspecialchars($user->getLastname()) : '') ?>"
                                    required>
                         </div>
                     </fieldset>
@@ -218,10 +218,10 @@ $totalPrice += ($passengerPrice * $passengerCount);
             </div>
         </div>
 
-        <input type="hidden" name="cruise_id" value="<?php echo $cruise->getId(); ?>">
+        <input type="hidden" name="cruise_id" value="<?php echo htmlspecialchars($cruise->getId()); ?>">
 
         <div class="submit-container">
-            <a href="cruise-detail.php?id=<?php echo $cruise->getId(); ?>" class="btn-primary">
+            <a href="cruise-detail.php?id=<?php echo htmlspecialchars($cruise->getId()); ?>" class="btn-primary">
                 <i class="fas fa-arrow-left btn-secondary-icon"></i> Retour
             </a>
             <button type="submit" class="btn-primary">

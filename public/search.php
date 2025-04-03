@@ -81,9 +81,9 @@ if ($boatSelect != "*") {
         <div class="grid-container">
             <?php foreach ($cruiseList as $cruise): ?>
                 <div class="grid-item">
-                    <a class="image-container" href="cruise-detail.php?id=<?php echo $cruise->getId() ?>">
-                        <img alt="<?php echo $cruise->getName() ?>" src="<?php echo $cruise->getImg() ?>">
-                        <h2><?php echo $cruise->getName() ?></h2>
+                    <a class="image-container" href="cruise-detail.php?id=<?php echo htmlspecialchars($cruise->getId()) ?>">
+                        <img alt="<?php echo htmlspecialchars($cruise->getName()) ?>" src="<?php echo htmlspecialchars($cruise->getImg()) ?>">
+                        <h2><?php echo htmlspecialchars($cruise->getName()) ?></h2>
                     </a>
                 </div>
             <?php endforeach; ?>

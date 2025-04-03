@@ -47,15 +47,15 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
 
         <form class="select-container" method="POST" action="search.php">
             <div class="input-group">
-            <!--    <input id="search-cruise" name="search-cruise" required placeholder="Rechercher une destinations ..."
-                       type="text"> -->
+                <!--    <input id="search-cruise" name="search-cruise" required placeholder="Rechercher une destinations ..."
+                           type="text"> -->
             </div>
             <div class="input-group">
                 <label for="boat-select">Bateau</label>
                 <select id="boat-select" name="boat-select">
                     <option value="*">Tout</option>
                     <?php foreach ($boatList as $boat): ?>
-                        <option value="<?php echo $boat->getId() ?>"><?php echo $boat->getName() ?></option>
+                        <option value="<?php echo htmlspecialchars($boat->getId()) ?>"><?php echo htmlspecialchars($boat->getName()) ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -75,9 +75,11 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
         <div class="grid-container">
             <?php foreach ($cruiseList as $cruise): ?>
                 <div class="grid-item">
-                    <a class="image-container" href="cruise-detail.php?id=<?php echo $cruise->getId() ?>">
-                        <img alt="<?php echo $cruise->getName() ?>" src="<?php echo $cruise->getImg() ?>">
-                        <h2><?php echo $cruise->getName() ?></h2>
+                    <a class="image-container"
+                       href="cruise-detail.php?id=<?php echo htmlspecialchars($cruise->getId()) ?>">
+                        <img alt="<?php echo htmlspecialchars($cruise->getName()) ?>"
+                             src="<?php echo htmlspecialchars($cruise->getImg()) ?>">
+                        <h2><?php echo htmlspecialchars($cruise->getName()) ?></h2>
                     </a>
                 </div>
             <?php endforeach; ?>
