@@ -39,6 +39,7 @@ $oldInvoices = InvoiceRepository::getInstance()->findAllOldByUserAndStateIdOrder
 <head>
     <meta charset="UTF-8">
     <script src="assets/js/darkTheme.js"></script>
+    <script src="assets/js/account.js"></script>
 
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/btn-kit.css">
@@ -56,29 +57,29 @@ $oldInvoices = InvoiceRepository::getInstance()->findAllOldByUserAndStateIdOrder
     <div class="account-container">
         <div class="account-section">
             <div class="account-info">
-                <form method="POST">
+                <form id="account-form" method="POST">
                     <h2>Mon Compte</h2>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input id="email" name="email" type="email"
+                        <input disabled id="email" name="email" type="email"
                                value="<?php echo htmlspecialchars($user->getEmail()) ?>">
                     </div>
                     <div class="form-group">
                         <label for="firstname">Prénom</label>
-                        <input id="firstname" name="firstname" type="text"
+                        <input disabled id="firstname" name="firstname" type="text"
                                value="<?php echo htmlspecialchars($user->getFirstname()) ?>">
                     </div>
                     <div class="form-group">
                         <label for="lastname">Nom</label>
-                        <input id="lastname" name="lastname" type="text"
+                        <input disabled id="lastname" name="lastname" type="text"
                                value="<?php echo htmlspecialchars($user->getLastname()) ?>">
                     </div>
                     <div class="form-group">
                         <label for="birth">Date de naissance</label>
-                        <input id="birth" name="birth" type="date"
+                        <input disabled id="birth" name="birth" type="date"
                                value="<?php echo htmlspecialchars($user->getBirth()) ?>">
                     </div>
-                    <button class="btn-primary" type="submit">Sauvegarder mes informations</button>
+                    <button class="btn-primary" id="update-account-info">Modifier mes informations</button>
                 </form>
 
                 <div class="status-section">
