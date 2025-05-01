@@ -20,11 +20,15 @@ $current_page = basename($_SERVER['REQUEST_URI'], ".php");
 
         <div class="nav-menu">
             <ul class="nav-links">
-                <li><a class="nav-link <?= ($current_page == 'index' || $current_page == '') ? 'active' : '' ?>" href="index.php">ACCUEIL</a></li>
-                <li><a class="nav-link <?= $current_page == 'cruise-list' ? 'active' : '' ?>" href="cruise-list.php">DESTINATIONS</a></li>
+                <li><a class="nav-link <?= ($current_page == 'index' || $current_page == '') ? 'active' : '' ?>"
+                       href="index.php">ACCUEIL</a></li>
+                <li><a class="nav-link <?= $current_page == 'cruise-list' ? 'active' : '' ?>" href="cruise-list.php">DESTINATIONS</a>
+                </li>
                 <li><a class="nav-link <?= $current_page == 'fleet' ? 'active' : '' ?>" href="fleet.php">FLOTTE</a></li>
-                <li><a class="nav-link <?= $current_page == 'about' ? 'active' : '' ?>" href="about.php">À PROPOS</a></li>
-                <li><a class="nav-link <?= $current_page == 'contact' ? 'active' : '' ?>" href="contact.php">CONTACT</a></li>
+                <li><a class="nav-link <?= $current_page == 'about' ? 'active' : '' ?>" href="about.php">À PROPOS</a>
+                </li>
+                <li><a class="nav-link <?= $current_page == 'contact' ? 'active' : '' ?>" href="contact.php">CONTACT</a>
+                </li>
                 <?php if ($authService->isLoggedIn()): ?>
                     <li><a aria-hidden="true" class="fa fa-user nav-icon" href="account.php"></a></li>
                     <li><a aria-hidden="true" class="fa fa-sign-in nav-icon" href="logout.php"></a></li>
@@ -34,6 +38,9 @@ $current_page = basename($_SERVER['REQUEST_URI'], ".php");
                 <?php else: ?>
                     <li><a aria-hidden="true" class="fa fa-user nav-icon" href="login.php"></a></li>
                 <?php endif; ?>
+                <li>
+                    <a id="dark-mode-toggle" class="fa-solid fa-moon nav-icon" href="#"></a>
+                </li>
             </ul>
         </div>
     </nav>

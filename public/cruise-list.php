@@ -14,6 +14,8 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <script src="assets/js/darkTheme.js"></script>
+
     <link href="assets/css/app.css" rel="stylesheet"> <!-- global css kit -->
     <link href="assets/css/btn-kit.css" rel="stylesheet"> <!-- btn kit for the website -->
     <link href="assets/css/navbar.css" rel="stylesheet"> <!-- navbar css for the website -->
@@ -22,6 +24,8 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
     <link href="assets/css/cruise-list.css" rel="stylesheet">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+
     <title>CyCruise - Your best cruise</title>
 </head>
 <body>
@@ -60,10 +64,10 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
                 </select>
             </div>
             <div class="input-group">
-                <label for="start-date">Date de départ</label>
+                <label for="start-date">Date de départ </label>
                 <input id="start-date" name="start-date" required type="date">
             </div>
-            <div class="input-submit">
+            <div class="input-group">
                 <button type="submit" class="btn-search">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>

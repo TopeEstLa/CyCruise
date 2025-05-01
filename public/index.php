@@ -15,6 +15,7 @@ $cruiseList = HighlightedCruiseRepository::getInstance()->findAll();
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <script src="assets/js/darkTheme.js"></script>
 
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/btn-kit.css">
@@ -67,19 +68,20 @@ $cruiseList = HighlightedCruiseRepository::getInstance()->findAll();
                 <div>
                     <div class="featured-grid-container">
                         <?php foreach ($cruiseList as $cruise) : ?>
-                        <div class="cruise-card">
-                            <img alt="Cruise 1" class="cruise-card-image"
-                                 src="<?= htmlspecialchars($cruise->getImg()) ?>">
+                            <div class="cruise-card">
+                                <img alt="Cruise 1" class="cruise-card-image"
+                                     src="<?= htmlspecialchars($cruise->getImg()) ?>">
 
-                            <div class="cruise-card-content">
-                                <h3><?php echo htmlspecialchars($cruise->getName()) ?></h3>
-                                <p><?php echo htmlspecialchars($cruise->getShortDescriptions()) ?></p>
-                                <a class="cruise-card-read-more btn-secondary" href="cruise-detail.php?id=<?php echo $cruise->getId() ?>">
-                                    <i class="fa fa-compass btn-secondary-icon"></i>
-                                    Explorer
-                                </a>
+                                <div class="cruise-card-content">
+                                    <h3><?php echo htmlspecialchars($cruise->getName()) ?></h3>
+                                    <p><?php echo htmlspecialchars($cruise->getShortDescriptions()) ?></p>
+                                    <a class="cruise-card-read-more btn-secondary"
+                                       href="cruise-detail.php?id=<?php echo $cruise->getId() ?>">
+                                        <i class="fa fa-compass btn-secondary-icon"></i>
+                                        Explorer
+                                    </a>
+                                </div>
                             </div>
-                        </div>
                         <?php endforeach; ?>
                     </div>
                 </div>

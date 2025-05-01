@@ -38,6 +38,7 @@ $oldInvoices = InvoiceRepository::getInstance()->findAllOldByUserAndStateIdOrder
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <script src="assets/js/darkTheme.js"></script>
 
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/btn-kit.css">
@@ -45,7 +46,6 @@ $oldInvoices = InvoiceRepository::getInstance()->findAllOldByUserAndStateIdOrder
     <link rel="stylesheet" href="assets/css/footer.css">
 
     <link rel="stylesheet" href="assets/css/account.css">
-
 
     <title>CyCruise - Your best cruise</title>
 </head>

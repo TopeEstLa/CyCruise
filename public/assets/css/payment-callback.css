@@ -5,7 +5,7 @@
 }
 
 .payment-card {
-    background-color: var(--color-full-white);
+    background-color: var(--background-color-alternate);
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 40px;
@@ -57,7 +57,7 @@
 }
 
 .payment-details {
-    background-color: white;
+    background-color: var(--background-color);
     border-radius: 8px;
     padding: 25px;
     margin: 30px auto;

@@ -34,7 +34,7 @@
 }
 
 .info-card {
-    background: var(--color-full-white);
+    background: var(--background-color-alternate);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -71,7 +71,7 @@
 }
 
 .contact-form-container {
-    background: var(--color-full-white);
+    background: var(--background-color-alternate);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

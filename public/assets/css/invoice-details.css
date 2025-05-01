@@ -1,3 +1,7 @@
+:root {
+    --invoice-header-color: #111827;
+}
+
 .reservation-container {
     max-width: 1280px;
     margin: 0 auto;
@@ -5,7 +9,7 @@
 }
 
 .reservation-header {
-    background: var(--color-title-blue);
+    background: var(--invoice-header-color);
     color: white;
     padding: 40px;
     border-radius: 10px;
@@ -55,7 +59,7 @@
 }
 
 .reservation-section {
-    background: var(--color-full-white);
+    background: var(--background-color-alternate);
     border-radius: 10px;
     padding: 25px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -66,6 +70,19 @@
     font-size: 1.5rem;
     margin-bottom: 20px;
 }
+
+.reservation-section h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-dark-blue);
+}
+
+.reservation-section p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-dark-blue);
+}
+
 
 .info-grid {
     display: grid;
@@ -87,6 +104,7 @@
 .info-value {
     font-size: 1.1rem;
     font-weight: 500;
+    color: var(--color-dark-blue);
 }
 
 .cabin-features {
@@ -156,6 +174,10 @@
     margin-top: 15px;
     padding-top: 15px;
     border-top: 2px solid var(--color-dark-blue);
+}
+
+.price-total span {
+    color: var(--color-dark-blue);
 }
 
 .payment-status {

@@ -9,9 +9,13 @@
 }
 
 .account-section {
-    background: var(--color-full-white);
+    background: var(--background-color-alternate);
     padding: 20px;
     border-radius: 10px;
+}
+
+.account-section {
+    color: var(--color-title-blue);
 }
 
 .account-info {

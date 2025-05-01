@@ -33,7 +33,11 @@
     text-align: center;
 }
 
-
+.input-group {
+    margin-bottom: 15px;
+    border-color: var(--color-gray);
+    color: var(--color-title-blue);
+}
 
 #search-cruise {
     padding: 0.5rem;
@@ -96,7 +100,7 @@
     position: absolute;
     bottom: 10px;
     left: 10px;
-    color: var(--color-full-white);
+    color: var(--background-color);
     font-size: 16px;
     margin: 0;
     padding: 5px 10px;

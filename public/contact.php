@@ -27,6 +27,8 @@ if (isset($_POST['contact'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="assets/js/darkTheme.js"></script>
+
     <link href="assets/css/app.css" rel="stylesheet"> <!-- global css kit -->
     <link href="assets/css/btn-kit.css" rel="stylesheet"> <!-- btn kit for the website -->
     <link href="assets/css/navbar.css" rel="stylesheet"> <!-- navbar css for the website -->

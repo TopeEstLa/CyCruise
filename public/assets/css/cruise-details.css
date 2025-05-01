@@ -16,7 +16,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: var(--color-title-blue);
+    color: var(--color-dark-blue);
     font-size: 2.5rem;
     font-weight: bold;
     text-align: center;
@@ -104,7 +104,7 @@
 }
 
 .cruise-stages {
-    background-color: var(--color-full-white);
+    background-color: var(--background-color-alternate);
     padding: 3rem;
 }
 
@@ -137,7 +137,7 @@
 
 .stage-card {
     display: flex;
-    background-color: white;
+    background-color: var(--background-color);
     border-radius: 8px;
     overflow: hidden;
 }
@@ -263,7 +263,7 @@
 }
 
 .cta-section {
-    background-color: var(--color-full-white);
+    background-color: var(--background-color-alternate);
     padding: 3rem;
     text-align: center;
     margin-top: 3rem;

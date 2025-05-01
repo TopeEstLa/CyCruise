@@ -1,0 +1,16 @@
+:root {
+    --color-light-blue: #0288A7;
+    --color-dark-blue:  #0D547A;
+    --color-title-blue: #E5E7EB;
+    --color-gray:       #9CA3AF;
+    --color-full-white: #F3F4F6;
+
+    --background-color: #1F2937;
+    --background-color-alternate: #1e1e1e;
+
+    --color-dark-white: #9CA3AF;
+
+    --color-confirm-ok: #5cb85c;
+    --color-confirm-pending: #ffaa00;
+    --color-confirm-fail: #d9534f;
+}

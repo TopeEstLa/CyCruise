@@ -15,6 +15,7 @@ $exploraBoats = $boatRepository->selectAllByType(BoatType::EXPLORA);
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <script src="assets/js/darkTheme.js"></script>
 
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/btn-kit.css">

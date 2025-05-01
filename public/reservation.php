@@ -92,7 +92,8 @@ $totalPrice += ($passengerPrice * $passengerCount);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/js/darkTheme.js"></script>
+
     <link href="assets/css/app.css" rel="stylesheet">
     <link href="assets/css/btn-kit.css" rel="stylesheet">
     <link href="assets/css/navbar.css" rel="stylesheet">
@@ -101,6 +102,7 @@ $totalPrice += ($passengerPrice * $passengerCount);
     <link href="assets/css/reservation.css" rel="stylesheet">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
     <title>CyCruise - Your best cruise</title>
 </head>
 
