@@ -80,11 +80,7 @@ function validPassword(password) {
         return false;
     }
 
-    if (password.length > 50) {
-        return false;
-    }
-
-    return true;
+    return password.length <= 50;
 }
 
 function validEmail(email) {
@@ -92,9 +88,5 @@ function validEmail(email) {
         return false;
     }
 
-    if (email.length > 50) {
-        return false;
-    }
-
-    return true;
+    return email.length <= 50;
 }

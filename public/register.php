@@ -71,12 +71,12 @@ if (isset($_POST['register'])) {
 <main>
     <section class="register-card">
         <h1>Inscriptions</h1>
-        <?php if (isset($error)): ?>
-            <div class="error-message">
+        <div class="error-message">
+            <?php if (isset($error)): ?>
                 <?php echo $error; ?>
-            </div>
-        <?php endif; ?>
-        <form method="POST" action="">
+            <?php endif; ?>
+        </div>
+        <form method="POST" action="" id="register-form">
             <div class="input-group">
                 <label for="firstname">Prénom</label>
                 <input id="firstname" name="firstname" required type="text">
@@ -102,7 +102,7 @@ if (isset($_POST['register'])) {
                 <input id="password-confirm" name="password-confirm" required type="password">
             </div>
             <div class="input-group">
-                <button class="btn btn-primary" name="register" type="submit">Crée mon compte</button>
+                <button class="btn btn-primary" id="submit-button" name="register">Crée mon compte</button>
             </div>
         </form>
         <div class="register-footer">
@@ -112,5 +112,6 @@ if (isset($_POST['register'])) {
 </main>
 
 <?php include "../component/footer.php"; ?>
+<script src="assets/js/register.js"></script>
 </body>
 </html>
