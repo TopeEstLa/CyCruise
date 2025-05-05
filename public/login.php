@@ -48,12 +48,12 @@ if (isset($_POST['login'])) {
     <main>
         <section class="login-card">
             <h1>Connexion</h1>
-            <?php if (isset($error)): ?>
-                <div class="error-message">
+            <div class="error-message" id="error-message">
+                <?php if (isset($error)): ?>
                     <?php echo $error; ?>
-                </div>
-            <?php endif; ?>
-            <form method="POST" action="">
+                <?php endif; ?>
+            </div>
+            <form method="POST" action="" id="login-form">
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input id="email" name="email" required type="email">
@@ -63,7 +63,12 @@ if (isset($_POST['login'])) {
                     <input id="password" name="password" required type="password">
                 </div>
                 <div class="input-group">
-                    <button class="btn btn-primary" name="login" type="submit">Se connecter</button>
+                    <label for="<>show-password</>">
+                        <input type="checkbox" id="show-password" name="show-password"> Voir le mots de passe
+                    </label>
+                </div>
+                <div class="input-group">
+                    <button class="btn btn-primary" id="login-button" name="login">Se connecter</button>
                 </div>
             </form>
             <div class="login-footer">
@@ -75,5 +80,6 @@ if (isset($_POST['login'])) {
 </main>
 
 <?php include "../component/footer.php"; ?>
+<script src="assets/js/login.js"></script>
 </body>
 </html>
