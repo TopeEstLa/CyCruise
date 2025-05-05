@@ -15,6 +15,7 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
 <head>
     <meta charset="UTF-8">
     <script src="assets/js/darkTheme.js"></script>
+    <script src="assets/js/search.js"></script>
 
     <link href="assets/css/app.css" rel="stylesheet"> <!-- global css kit -->
     <link href="assets/css/btn-kit.css" rel="stylesheet"> <!-- btn kit for the website -->
@@ -49,7 +50,7 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
             <h3>Trouvez votre destinations</h3>
         </div>
 
-        <form class="select-container" method="POST" action="search.php">
+        <form class="select-container">
             <div class="input-group">
                 <!--    <input id="search-cruise" name="search-cruise" required placeholder="Rechercher une destinations ..."
                            type="text"> -->
@@ -67,23 +68,21 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
                 <label for="start-date">Date de départ </label>
                 <input id="start-date" name="start-date" required type="date">
             </div>
-            <div class="input-group">
-                <button type="submit" class="btn-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
         </form>
     </header>
 
     <section class="cruise-shop-list">
-        <div class="grid-container">
+        <div class="grid-container" id="grid-container">
             <?php foreach ($cruiseList as $cruise): ?>
-                <div class="grid-item">
+                <div class="grid-item"
+                     data-cruise-name="<?php echo htmlspecialchars($cruise->getName()) ?>"
+                     data-boat-id="<?php echo htmlspecialchars($cruise->getBoat()->getId()) ?>"
+                     data-cruise-start-date="<?php echo htmlspecialchars($cruise->getStartDate()) ?>">
                     <a class="image-container"
                        href="cruise-detail.php?id=<?php echo htmlspecialchars($cruise->getId()) ?>">
                         <img alt="<?php echo htmlspecialchars($cruise->getName()) ?>"
                              src="<?php echo htmlspecialchars($cruise->getImg()) ?>">
-                        <h2><?php echo htmlspecialchars($cruise->getName()) ?></h2>
+                        <h2 id="cruise-name"><?php echo htmlspecialchars($cruise->getName()) ?></h2>
                     </a>
                 </div>
             <?php endforeach; ?>
