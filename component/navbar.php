@@ -31,6 +31,7 @@ $current_page = basename($_SERVER['REQUEST_URI'], ".php");
                 </li>
                 <?php if ($authService->isLoggedIn()): ?>
                     <li><a aria-hidden="true" class="fa fa-user nav-icon" href="account.php"></a></li>
+                    <li><a aria-hidden="true" class="fa-solid fa-cart-shopping nav-icon" href="basket.php"></a></li>
                     <li><a aria-hidden="true" class="fa fa-sign-in nav-icon" href="logout.php"></a></li>
                     <?php if ($authService->isAdmin()): ?>
                         <li><a class="fa fa-cogs nav-icon" href="admin/dashboard.php"></a></li>

@@ -246,6 +246,47 @@ class InvoiceRepository
         return $array;
     }
 
+    public function findAllCurrentByUserIdAndStateOrderByCreatedAt(int $userId, InvoiceState $state): array
+    {
+        $array = [];
+        $stateString = $state->toString();
+
+        try {
+            $stmt = $this->database->getConnection()->prepare("SELECT i.* 
+                                                                FROM invoices i
+                                                                JOIN cruise c ON i.cruise_id = c.id
+                                                                WHERE i.user_id = ? AND i.state = ?
+                                                                AND c.end_date > CURRENT_TIMESTAMP()
+                                                                ORDER BY i.created_at DESC;");
+
+            $stmt->bind_param("is", $userId, $stateString);
+
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                while ($data = $result->fetch_assoc()) {
+                    $passengers = $this->invoicePassengerRepository->findByInvoiceId($data['id']);
+                    $passengerCount = count($passengers);
+
+                    $options = $this->invoiceOptionRepository->findByInvoiceId($data['id']);
+                    $array[] = new Invoice(
+                        $data['id'],
+                        UserRepository::getInstance()->findById($data['user_id']),
+                        CruiseRepository::getInstance()->findById($data['cruise_id']),
+                        $options,
+                        $passengerCount,
+                        $passengers,
+                        $data['total_prices'],
+                        InvoiceState::from($data['state']),
+                        $data['created_at'],
+                        $data['updated_at']);
+                }
+            }
+        } catch (Exception $e) {
+        }
+
+        return $array;
+    }
+
     public function findAllOldByUserAndStateIdOrderByCreatedAt(int $userId, InvoiceState $state): array
     {
         $array = [];
