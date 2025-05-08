@@ -43,6 +43,12 @@
 }
 
 /* Features Section */
+
+.wave-path {
+    fill: var(--color-light-blue);
+    fill-opacity: 1;
+}
+
 .featured-section {
     margin-top: 2rem;
     text-align: center;
