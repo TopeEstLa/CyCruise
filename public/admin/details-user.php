@@ -49,7 +49,7 @@ if ($selectUser == null) {
     </div>
 
     <div>
-        <form method="POST" action="update-user.php" class="user-grid">
+        <form method="POST" action="update-user.php" class="user-grid" id="update-user-form">
             <input type="hidden" id="target_user_id" name="target_user_id" value="<?php echo $selectUser->getId() ?>">
             <div class="user-info-card">
                 <div class="card-header">
@@ -135,11 +135,13 @@ if ($selectUser == null) {
                 </div>
 
                 <div class="actions">
-                    <button type="submit" class="btn btn-primary">Sauvegarder les modifications</button>
+                    <button id="save-button-submit" class="btn btn-primary">Sauvegarder les modifications</button>
                 </div>
             </div>
         </form>
     </div>
 </main>
 
+<script src="../assets/js/admin/user-update-delay.js"></script>
 </body>
+</html>

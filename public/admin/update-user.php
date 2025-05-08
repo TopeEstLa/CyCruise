@@ -17,6 +17,8 @@ if (!$authService->isAdmin()) {
     exit;
 }
 
+
+
 if (isset($_POST['target_user_id'])) {
     $user = UserRepository::getInstance()->findById($_POST['target_user_id']);
 
@@ -37,6 +39,9 @@ if (isset($_POST['target_user_id'])) {
 
     UserRepository::getInstance()->update($user);
 
+    header("Location: details-user.php?user_id=" . $user->getId());
+    exit;
+} else {
     header("Location: list-user.php");
     exit;
 }
