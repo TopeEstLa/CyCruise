@@ -65,3 +65,4 @@ for more information see the [DT](document/DT.pdf) document.
 - [DA](document/DA.pdf) : Document explaining the artistic direction of the project.
 - [DT](document/DT.pdf) : Document explaining the technical direction of the project.
 - [RapportProjetInformatiqueV3](document/RapportProjetInformatiqueV3.pdf) : Project report.
+- [Subject](subject/Projet_Click_journeY_v1.3_PHASE3.pdf) : Project subject.
