@@ -93,6 +93,7 @@ $totalPrice += ($passengerPrice * $passengerCount);
 <head>
     <meta charset="UTF-8">
     <script src="assets/js/darkTheme.js"></script>
+    <script src="assets/js/reservation.js"></script>
 
     <link href="assets/css/app.css" rel="stylesheet">
     <link href="assets/css/btn-kit.css" rel="stylesheet">
@@ -136,7 +137,8 @@ $totalPrice += ($passengerPrice * $passengerCount);
     </div>
 
     <form method="post" class="reservation-form">
-        <div class="form-section">
+        <div class="form-section" id="form-options-section"
+             data-base-price="<?php echo htmlspecialchars($cruise->getPrice()); ?>">
             <h2>Sélectionnez vos options</h2>
 
             <?php foreach ($optionsByType as $type => $options): ?>
@@ -144,7 +146,11 @@ $totalPrice += ($passengerPrice * $passengerCount);
                     <h3><?php echo htmlspecialchars(ucfirst($type)); ?></h3>
                     <div class="option-list">
                         <?php foreach ($options as $option): ?>
-                            <label class="option-item">
+                            <label class="option-item"
+                                   data-option-name="<?php echo htmlspecialchars($option->getName()); ?>"
+                                   data-option-price="<?php echo htmlspecialchars($option->getPrice()); ?>"
+                                   data-option-per-passenger="<?php echo $option->isPerPassenger() ? 'true' : 'false'; ?>"
+                                   data-option-type="<?php echo htmlspecialchars($type); ?>">
                                 <input type="radio" name="option_<?php echo htmlspecialchars($type); ?>"
                                        value="<?php echo $option->getId(); ?>"
                                     <?php if (!isset($selectedOptions[$type])) { ?>
@@ -226,9 +232,6 @@ $totalPrice += ($passengerPrice * $passengerCount);
             <a href="cruise-detail.php?id=<?php echo htmlspecialchars($cruise->getId()); ?>" class="btn-primary">
                 <i class="fas fa-arrow-left btn-secondary-icon"></i> Retour
             </a>
-            <button type="submit" class="btn-primary">
-                <i class="fas fa-sync btn-icon"></i> Mettre à jour
-            </button>
             <button type="submit" formaction="create-invoice.php" class="btn-primary">
                 <i class="fas fa-check btn-icon"></i> Confirmer la réservation
             </button>
