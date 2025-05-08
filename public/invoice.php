@@ -98,10 +98,17 @@ if ($invoice === null) {
                         <h3>Suite Vue Mer Premium</h3>
                         <p>Cabine N° 2445</p>
                         <ul class="cabin-features">
-                            <li><i class="fas fa-user-friends"></i> 2 personnes</li>
-                            <li><i class="fas fa-ruler-combined"></i> 28m²</li>
-                            <li><i class="fas fa-bed"></i> Grand lit double</li>
-                            <li><i class="fas fa-water"></i> Vue mer panoramique</li>
+                            <li>
+                                <i class="fas fa-user-friends"></i> <?php echo htmlspecialchars($invoice->getPassengerCount()) ?>
+                                personne(s)
+                            </li>
+
+                            <?php foreach ($invoice->getPassengerData() as $passenger): ?>
+                                <li>
+                                    <i class="fas fa-user"></i> <?php echo htmlspecialchars($passenger["first_name"]) ?>
+                                    <?php echo htmlspecialchars($passenger["last_name"]) ?>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
