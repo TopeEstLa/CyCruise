@@ -63,7 +63,7 @@ if (isset($_POST['login'])) {
                     <input id="password" name="password" required type="password">
                 </div>
                 <div class="input-group">
-                    <label for="<>show-password</>">
+                    <label for="show-password">
                         <input type="checkbox" id="show-password" name="show-password"> Voir le mots de passe
                     </label>
                 </div>

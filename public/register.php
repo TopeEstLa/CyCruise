@@ -71,7 +71,7 @@ if (isset($_POST['register'])) {
 <main>
     <section class="register-card">
         <h1>Inscriptions</h1>
-        <div class="error-message">
+        <div class="error-message" id="error-message">
             <?php if (isset($error)): ?>
                 <?php echo $error; ?>
             <?php endif; ?>
@@ -100,6 +100,11 @@ if (isset($_POST['register'])) {
             <div class="input-group">
                 <label for="password-confirm">Confirmations mot de passe</label>
                 <input id="password-confirm" name="password-confirm" required type="password">
+            </div>
+            <div class="input-group">
+                <label for="show-password">
+                    <input type="checkbox" id="show-password" name="show-password"> Voir le mots de passe
+                </label>
             </div>
             <div class="input-group">
                 <button class="btn btn-primary" id="submit-button" name="register">Crée mon compte</button>
