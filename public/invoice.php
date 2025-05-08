@@ -179,7 +179,13 @@ if ($invoice === null) {
             <?php endif; ?>
             <button class="btn-secondary"><i class="fas fa-print"></i> Imprimer</button>
             <?php if ($invoice->getState() == InvoiceState::PENDING): ?>
-                <button class="btn-danger"><i class="fas fa-times"></i> Annuler la réservation</button>
+                <form action="cancel-invoice.php" method="POST" class="cancel-form">
+                    <input type="hidden" name="invoice_id"
+                           value="<?php echo htmlspecialchars($invoice->getId()); ?>">
+                    <button type="submit" class="btn-danger">
+                        <i class="fas fa-times"></i> Annuler la réservation
+                    </button>
+                </form>
                 <form action="https://www.plateforme-smc.fr/cybank/index.php" method="POST">
                     <input type="hidden" name="transaction" value=<?php echo $invoice->getId() ?>>
                     <input type="hidden" name="montant" value="<?php echo $invoice->getTotalPrice() ?>">
