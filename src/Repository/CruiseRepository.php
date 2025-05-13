@@ -47,7 +47,7 @@ class CruiseRepository
 
 
         if (!$this->insertDefaultValue()) {
-            die("Error while inserting default values");
+           // die("Error while inserting default values");
         }
     }
 

@@ -87,4 +87,17 @@ class Boat
     {
         $this->length = $length;
     }
+
+    public function toJson(): string
+    {
+        return json_encode([
+            'id' => $this->id,
+            'type' => $this->type->name,
+            'name' => $this->name,
+            'img' => $this->img,
+            'descriptions' => $this->descriptions,
+            'capacity' => $this->capacity,
+            'length' => $this->length
+        ]);
+    }
 }

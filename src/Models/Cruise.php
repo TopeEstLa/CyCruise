@@ -110,4 +110,32 @@ class Cruise
     {
         return $this->price;
     }
+
+    public function toJson(): string
+    {
+        $stagesJson = [];
+        foreach ($this->stages as $stage) {
+            $stagesJson[] = json_decode($stage->toJson(), true);
+        }
+
+        $optionsByType = [];
+        foreach ($this->options as $option) {
+            $optionsByType[$option->getType()][] = json_decode($option->toJson(), true);
+        }
+
+        return json_encode([
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'short_descriptions' => $this->short_descriptions,
+            'img' => $this->img,
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
+            'duration' => $this->duration,
+            'boat' => json_decode($this->boat->toJson(), true),
+            'stages' => $stagesJson,
+            'options' => $optionsByType,
+            'price' => $this->price
+        ]);
+    }
 }

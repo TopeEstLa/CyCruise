@@ -30,62 +30,6 @@ if ($cruise === null) {
     exit();
 }
 
-$optionsByType = $cruise->mapOptionsByType();
-
-$basePrice = $cruise->getPrice();
-
-$selectedOptions = [];
-$passengerCount = 1;
-$totalPrice = $basePrice;
-$passengerPrice = 0;
-$passengerData = [];
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    foreach ($optionsByType as $type => $options) {
-        if (isset($_POST['option_' . $type])) {
-            $selectedOptionId = $_POST['option_' . $type];
-            foreach ($options as $option) {
-                if ($option->getId() == $selectedOptionId) {
-                    $selectedOptions[$type] = $option;
-                    if ($option->isPerPassenger()) {
-                        $passengerPrice += $option->getPrice();
-                    } else {
-                        $totalPrice += $option->getPrice();
-                    }
-                    break;
-                }
-            }
-        }
-    }
-
-    $passengerCount = $_POST['passengers'];
-
-
-    for ($i = 0; $i < $passengerCount; $i++) {
-        $passengerData[] = [
-            'first_name' => $_POST['first_name_' . $i],
-            'last_name' => $_POST['last_name_' . $i],
-        ];
-    }
-} else {
-    foreach ($optionsByType as $type => $options) {
-        foreach ($options as $option) {
-            if ($option->isDefault()) {
-                $selectedOptions[$type] = $option;
-                if ($option->isPerPassenger()) {
-                    $passengerPrice += $option->getPrice();
-                } else {
-                    $totalPrice += $option->getPrice();
-                }
-                break;
-            }
-        }
-    }
-}
-
-$totalPrice += ($passengerPrice * $passengerCount);
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +37,6 @@ $totalPrice += ($passengerPrice * $passengerCount);
 <head>
     <meta charset="UTF-8">
     <script src="assets/js/darkTheme.js"></script>
-    <script src="assets/js/reservation.js"></script>
 
     <link href="assets/css/app.css" rel="stylesheet">
     <link href="assets/css/btn-kit.css" rel="stylesheet">
@@ -137,36 +80,9 @@ $totalPrice += ($passengerPrice * $passengerCount);
     </div>
 
     <form method="post" class="reservation-form">
-        <div class="form-section" id="form-options-section"
-             data-base-price="<?php echo htmlspecialchars($cruise->getPrice()); ?>">
+        <div class="form-section" id="form-options-section">
             <h2>Sélectionnez vos options</h2>
 
-            <?php foreach ($optionsByType as $type => $options): ?>
-                <div class="option-group">
-                    <h3><?php echo htmlspecialchars(ucfirst($type)); ?></h3>
-                    <div class="option-list">
-                        <?php foreach ($options as $option): ?>
-                            <label class="option-item"
-                                   data-option-name="<?php echo htmlspecialchars($option->getName()); ?>"
-                                   data-option-price="<?php echo htmlspecialchars($option->getPrice()); ?>"
-                                   data-option-per-passenger="<?php echo $option->isPerPassenger() ? 'true' : 'false'; ?>"
-                                   data-option-type="<?php echo htmlspecialchars($type); ?>">
-                                <input type="radio" name="option_<?php echo htmlspecialchars($type); ?>"
-                                       value="<?php echo $option->getId(); ?>"
-                                    <?php if (!isset($selectedOptions[$type])) { ?>
-                                        <?php if ($option->isDefault()) { ?>
-                                            checked
-                                        <?php } ?>
-                                    <?php } else if ($selectedOptions[$type]->getId() === $option->getId()) { ?>
-                                       checked
-                                <?php } ?>">
-                                <div class="option-name"><?php echo htmlspecialchars($option->getName()); ?></div>
-                                <div class="option-price">+ <?php echo number_format($option->getPrice(), 2); ?> €</div>
-                            </label>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            <?php endforeach; ?>
         </div>
 
         <div class="form-section">
@@ -175,33 +91,29 @@ $totalPrice += ($passengerPrice * $passengerCount);
             <div class="form-group">
                 <label for="passengers">Nombre de passagers</label>
                 <input type="number" id="passengers" name="passengers" min="1" max="5"
-                       value="<?php echo $passengerCount; ?>">
+                       value="1">
             </div>
 
             <div id="passenger-fields">
-                <?php for ($i = 0;
-                           $i < $passengerCount;
-                           $i++): ?>
-                    <fieldset>
-                        <legend>Passager <?php echo $i + 1; ?></legend>
-                        <div class="form-group">
-                            <label for="first_name_<?php echo $i; ?>">Prénom</label>
-                            <input type="text" id="first_name_<?php echo $i; ?>" name="first_name_<?php echo $i; ?>"
-                                   value="<?php echo isset($passengerData[$i]) ? htmlspecialchars($passengerData[$i]['first_name']) : (($i == 0) ? htmlspecialchars($user->getFirstname()) : '') ?>"
-                                   required>
-                        </div>
-                        <div class="form-group">
-                            <label for="last_name_<?php echo $i; ?>">Nom</label>
-                            <input type="text" id="last_name_<?php echo $i; ?>" name="last_name_<?php echo $i; ?>"
-                                   value="<?php echo isset($passengerData[$i]) ? htmlspecialchars($passengerData[$i]['last_name']) : (($i == 0) ? htmlspecialchars($user->getLastname()) : '') ?>"
-                                   required>
-                        </div>
-                    </fieldset>
-                <?php endfor; ?>
+                <fieldset>
+                    <legend>Passager 1</legend>
+                    <div class="form-group">
+                        <label for="first_name_0">Prénom</label>
+                        <input type="text" id="first_name_0" name="first_name_0"
+                               value="<?php echo htmlspecialchars($user->getFirstname()) ?>"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name_0">Nom</label>
+                        <input type="text" id="last_name_0" name="last_name_0"
+                               value="<?php echo htmlspecialchars($user->getLastname()) ?>"
+                               required>
+                    </div>
+                </fieldset>
             </div>
         </div>
 
-        <div class=" summary-section">
+        <div class="summary-section" id="summary-section">
             <h2 class="summary-title">Résumé de la réservation</h2>
 
             <div class="summary-item">
@@ -242,6 +154,6 @@ $totalPrice += ($passengerPrice * $passengerCount);
 
 <?php include "../component/footer.php"; ?>
 
-
+<script src="assets/js/reservation.js"></script>
 </body>
 </html>

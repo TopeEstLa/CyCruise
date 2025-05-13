@@ -54,6 +54,15 @@ class CruiseOption
         return $this->perPassenger;
     }
 
-
-
+    public function toJson(): string
+    {
+        return json_encode([
+            'id' => $this->id,
+            'type' => $this->type,
+            'name' => $this->name,
+            'price' => $this->price,
+            'default' => $this->default,
+            'perPassenger' => $this->perPassenger
+        ]);
+    }
 }

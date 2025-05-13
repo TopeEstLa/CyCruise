@@ -67,4 +67,18 @@ class CruiseStage
     {
         return $this->longitude;
     }
+
+    public function toJson(): string
+    {
+        return json_encode([
+            'id' => $this->id,
+            'name' => $this->name,
+            'descriptions' => $this->descriptions,
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
+            'google_map_url' => $this->buildGoogleMapUrl()
+        ]);
+    }
 }
