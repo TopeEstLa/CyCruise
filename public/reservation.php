@@ -115,27 +115,6 @@ if ($cruise === null) {
 
         <div class="summary-section" id="summary-section">
             <h2 class="summary-title">Résumé de la réservation</h2>
-
-            <div class="summary-item">
-                <span>Prix de base de la croisière</span>
-                <span><?php echo number_format($cruise->getPrice(), 2); ?> €</span>
-            </div>
-
-            <?php foreach ($selectedOptions as $type => $option): ?>
-                <div class="summary-item">
-                    <span><?php echo htmlspecialchars(ucfirst($type) . ': ' . $option->getName()); ?></span>
-                    <span><?php echo number_format($option->getPrice(), 2); ?> €</span>
-                </div>
-            <?php endforeach; ?>
-
-            <div class="summary-passenger">
-                <span>Par passager </span>
-                <span><?php echo number_format($passengerPrice, 2); ?> €</span>
-            </div>
-            <div class="summary-total">
-                <span>Total</span>
-                <span><?php echo number_format($totalPrice, 2); ?> €</span>
-            </div>
         </div>
 
         <input type="hidden" name="cruise_id" value="<?php echo htmlspecialchars($cruise->getId()); ?>">

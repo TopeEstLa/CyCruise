@@ -29,6 +29,16 @@ passengerCountInput.addEventListener('change', (e) => {
     updateSummary();
 });
 
+function findOptionById(id) {
+    for (const [key, value] of Object.entries(options)) {
+        const option = value.find(o => o.id == id);
+        if (option) {
+            return {key, option};
+        }
+    }
+    return null;
+}
+
 function generateOptionsFields() {
     optionsContainer.innerHTML = '';
     const title = document.createElement('h2');
@@ -78,39 +88,6 @@ function generateOptionsFields() {
     });
 }
 
-function regeneratePassengerFields() {
-    const count = parseInt(passengerCountInput.value) || 1;
-
-    passengerFieldsContainer.innerHTML = '';
-
-    for (let i = 0; i < count; i++) {
-        const clone = templateFieldset.cloneNode(true);
-
-        clone.querySelector('legend').textContent = `Passager ${i + 1}`;
-
-        const inputs = clone.querySelectorAll('input');
-        inputs.forEach((input, idx) => {
-            const parts = input.name.split('_');
-            parts[parts.length - 1] = i;
-            const newName = parts.join('_');
-            input.name = newName;
-            input.id = newName;
-            input.value = (i === 0 ? defaultValues[idx] : '');
-        });
-        passengerFieldsContainer.appendChild(clone);
-    }
-}
-
-function findOptionById(id) {
-    for (const [key, value] of Object.entries(options)) {
-        const option = value.find(o => o.id == id);
-        if (option) {
-            return {key, option};
-        }
-    }
-    return null;
-}
-
 function updateSummary() {
     summarySection.querySelectorAll('.summary-item, .summary-passenger, .summary-total').forEach(e => e.remove());
 
@@ -158,4 +135,27 @@ function updateSummary() {
     totalDiv.classList.add('summary-total');
     totalDiv.innerHTML = `<span>Total</span><span>${(totalPrice).toFixed(2)} €</span>`;
     summarySection.appendChild(totalDiv);
+}
+
+function regeneratePassengerFields() {
+    const count = parseInt(passengerCountInput.value) || 1;
+
+    passengerFieldsContainer.innerHTML = '';
+
+    for (let i = 0; i < count; i++) {
+        const clone = templateFieldset.cloneNode(true);
+
+        clone.querySelector('legend').textContent = `Passager ${i + 1}`;
+
+        const inputs = clone.querySelectorAll('input');
+        inputs.forEach((input, idx) => {
+            const parts = input.name.split('_');
+            parts[parts.length - 1] = i;
+            const newName = parts.join('_');
+            input.name = newName;
+            input.id = newName;
+            input.value = (i === 0 ? defaultValues[idx] : '');
+        });
+        passengerFieldsContainer.appendChild(clone);
+    }
 }

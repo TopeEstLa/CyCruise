@@ -15,7 +15,6 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
 <head>
     <meta charset="UTF-8">
     <script src="assets/js/darkTheme.js"></script>
-    <script src="assets/js/search.js"></script>
 
     <link href="assets/css/app.css" rel="stylesheet"> <!-- global css kit -->
     <link href="assets/css/btn-kit.css" rel="stylesheet"> <!-- btn kit for the website -->
@@ -73,23 +72,12 @@ $cruiseList = CruiseRepository::getInstance()->findAll();
 
     <section class="cruise-shop-list">
         <div class="grid-container" id="grid-container">
-            <?php foreach ($cruiseList as $cruise): ?>
-                <div class="grid-item"
-                     data-cruise-name="<?php echo htmlspecialchars($cruise->getName()) ?>"
-                     data-boat-id="<?php echo htmlspecialchars($cruise->getBoat()->getId()) ?>"
-                     data-cruise-start-date="<?php echo htmlspecialchars($cruise->getStartDate()) ?>">
-                    <a class="image-container"
-                       href="cruise-detail.php?id=<?php echo htmlspecialchars($cruise->getId()) ?>">
-                        <img alt="<?php echo htmlspecialchars($cruise->getName()) ?>"
-                             src="<?php echo htmlspecialchars($cruise->getImg()) ?>">
-                        <h2 id="cruise-name"><?php echo htmlspecialchars($cruise->getName()) ?></h2>
-                    </a>
-                </div>
-            <?php endforeach; ?>
+
         </div>
     </section>
 </main>
 
 <?php include "../component/footer.php"; ?>
+<script src="assets/js/search.js"></script>
 </body>
 </html>

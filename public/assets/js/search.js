@@ -1,79 +1,44 @@
-class Cruise {
-    constructor(name, image, link,
-                boatName, date) {
-        this.name = name;
-        this.image = image;
-        this.link = link;
-        this.boatName = boatName;
-        this.date = date;
-    }
-}
+const sortButtons = document.getElementById('boat-select');
+const dateButtons = document.getElementById('start-date');
 
 let boatId = "*";
 let startDate = "";
 
-document.addEventListener('DOMContentLoaded', function () {
-    let cruises = extractCruisesData();
+let cruiseData;
 
-    initSortEvents(cruises);
+fetch("api/cruise/list.php")
+    .then(res => res.json())
+    .then(data => {
+        cruiseData = data;
+        showSortedCruises(cruiseData);
+    })
+    .catch(err => console.log(err));
+
+sortButtons.addEventListener('change', function () {
+    boatId = this.value;
+    const selectedValue = sortCruises();
+    showSortedCruises(selectedValue);
 });
 
-function extractCruisesData() {
-    const cruiseElements = document.querySelectorAll('.grid-item');
-    const cruises = [];
+dateButtons.addEventListener('change', function () {
+    startDate = this.value;
+    const selectedValue = sortCruises();
+    showSortedCruises(selectedValue);
+});
 
-    cruiseElements.forEach((element, index) => {
-        const imageElement = element.querySelector('img');
-        const linkElement = element.querySelector('a');
 
-        const titleElement = element.dataset['cruiseName'] ?? null;
-        const boatId = element.dataset['boatId'] ?? null;
-        const cruiseDate = element.dataset["cruiseStartDate"] ?? null;
-
-        const cruise = new Cruise(
-            titleElement,
-            imageElement ? imageElement.src : '',
-            linkElement ? linkElement.href : '',
-            parseInt(boatId),
-            cruiseDate
-        );
-
-        cruises.push(cruise);
-    });
-
-    return cruises;
-}
-
-function initSortEvents(cruises) {
-    const sortButtons = document.getElementById('boat-select');
-
-    sortButtons.addEventListener('change', function () {
-        boatId = this.value;
-        const selectedValue = sortCruises(cruises);
-        showSortedCruises(selectedValue);
-    });
-
-    const dateButtons = document.getElementById('start-date');
-    dateButtons.addEventListener('change', function () {
-        startDate = this.value;
-        const selectedValue = sortCruises(cruises);
-        showSortedCruises(selectedValue);
-    });
-
-}
-
-function showSortedCruises(cruises) {
+function showSortedCruises(showedCruises) {
     const cruiseContainer = document.getElementById('grid-container');
     cruiseContainer.innerHTML = '';
 
-    cruises.forEach(cruise => {
+    showedCruises.forEach(cruise => {
         const cruiseElement = document.createElement('div');
         cruiseElement.className = 'grid-item';
         cruiseElement.innerHTML = `
                     <a class="image-container"
-                       href="${cruise.link}">
+                       href="cruise-detail.php?id=${cruise.id}">
                         <img alt="${cruise.name}"
-                             src="${cruise.image}">
+                             src="${cruise.img}">
                         <h2 id="cruise-name">${cruise.name}</h2>
                     </a>
         `;
@@ -81,20 +46,21 @@ function showSortedCruises(cruises) {
     });
 }
 
-function sortCruises(cruises) {
-    let sortedCruises = [...cruises];
+function sortCruises() {
+    let sortedCruises = [...cruiseData];
 
     return sortedCruises.filter(value => {
+        console.log(value);
         if (boatId === "*") {
             return true;
         }
-        return parseInt(value.boatName) === parseInt(boatId);
+        return parseInt(value.boat.id) === parseInt(boatId);
     }).filter(value => {
         if (startDate === "") {
             return true;
         }
 
-        const date = new Date(value.date);
+        const date = new Date(value.start_date);
         const selectedDate = new Date(startDate);
 
         return selectedDate.getTime() <= date.getTime();
