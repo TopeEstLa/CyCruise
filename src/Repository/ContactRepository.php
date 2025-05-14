@@ -13,22 +13,6 @@ class ContactRepository
     private function __construct()
     {
         $this->database = Database::getInstance();
-
-        try {
-            $this->database->getConnection()
-                ->prepare("CREATE TABLE IF NOT EXISTS `contact_request`(
-                            `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                            `firstname` VARCHAR(255) NOT NULL,
-                            `lastname` VARCHAR(255) NOT NULL,
-                            `email` VARCHAR(255) NOT NULL,
-                            `phone` VARCHAR(255) NOT NULL,
-                            `subject` VARCHAR(255) NOT NULL,
-                            `content` LONGTEXT NOT NULL);")
-                ->execute();
-        } catch (Exception $e) {
-            die("Database connection failed: " . $e->getMessage());
-        }
-
     }
 
     public static function getInstance(): ContactRepository

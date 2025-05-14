@@ -10,25 +10,7 @@ class InvoiceOptionRepository
 
     public function __construct()
     {
-        try {
-            $this->database = Database::getInstance();
-
-            $this->database->getConnection()
-                ->prepare("CREATE TABLE IF NOT EXISTS `invoices_option`(
-                            `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                            `invoice_id` CHAR(36) NOT NULL,
-                            `option_id` BIGINT NOT NULL,
-                            CONSTRAINT `invoice_option_invoice_id_foreign` 
-                            FOREIGN KEY (`invoice_id`) REFERENCES `invoices`(`id`) 
-                            ON DELETE CASCADE ON UPDATE CASCADE,
-                            CONSTRAINT `invoice_option_option_id_foreign` 
-                            FOREIGN KEY (`option_id`) REFERENCES `cruise_option`(`id`) 
-                            ON DELETE CASCADE ON UPDATE CASCADE);")->execute();
-
-            $this->cruiseOptionRepository = CruiseOptionRepository::getInstance();
-        } catch (Exception $e) {
-            die("Database connection failed: " . $e->getMessage());
-        }
+        $this->database = Database::getInstance();
     }
 
 

@@ -11,25 +11,6 @@ class CruiseStageRepository
     private function __construct()
     {
         $this->database = Database::getInstance();
-
-        try {
-            $this->database->getConnection()
-                ->prepare("CREATE TABLE IF NOT EXISTS `cruise_stage`(
-                            `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                            `cruise_id` BIGINT NOT NULL,
-                            `name` VARCHAR(255) NOT NULL,
-                            `description` LONGTEXT NOT NULL,
-                            `start_date` DATE NOT NULL,
-                            `end_date` DATE NOT NULL,
-                            `latitude` DECIMAL(8, 2) NOT NULL,
-                            `longitude` DECIMAL(8, 2) NOT NULL,
-                            CONSTRAINT `cruise_stage_cruise_id_foreign` 
-                            FOREIGN KEY (`cruise_id`) REFERENCES `cruise`(`id`) 
-                            ON DELETE CASCADE ON UPDATE CASCADE);")
-                ->execute();
-        } catch (Exception $e) {
-            die("Database connection failed: " . $e->getMessage());
-        }
     }
 
 

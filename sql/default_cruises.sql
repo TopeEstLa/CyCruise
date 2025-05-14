@@ -1,5 +1,4 @@
--- Script de generation des croisieres
--- Encode en UTF-8
+-- UTF-8
 
 INSERT IGNORE INTO cruise (id, name, description, short_descriptions, img, start_date, end_date, duration, boat_id, price) VALUES (1, 'CARAÏBES', 'Decouvrez CARAÏBES a bord de notre bateau de croisiere', 'Croisiere en CARAÏBES', 'assets/img/cruise-data/caraibes.png', '2025-10-08', '2025-10-13', 5, 1, 3762.76);
 
@@ -698,3 +697,8 @@ INSERT IGNORE INTO cruise_option (id, cruise_id, type, name, price, is_default, 
 INSERT IGNORE INTO cruise_option (id, cruise_id, type, name, price, is_default, per_passenger) VALUES (470, 25, 'CABINE', 'Suite Balcon', 900.00, 0, 0);
 INSERT IGNORE INTO cruise_option (id, cruise_id, type, name, price, is_default, per_passenger) VALUES (471, 25, 'CABINE', 'Suite avec vue sur l ocean', 1000.00, 0, 0);
 
+-- Default highlights
+
+INSERT IGNORE INTO highlighted_cruise (id, cruise_id) VALUES (1, 1);
+INSERT IGNORE INTO highlighted_cruise (id, cruise_id) VALUES (2, 2);
+INSERT IGNORE INTO highlighted_cruise (id, cruise_id) VALUES (3, 3);

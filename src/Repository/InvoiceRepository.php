@@ -19,33 +19,7 @@ class InvoiceRepository
 
     public function __construct()
     {
-        UserRepository::getInstance();
-        CruiseRepository::getInstance();
-        BoatRepository::getInstance();
-        try {
-            $this->database = Database::getInstance();
-
-            $this->database->getConnection()->prepare("CREATE TABLE IF NOT EXISTS `invoices`(
-                                `id` CHAR(24) PRIMARY KEY DEFAULT (SUBSTRING(REPLACE(UUID(), '-', ''), 1, 24)),
-                                `user_id` BIGINT NOT NULL,
-                                `cruise_id` BIGINT NOT NULL,
-                                `total_prices` FLOAT(53) NOT NULL,
-                                `state` VARCHAR(255) NOT NULL,
-                                `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                                `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                                CONSTRAINT `invoices_user_id_foreign` 
-                                FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) 
-                                ON DELETE CASCADE ON UPDATE CASCADE,
-                                CONSTRAINT `invoices_cruise_id_foreign`
-                                FOREIGN KEY (`cruise_id`) REFERENCES `cruise`(`id`)
-                                ON DELETE CASCADE ON UPDATE CASCADE);")
-                ->execute();
-
-            $this->invoicePassengerRepository = InvoicePassengerRepository::getInstance();
-            $this->invoiceOptionRepository = InvoiceOptionRepository::getInstance();
-        } catch (Exception $e) {
-            die("Database connection failed: " . $e->getMessage());
-        }
+        $this->database = Database::getInstance();
     }
 
     public static function getInstance(): InvoiceRepository

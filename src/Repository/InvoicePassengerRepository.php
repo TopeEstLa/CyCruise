@@ -8,21 +8,7 @@ class InvoicePassengerRepository
 
     public function __construct()
     {
-        try {
-            $this->database = Database::getInstance();
-
-            $this->database->getConnection()
-                ->prepare("CREATE TABLE IF NOT EXISTS `invoices_passenger`(
-                            `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                            `invoice_id` CHAR(36) NOT NULL,
-                            `first_name` VARCHAR(255) NOT NULL,
-                            `last_name` VARCHAR(255) NOT NULL,
-                            CONSTRAINT `invoice_passenger_invoice_id_foreign` 
-                            FOREIGN KEY (`invoice_id`) REFERENCES `invoices`(`id`) 
-                            ON DELETE CASCADE ON UPDATE CASCADE);")->execute();
-        } catch (Exception $e) {
-            die("Database connection failed: " . $e->getMessage());
-        }
+        $this->database = Database::getInstance();
     }
 
 

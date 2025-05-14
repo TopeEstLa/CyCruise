@@ -20,35 +20,8 @@ class CruiseRepository
         $this->database = Database::getInstance();
         $this->boatRepository = BoatRepository::getInstance();
 
-        try {
-            $this->database->getConnection()
-                ->prepare("CREATE TABLE IF NOT EXISTS `cruise`(
-                                `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                                `name` VARCHAR(255) NOT NULL,
-                                `description` LONGTEXT NOT NULL,
-                                `short_descriptions` VARCHAR(255) NOT NULL,
-                                `img` LONGTEXT NOT NULL,
-                                `start_date` DATE NOT NULL,
-                                `end_date` DATE NOT NULL,
-                                `duration` INT NOT NULL,
-                                `boat_id` BIGINT NOT NULL,
-                                `price` FLOAT(53) NOT NULL,
-                                CONSTRAINT `cruise_boat_foreign` 
-                                FOREIGN KEY (`boat_id`) REFERENCES `boats`(`id`) 
-                                ON DELETE CASCADE ON UPDATE CASCADE);")
-                ->execute();
-
-        } catch (Exception $e) {
-            die("Database connection failed: " . $e->getMessage());
-        }
-
         $this->cruiseStageRepository = CruiseStageRepository::getInstance();
         $this->cruiseOptionRepository = CruiseOptionRepository::getInstance();
-
-
-        if (!$this->insertDefaultValue()) {
-            die("Error while inserting default values");
-        }
     }
 
     public static function getInstance(): CruiseRepository
@@ -58,16 +31,7 @@ class CruiseRepository
         }
         return self::$instance;
     }
-
-    public function insertDefaultValue(): bool
-    {
-        if (!$this->database->executeSqlFile(__DIR__ . "/../../cruises_sql.sql")) {
-            return false;
-        }
-
-        return true;
-    }
-
+    
 
     public function insert(string $name, string $descriptions, string $short_descriptions, string $img,
                            string $start_date, string $end_date, int $duration,

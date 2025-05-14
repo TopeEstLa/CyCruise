@@ -11,27 +11,8 @@ class HighlightedCruiseRepository
 
     public function __construct()
     {
-        try {
-            $this->database = Database::getInstance();
-
-            $this->cruiseRepository = CruiseRepository::getInstance();
-
-
-            $this->database->getConnection()
-                ->prepare("CREATE TABLE IF NOT EXISTS `highlighted_cruise`(
-                            `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                            `cruise_id` BIGINT NOT NULL,
-                            CONSTRAINT `highlighted_cruise_cruise_id_foreign` 
-                            FOREIGN KEY (`cruise_id`) REFERENCES `cruise`(`id`) 
-                            ON DELETE CASCADE ON UPDATE CASCADE);")
-                ->execute();
-
-            $this->insertForce(1, 1);
-            $this->insertForce(2, 2);
-            $this->insertForce(3, 3);
-        } catch (Exception $e) {
-            die("Database connection failed: " . $e->getMessage());
-        }
+        $this->database = Database::getInstance();
+        $this->cruiseRepository = CruiseRepository::getInstance();
     }
 
     public static function getInstance(): HighlightedCruiseRepository
@@ -40,24 +21,6 @@ class HighlightedCruiseRepository
             self::$instance = new HighlightedCruiseRepository();
         }
         return self::$instance;
-    }
-
-    public function insertForce(int $id, int $cruiseId): bool
-    {
-        try {
-            $stmt = $this->database->getConnection()
-                ->prepare("INSERT IGNORE INTO highlighted_cruise (id, cruise_id) VALUES (?, ?)");
-
-            $stmt->bind_param("ii", $id, $cruiseId);
-
-            if ($stmt->execute()) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception $e) {
-            return false;
-        }
     }
 
     public function insert(int $cruiseId): bool

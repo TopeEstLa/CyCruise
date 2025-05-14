@@ -13,24 +13,6 @@ class CruiseOptionRepository
     public function __construct()
     {
         $this->database = Database::getInstance();
-
-        try {
-            $this->database->getConnection()
-                ->prepare("CREATE TABLE IF NOT EXISTS `cruise_option`(
-                            `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                            `cruise_id` BIGINT NOT NULL,
-                            `type` VARCHAR(255) NOT NULL,
-                            `name` VARCHAR(255) NOT NULL,
-                            `price` FLOAT(53) NOT NULL,
-                            `is_default` BOOLEAN NOT NULL,
-                            `per_passenger` BOOLEAN NOT NULL DEFAULT FALSE,
-                            CONSTRAINT `cruise_option_cruise_id_foreign` 
-                            FOREIGN KEY (`cruise_id`) REFERENCES `cruise`(`id`) 
-                            ON DELETE CASCADE ON UPDATE CASCADE);")
-                ->execute();
-        } catch (Exception $e) {
-            die("Database connection failed: " . $e->getMessage());
-        }
     }
 
     public static function getInstance(): CruiseOptionRepository

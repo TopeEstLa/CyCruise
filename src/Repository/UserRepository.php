@@ -14,30 +14,6 @@ class UserRepository
     private function __construct()
     {
         $this->database = Database::getInstance();
-
-
-        try {
-            $this->database->getConnection()->prepare("CREATE TABLE IF NOT EXISTS `users`(
-                                                            `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                                                            `email` VARCHAR(255) NOT NULL UNIQUE,
-                                                            `password` VARCHAR(255) NOT NULL,
-                                                            `role` VARCHAR(255) NOT NULL,
-                                                            `firstname` VARCHAR(255) NOT NULL,
-                                                            `lastname` VARCHAR(255) NOT NULL,
-                                                            `birth` DATE NOT NULL,
-                                                            `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                                                            `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);")
-                ->execute();
-
-            $this->insertForce("test.admin@localhost", password_hash("password", PASSWORD_BCRYPT), UserRole::ADMIN->toString(), "admin", "admin", "2000-01-01");
-            $this->insertForce("test1.admin@localhost", password_hash("password", PASSWORD_BCRYPT), UserRole::ADMIN->toString(), "admin", "admin", "2000-01-01");
-
-            $this->insertForce("test.user@localhost", password_hash("password", PASSWORD_BCRYPT), UserRole::DEFAULT->toString(), "user", "user", "2000-01-01");
-            $this->insertForce("test.vip@localhost", password_hash("password", PASSWORD_BCRYPT), UserRole::VIP->toString(), "user", "user", "2000-01-01");
-            $this->insertForce("test.premium@localhost", password_hash("password", PASSWORD_BCRYPT), UserRole::PREMIUM->toString(), "user", "user", "2000-01-01");
-        } catch (Exception $e) {
-            die("Database connection failed: " . $e->getMessage());
-        }
     }
 
     public static function getInstance(): UserRepository
@@ -46,17 +22,6 @@ class UserRepository
             self::$instance = new UserRepository();
         }
         return self::$instance;
-    }
-
-    public function insertForce(string $email, string $password, string $role, string $firstname, string $lastname, string $birth): bool
-    {
-        try {
-            $stmt = $this->database->getConnection()->prepare("INSERT IGNORE INTO users (email, password, role, firstname, lastname, birth) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssss", $email, $password, $role, $firstname, $lastname, $birth);
-            return $stmt->execute();
-        } catch (Exception $e) {
-            return false;
-        }
     }
 
     public function insert(string $email, string $password, string $role, string $firstname, string $lastname, string $birth): bool
