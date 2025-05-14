@@ -47,7 +47,7 @@ class CruiseRepository
 
 
         if (!$this->insertDefaultValue()) {
-           // die("Error while inserting default values");
+            die("Error while inserting default values");
         }
     }
 
@@ -61,10 +61,8 @@ class CruiseRepository
 
     public function insertDefaultValue(): bool
     {
-        if (!$this->database->executeSqlFile("../cruises_sql.sql")) {
-            if (!$this->database->executeSqlFile("../../cruises_sql.sql")) {
-                return false;
-            }
+        if (!$this->database->executeSqlFile(__DIR__ . "/../../cruises_sql.sql")) {
+            return false;
         }
 
         return true;

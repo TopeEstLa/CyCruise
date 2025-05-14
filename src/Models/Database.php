@@ -31,13 +31,11 @@ class Database
     {
         if (!file_exists($filePath)) {
             return false;
-            //die("SQL file not found: " . $filePath);
         }
 
         $sql = file_get_contents($filePath);
         if ($sql === false) {
             return false;
-            //die("Failed to read SQL file: " . $filePath);
         }
 
         $queries = explode(";", $sql);
@@ -47,7 +45,6 @@ class Database
             if (!empty($trimmedQuery)) {
                 if (!$this->conn->query($trimmedQuery)) {
                     return false;
-                    //die("Error executing query: " . $this->conn->error);
                 }
             }
         }

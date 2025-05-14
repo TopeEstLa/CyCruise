@@ -39,8 +39,6 @@ $oldInvoices = InvoiceRepository::getInstance()->findAllOldByUserAndStateIdOrder
 <head>
     <meta charset="UTF-8">
     <script src="assets/js/darkTheme.js"></script>
-    <script src="assets/js/account.js"></script>
-
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/btn-kit.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
@@ -57,7 +55,7 @@ $oldInvoices = InvoiceRepository::getInstance()->findAllOldByUserAndStateIdOrder
     <div class="account-container">
         <div class="account-section">
             <div class="account-info">
-                <form id="account-form" method="POST">
+                <form id="account-form">
                     <h2>Mon Compte</h2>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -152,6 +150,6 @@ $oldInvoices = InvoiceRepository::getInstance()->findAllOldByUserAndStateIdOrder
 
 
 <?php include "../component/footer.php"; ?>
+<script src="assets/js/account.js"></script>
 </body>
-
 </html>
