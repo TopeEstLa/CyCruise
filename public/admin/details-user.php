@@ -49,7 +49,7 @@ if ($selectUser == null) {
     </div>
 
     <div>
-        <form method="POST" action="update-user.php" class="user-grid" id="update-user-form">
+        <form class="user-grid" id="update-user-form">
             <input type="hidden" id="target_user_id" name="target_user_id" value="<?php echo $selectUser->getId() ?>">
             <div class="user-info-card">
                 <div class="card-header">
@@ -73,16 +73,16 @@ if ($selectUser == null) {
                 <div class="form-group">
                     <label for="password">Mots de passe</label>
                     <input id="password" name="password" type="password"
-                           value="<?php echo htmlspecialchars($selectUser->getPassword()) ?>"/>
+                           value=""/>
                 </div>
                 <div class="form-group">
                     <label for="register-date">Date d'inscription</label>
-                    <input disabled id="register-date" type="text"
+                    <input disabled id="register-date" name="register-date" type="text"
                            value="<?php echo htmlspecialchars($selectUser->getCreatedAt()) ?>"/>
                 </div>
                 <div class="form-group">
-                    <label for="register-date">Mis à jour</label>
-                    <input disabled id="register-date" type="text"
+                    <label for="update-date">Mis à jour</label>
+                    <input disabled id="update-date" name="update-date" type="text"
                            value="<?php echo htmlspecialchars($selectUser->getUpdatedAt()) ?>"/>
                 </div>
             </div>
@@ -118,7 +118,7 @@ if ($selectUser == null) {
                     </label>
                     <label class="status-option <?php if ($selectUser->getRole() == UserRole::BAN) echo 'current' ?>">
                         <input name="role" type="radio"
-                               value="ADMIN" <?php if ($selectUser->getRole() == UserRole::BAN) echo 'checked' ?>/>
+                               value="BAN" <?php if ($selectUser->getRole() == UserRole::BAN) echo 'checked' ?>/>
                         <div>
                             <h3>Bannir</h3>
                             <p>Ban</p>
@@ -142,6 +142,6 @@ if ($selectUser == null) {
     </div>
 </main>
 
-<script src="../assets/js/admin/user-update-delay.js"></script>
+<script src="../assets/js/admin/userUpdate.js"></script>
 </body>
 </html>

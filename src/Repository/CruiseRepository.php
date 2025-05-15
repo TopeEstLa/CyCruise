@@ -31,7 +31,7 @@ class CruiseRepository
         }
         return self::$instance;
     }
-    
+
 
     public function insert(string $name, string $descriptions, string $short_descriptions, string $img,
                            string $start_date, string $end_date, int $duration,
