@@ -50,13 +50,13 @@ for more information see the [DT](document/DT.pdf) document.
 
 ## Default account
 
-| Email                  | Password | Role |
-|------------------------|----------|------|
-| test.admin@localhost   | password | admin |
-| test1.admin@localhost  | password | admin |
-| test.user@localhost    | password | user |
-| test.vip@localhost     | password | vip |
-| test.premium@localhost | password | premium |
+| Email                    | Password | Role |
+|--------------------------|----------|------|
+| test.admin@localhost.vpn | password | admin |
+| test1.admin@localhost.vpn    | password | admin |
+| test.user@localhost.vpn      | password | user |
+| test.vip@localhost.vpn       | password | vip |
+| test.premium@localhost.vpn   | password | premium |
 
 
 
