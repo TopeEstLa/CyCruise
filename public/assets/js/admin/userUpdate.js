@@ -33,6 +33,17 @@ function rollbackChanges() {
     });
 }
 
+function reEnableInputs() {
+    const inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        if (input.type === 'radio') {
+            input.removeAttribute('disabled');
+        } else {
+            input.removeAttribute('disabled');
+        }
+    });
+}
+
 function sendAccountUpdate(inputValue) {
     fetch("/api/admin/user/update.php",
         {
@@ -45,6 +56,7 @@ function sendAccountUpdate(inputValue) {
         .then(res => {
             if (!res.ok) {
                 rollbackChanges();
+                reEnableInputs();
                 submitButton.textContent = "Sauvegarder les modifications";
                 alert("Une erreur est survenue lors de la mise à jour de vos informations.");
                 return;
@@ -59,6 +71,7 @@ function sendAccountUpdate(inputValue) {
 
             if (data.error) {
                 rollbackChanges();
+                reEnableInputs();
                 submitButton.textContent = "Sauvegarder les modifications";
                 alert("Une erreur est survenue lors de la mise à jour de vos informations.");
                 return;
@@ -74,11 +87,10 @@ function sendAccountUpdate(inputValue) {
                 if (input.type === 'radio') {
                     if (input.value === data["role"]) {
                         input.checked = true;
-                        console.log(input.classList);
-                        input.classList.add('current')
+                        input.parentElement.classList.add('current');
                     } else {
                         input.checked = false;
-                        input.classList.remove('current')
+                        input.parentElement.classList.remove('current');
                     }
 
                     input.removeAttribute('disabled');
@@ -101,6 +113,7 @@ function sendAccountUpdate(inputValue) {
         })
         .catch(err => {
             rollbackChanges();
+            reEnableInputs();
             submitButton.textContent = "Sauvegarder les modifications";
             alert("Une erreur est survenue lors de la mise à jour de vos informations.");
         });

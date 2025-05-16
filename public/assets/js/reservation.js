@@ -12,8 +12,6 @@ let options;
 fetch('api/cruise/detail.php?id=2')
     .then(res => res.json())
     .then(data => {
-        console.log(data);
-
         basePrice = parseFloat(data.price);
         options = data.options;
 
@@ -101,11 +99,7 @@ function updateSummary() {
 
     optionsContainer.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
         const value = radio.value;
-        console.log(value);
         const {key: type, option: optionById} = findOptionById(value);
-
-        console.log(type);
-        console.log(optionById);
 
         const name = optionById.name;
         const price = parseFloat(optionById.price);

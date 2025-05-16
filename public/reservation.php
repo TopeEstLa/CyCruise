@@ -123,7 +123,7 @@ if ($cruise === null) {
             <a href="cruise-detail.php?id=<?php echo htmlspecialchars($cruise->getId()); ?>" class="btn-primary">
                 <i class="fas fa-arrow-left btn-secondary-icon"></i> Retour
             </a>
-            <button type="submit" formaction="create-invoice.php" class="btn-primary">
+            <button type="submit" formaction="api/invoice/create.php" class="btn-primary">
                 <i class="fas fa-check btn-icon"></i> Confirmer la réservation
             </button>
         </div>

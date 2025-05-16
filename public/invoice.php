@@ -179,7 +179,7 @@ if ($invoice === null) {
             <?php endif; ?>
             <button class="btn-secondary"><i class="fas fa-print"></i> Imprimer</button>
             <?php if ($invoice->getState() == InvoiceState::PENDING): ?>
-                <form action="cancel-invoice.php" method="POST" class="cancel-form">
+                <form action="api/invoice/cancel.php" method="POST" class="cancel-form">
                     <input type="hidden" name="invoice_id"
                            value="<?php echo htmlspecialchars($invoice->getId()); ?>">
                     <button type="submit" class="btn-danger">

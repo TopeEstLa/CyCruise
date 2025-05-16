@@ -1,10 +1,10 @@
 <?php
 
-require_once "../src/Services/AuthService.php";
-require_once "../src/Services/InvoiceService.php";
-require_once "../src/Repository/CruiseRepository.php";
-require_once "../src/Repository/CruiseOptionRepository.php";
-require_once "../src/Models/Invoice.php";
+require_once "../../../src/Services/AuthService.php";
+require_once "../../../src/Services/InvoiceService.php";
+require_once "../../../src/Repository/CruiseRepository.php";
+require_once "../../../src/Repository/CruiseOptionRepository.php";
+require_once "../../../src/Models/Invoice.php";
 
 $authService = new AuthService();
 $invoiceService = new InvoiceService();
@@ -12,24 +12,24 @@ $invoiceService = new InvoiceService();
 session_start();
 
 if (!$authService->isLoggedIn()) {
-    header("Location: login.php");
+    header("Location: ../../login.php");
     exit();
 }
 
 if (!isset($_POST['cruise_id'])) {
-    header("Location: cruise-list.php");
+    header("Location: ../../cruise-list.php");
     exit();
 }
 
 $cruise = CruiseRepository::getInstance()->findById($_POST['cruise_id']);
 
 if ($cruise === null) {
-    header("Location: cruise-list.php");
+    header("Location: ../../cruise-list.php");
     exit();
 }
 
 if (!isset($_POST['passengers'])) {
-    header("Location: cruise-list.php");
+    header("Location: ../../cruise-list.php");
     exit();
 }
 
@@ -64,7 +64,7 @@ for ($i = 0; $i < count($optionsByType); $i++) {
             $selectedOptions[] = $cruiseOption;
         }
     } else {
-        header("Location: cruise-list.php");
+        header("Location: ../../cruise-list.php");
     }
 }
 
@@ -72,9 +72,9 @@ for ($i = 0; $i < count($optionsByType); $i++) {
 $invoice = $invoiceService->createInvoice($authService->getUser(), $cruise, $selectedOptions, $passengerCount, $passengerData);
 
 if ($invoice === null) {
-    header("Location: cruise-list.php");
+    header("Location: ../../cruise-list.php");
     exit();
 }
 
-header("Location: invoice.php?id=" . $invoice->getId());
+header("Location: ../../invoice.php?id=" . $invoice->getId());
 ?>

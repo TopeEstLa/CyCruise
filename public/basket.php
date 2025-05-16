@@ -127,7 +127,7 @@ foreach ($basketInvoices as $invoice) {
                                         <i class="fas fa-credit-card btn-icon"></i> Payer
                                     </button>
                                 </form>
-                                <form action="cancel-invoice.php" method="POST" class="cancel-form">
+                                <form action="api/invoice/cancel.php" method="POST" class="cancel-form">
                                     <input type="hidden" name="invoice_id"
                                            value="<?php echo htmlspecialchars($invoice->getId()); ?>">
                                     <button type="submit" class="btn-danger">

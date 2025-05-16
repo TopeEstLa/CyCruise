@@ -11,6 +11,7 @@ class InvoiceOptionRepository
     public function __construct()
     {
         $this->database = Database::getInstance();
+        $this->cruiseOptionRepository = CruiseOptionRepository::getInstance();
     }
 
 

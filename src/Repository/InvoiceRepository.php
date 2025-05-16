@@ -20,6 +20,8 @@ class InvoiceRepository
     public function __construct()
     {
         $this->database = Database::getInstance();
+        $this->invoiceOptionRepository = InvoiceOptionRepository::getInstance();
+        $this->invoicePassengerRepository = InvoicePassengerRepository::getInstance();
     }
 
     public static function getInstance(): InvoiceRepository

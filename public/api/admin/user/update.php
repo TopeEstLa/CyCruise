@@ -7,12 +7,14 @@ $authService = new AuthService();
 session_start();
 
 if (!$authService->isLoggedIn()) {
-    header("Location: ../../../login.php");
+    http_response_code(403);
+    echo json_encode(['error' => 'Forbidden']);
     exit;
 }
 
 if (!$authService->isAdmin()) {
-    header("Location: ../../../index.php");
+    http_response_code(403);
+    echo json_encode(['error' => 'Forbidden']);
     exit;
 }
 
