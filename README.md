@@ -1,4 +1,4 @@
-# CyCruise 🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿
+# CyCruise 🗿🗿🗿
 
 Pre-Ing-2 S2 IT project <br>
 Subject ClickJourney [subject.pdf](subject/Projet_Click_journeY_v1.0_Présentation.pdf) <br>
