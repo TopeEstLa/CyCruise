@@ -1,7 +1,7 @@
 # CyCruise 🗿🗿🗿
 
 Pre-Ing-2 S2 IT project <br>
-Subject ClickJourney [subject.pdf](subject/Projet_Click_journeY_v1.0_Présentation.pdf) <br>
+Subject ClickJourney [subject.pdf](subject/Projet_Click_journeY_v1.4_PHASE4.pdf) <br>
 Project report [report.pdf](document/RapportProjetInformatiqueV3.pdf) <br>
 Project document [document](document/) <br>
 Project URL [CyCruise](https://cycruise.antoninp.dev/) <br>
