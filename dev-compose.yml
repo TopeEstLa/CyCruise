@@ -12,11 +12,19 @@ services:
       MARIADB_ROOT_PASSWORD: mariadbbettervoterootp@ssword
       MARIADB_USER: admin
       MARIADB_PASSWORD: adminmypassmariadb
+    healthcheck:
+      test: [ "CMD", "mariadb", "-u", "admin", "-padminmypassmariadb", "-e", "SELECT 1;" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     ports:
       - "3838:3306"
   cycruise:
     image: cycruise-app
     container_name: cycruise_php
+    depends_on:
+      mariadb:
+        condition: service_healthy
     ports:
       - 4000:80
     environment:
